@@ -8,6 +8,7 @@ ROOT = Path('/root/.openclaw/workspace/projects/english-template-site')
 PAGES_DIR = ROOT / 'pages'
 SITE_DIR = ROOT / 'site'
 SITE_PAGES_DIR = SITE_DIR / 'pages'
+BASE_URL = 'https://resumepathlab.com'
 
 PAGES = [
     {
@@ -263,6 +264,30 @@ def build_page(page: dict[str, str], nav_html: str) -> None:
     out.write_text(shell(page['title'], body, page['summary'], nav_html), encoding='utf-8')
 
 
+def build_seo_files() -> None:
+    urls = [f'{BASE_URL}/']
+    for page in PAGES:
+        urls.append(f"{BASE_URL}/pages/{page['slug']}.html")
+
+    sitemap_parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for url in urls:
+        sitemap_parts.append('  <url>')
+        sitemap_parts.append(f'    <loc>{html.escape(url)}</loc>')
+        sitemap_parts.append('  </url>')
+    sitemap_parts.append('</urlset>')
+    (SITE_DIR / 'sitemap.xml').write_text('\n'.join(sitemap_parts) + '\n', encoding='utf-8')
+
+    robots = f'''User-agent: *
+Allow: /
+
+Sitemap: {BASE_URL}/sitemap.xml
+'''
+    (SITE_DIR / 'robots.txt').write_text(robots, encoding='utf-8')
+
+
 def build_css() -> None:
     css = '''
 :root {
@@ -342,6 +367,7 @@ def main() -> None:
     build_status(nav_html)
     for page in PAGES:
         build_page(page, nav_html)
+    build_seo_files()
 
 
 if __name__ == '__main__':

@@ -214,6 +214,50 @@ Good options:
 - text classification
 - recommendation system prototype
 
+## Project-to-resume mapping
+A beginner project becomes resume-worthy only when it is translated into hiring language.
+
+### Churn prediction -> ML engineer resume signal
+What it proves:
+
+- structured data handling
+- feature engineering
+- model comparison
+- business-aware evaluation
+
+Resume angle:
+- highlight pipeline thinking, metrics, and decision value
+
+### Resume-job match classifier -> bridge signal
+What it proves:
+
+- NLP basics
+- ranking or classification logic
+- alignment with real job-search use cases
+
+Resume angle:
+- highlight text preprocessing, explainability, and recruiter relevance
+
+### Recommendation prototype -> systems + ML signal
+What it proves:
+
+- ranking logic
+- product-facing thinking
+- practical tradeoff judgment
+
+Resume angle:
+- highlight relevance scoring, recommendation quality, and user-facing delivery
+
+### Forecasting baseline -> data-science-to-ML signal
+What it proves:
+
+- time-aware evaluation
+- baseline discipline
+- business framing
+
+Resume angle:
+- highlight forecast design, error metrics, and model limits
+
 ## How to write ML projects on your resume
 Do not just list project titles.
 Each project should answer:
@@ -229,6 +273,21 @@ Weak bullet:
 
 Better bullet:
 - Built a churn-prediction pipeline in Python and scikit-learn, engineered customer-behavior features, compared classification models, and evaluated performance using F1 and recall to reflect business retention priorities.
+
+## Real bullet examples
+### Example 1: churn prediction
+- Built a churn-prediction workflow in Python using pandas and scikit-learn, engineered customer-behavior features, and compared classification models using recall and F1 to reflect retention priorities.
+
+### Example 2: resume-job match tool
+- Developed a resume-job matching prototype with text preprocessing, keyword extraction, and classification logic to map candidate resumes to target role categories and explain output quality through error analysis.
+
+### Example 3: recommendation prototype
+- Built a recommendation prototype that scored user-item relevance, tested simple ranking strategies, and documented tradeoffs between explainability, simplicity, and output usefulness.
+
+## Copy-ready bullets
+- Built a project with a clear problem statement, real input data, and visible evaluation logic instead of stopping at model training.
+- Translated project work into resume language by naming the workflow, metrics, and decision value directly.
+- Used project order and bullet wording to match the target role instead of dumping every experiment onto the page.
 
 ## Project bullet templates you can copy
 

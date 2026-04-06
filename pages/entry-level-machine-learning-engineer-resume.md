@@ -60,6 +60,23 @@ Entry-level machine learning engineer with a background in computer science and 
 B.S. in Computer Science, University Name  
 Graduation: 2026
 
+## Real resume breakdown
+Here is what makes the example on this page work better than a replaceable AI-generated resume block:
+
+- the summary names the exact target role instead of saying "AI" in a vague way
+- the skills section stays tight and only includes tools that can be defended in an interview
+- the projects read like work products, not classroom assignments
+- the bullets show workflow, evaluation, and delivery thinking instead of only model training
+- the page makes the transition from adjacent background to ML role explicit
+
+A recruiter scanning this kind of resume should understand three things fast:
+
+1. this person is junior, but real
+2. this person has enough project signal to justify an interview
+3. this person can be mapped to entry-level ML engineering work without pretending to have production history
+
+That is the core no-experience strategy.
+
 ## How to write a machine learning resume without experience
 The biggest mistake entry-level candidates make is thinking they need “real ML job experience” before applying.
 That is false.
@@ -265,6 +282,14 @@ It is better to be honest and sharp than inflated and weak.
 ### 5. No clear target role
 A resume for software engineering, data analysis, and ML engineering cannot all be equally strong at once.
 This page assumes you are targeting entry-level ML engineer roles.
+
+## Copy-ready bullets
+Use these as starting lines, then customize them to your own project.
+
+- Built a machine learning pipeline in Python to solve [problem], cleaned raw data, engineered features, and compared multiple models using validation metrics.
+- Developed a text classification workflow for [use case], created features from raw text, and improved results by analyzing false positives and refining preprocessing.
+- Packaged model output into a lightweight API or demo flow so the project showed practical engineering value beyond notebook-only work.
+- Mapped project decisions to job-description language by highlighting data preprocessing, model evaluation, and workflow delivery instead of vague AI claims.
 
 ## Copyable project bullet templates
 

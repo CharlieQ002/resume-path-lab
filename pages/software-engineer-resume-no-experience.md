@@ -118,6 +118,28 @@ Weak examples:
 - project title with no clear functionality
 - “AI app” with zero engineering substance underneath
 
+## AI/ML project section you can add without overclaiming
+If you want this software-resume page to act as a real traffic bridge into the ML path, add one adjacent project that signals AI/ML relevance without pretending you already worked as an ML engineer.
+
+Strong examples:
+
+- a resume-job match tool that includes classification or ranking logic
+- a recommendation prototype with simple user-item scoring
+- a backend service that wraps a prediction workflow into an API
+- a dashboard that turns model output into a user-facing decision tool
+
+What this section should prove:
+
+- you can build software, not just notebooks
+- you can connect code, data, and output quality
+- you understand how adjacent software work can support ML workflows
+
+Weak version:
+- Built an AI app with Python.
+
+Better version:
+- Built a resume-job matching tool that combines text preprocessing, rule-based scoring, and classification logic to compare resume content against target job descriptions.
+
 ## How to make your resume stronger if you want to move toward ML later
 This is where the page becomes more useful than a generic software resume guide.
 
@@ -192,6 +214,11 @@ This page assumes your immediate target is software engineering, with optional f
 ### 5. Trying to sound senior
 No one expects you to sound senior.
 People do expect you to sound real.
+
+## Copy-ready bullets
+- Built a software tool that turns structured input into ranking, scoring, or classification output instead of shipping a generic CRUD-only project.
+- Combined backend logic, data handling, and lightweight analysis so the project could act as a believable bridge toward AI/ML work.
+- Rewrote project bullets around workflow and decision value rather than around frameworks alone.
 
 ## Copyable project bullet templates
 

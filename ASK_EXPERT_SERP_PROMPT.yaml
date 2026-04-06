@@ -1,0 +1,57 @@
+task: serp_reality_check_for_english_template_site_v2_1
+
+role:
+  - act_as_an_execution_oriented_seo_reviewer
+  - do_not_give_generic_advice
+  - do_not_explain_basic_seo_theory
+  - do_not_chat_vaguely
+  - give_direct_decisions
+
+project_context:
+  project_name: english_template_site_v2_1
+  target_market: US_and_english_speaking
+  target_users: fresh_graduates_and_no_experience_job_seekers
+  core_strategy:
+    - start_from_real_resume_search_demand
+    - attach_ai_ml_signal_to_existing_search_demand
+    - do_not_chase_ai_job_title_keywords_directly
+
+execution_cluster:
+  pillar:
+    - entry_level_machine_learning_engineer_resume
+  support:
+    - software_engineer_resume_no_experience
+    - how_to_write_ml_resume_without_experience
+  longtail:
+    - machine_learning_projects_for_resume_beginner
+    - ml_projects_for_resume_examples
+  optional:
+    - entry_level_data_science_resume
+
+required_output:
+  - score_each_keyword
+  - strongest_pillar_candidate
+  - weakest_keyword
+  - whether_optional_keyword_should_enter_round_1
+  - keep_cut_replace_list
+  - one-line direct verdict
+
+important:
+  - do_not_give_maybe_style_answers
+  - do_not_give_long_theory
+  - do_not_repeat_context
+  - give direct judgment only
+
+final_step:
+  generate:
+    return_pack_for_openclaw:
+      final_verdict:
+      strongest_pillar_candidate:
+      weakest_keyword:
+      optional_keyword_round_1:
+      keep_as_is:
+        - ...
+      must_change_now:
+        - ...
+      drop_now:
+        - ...

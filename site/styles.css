@@ -1,0 +1,64 @@
+:root {
+  --bg: #f6f2ea;
+  --panel: #fffdf8;
+  --ink: #1f1a17;
+  --muted: #6f6259;
+  --line: #ddd2c3;
+  --accent: #0f766e;
+  --accent-soft: #d8f3ee;
+  --shadow: 0 20px 40px rgba(45, 33, 20, 0.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #fff9ef 0%, var(--bg) 58%);
+  line-height: 1.7;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.site-shell { max-width: 1040px; margin: 0 auto; padding: 24px; }
+.site-header {
+  display: flex; justify-content: space-between; gap: 16px; align-items: center;
+  padding: 14px 0 24px; border-bottom: 1px solid var(--line);
+}
+.brand { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+.top-nav { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero, .page-head {
+  padding: 36px; margin: 28px 0; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 24px; box-shadow: var(--shadow);
+}
+.hero.compact { padding-bottom: 22px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; color: var(--muted); }
+.lead { font-size: 1.12rem; color: #3b322d; max-width: 740px; }
+.meta { color: var(--muted); font-size: .95rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.grid.single { grid-template-columns: 1fr; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
+  padding: 22px; box-shadow: var(--shadow);
+}
+.card.muted { opacity: .88; }
+.prose {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 24px;
+  padding: 34px; box-shadow: var(--shadow);
+}
+.prose h1:first-child { display: none; }
+.prose h2 { margin-top: 2.2rem; font-size: 1.55rem; }
+.prose h3 { margin-top: 1.4rem; font-size: 1.15rem; }
+.prose p, .prose li, .prose blockquote { font-size: 1.02rem; }
+.prose ul, .prose ol { padding-left: 1.4rem; }
+.prose blockquote {
+  margin: 1rem 0; padding: 1rem 1.2rem; background: var(--accent-soft);
+  border-left: 4px solid var(--accent); border-radius: 12px;
+}
+code {
+  background: #efe8dd; padding: .12rem .4rem; border-radius: 6px; font-size: .92em;
+}
+.site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
+@media (max-width: 720px) {
+  .site-shell { padding: 18px; }
+  .site-header { align-items: flex-start; flex-direction: column; }
+  .hero, .page-head, .prose { padding: 22px; }
+}

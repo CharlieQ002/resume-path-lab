@@ -1,0 +1,67 @@
+serp_validation_scorecard_v2_1:
+
+  purpose:
+    - validate whether the revised keyword cluster is worth building
+    - prioritize search-demand reality over elegant keyword logic
+    - decide whether optional data-science entry page should enter round 1
+
+  scoring_scale:
+    0: very_bad
+    1: weak
+    2: acceptable
+    3: strong
+    4: very_strong
+
+  score_dimensions:
+    search_intent_clarity:
+    real_search_demand:
+    serp_weakness:
+    differentiation_room:
+    internal_link_fit:
+    conversion_relevance:
+
+  candidate_keywords:
+    - keyword: entry_level_machine_learning_engineer_resume
+      expected_role: pillar_candidate
+    - keyword: software_engineer_resume_no_experience
+      expected_role: traffic_entry
+    - keyword: how_to_write_ml_resume_without_experience
+      expected_role: bridge_support
+    - keyword: machine_learning_projects_for_resume_beginner
+      expected_role: longtail_signal_page
+    - keyword: ml_projects_for_resume_examples
+      expected_role: hybrid_capture
+    - keyword: entry_level_data_science_resume
+      expected_role: optional_lower_competition_entry
+
+  output_format:
+    for_each_keyword:
+      - keyword
+      - verdict: keep / cut / replace / optional
+      - role_fit: pillar / support / longtail / wrong_role
+      - search_intent_quality: high / medium / low
+      - real_search_demand: high / medium / low
+      - serp_weakness: high / medium / low
+      - differentiation_room: high / medium / low
+      - one_line_reason
+
+  decision_rules:
+    pillar_threshold:
+      - total_score >= 16
+      - search_intent_clarity >= 3
+      - real_search_demand >= 3
+      - conversion_relevance >= 3
+
+    support_threshold:
+      - total_score >= 13
+
+    cut_threshold:
+      - total_score <= 10
+      - or real_search_demand <= 1
+      - or search_intent_clarity <= 1
+
+  final_request:
+    - identify strongest pillar candidate
+    - identify weakest keyword
+    - judge whether entry_level_data_science_resume should be in round 1
+    - flag any keyword that sounds builder-generated instead of user-generated

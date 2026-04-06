@@ -132,7 +132,13 @@ def markdown_to_html(markdown: str) -> str:
     return '\n'.join(chunks)
 
 
+GOOGLE_SITE_VERIFICATION = "zNXWb6AU4dkWiFODD_S9UiH9y3zi7Hr3vD-eHLggWnA"
+
+
 def shell(title: str, body: str, description: str, nav_html: str) -> str:
+    verification_meta = ""
+    if GOOGLE_SITE_VERIFICATION:
+        verification_meta = f'  <meta name="google-site-verification" content="{html.escape(GOOGLE_SITE_VERIFICATION)}">\n'
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -140,7 +146,7 @@ def shell(title: str, body: str, description: str, nav_html: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(description)}">
-  <link rel="stylesheet" href="/styles.css">
+{verification_meta}  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="site-shell">

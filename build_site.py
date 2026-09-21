@@ -262,6 +262,21 @@ def inline_format(text: str) -> str:
     return text
 
 
+def slugify(text: str) -> str:
+    slug = re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
+    return slug or 'section'
+
+
+def extract_toc(markdown: str) -> list[tuple[str, str]]:
+    toc = []
+    for raw in markdown.splitlines():
+        stripped = raw.strip()
+        if stripped.startswith('## '):
+            title = stripped[3:].strip()
+            toc.append((slugify(title), title))
+    return toc
+
+
 def markdown_to_html(markdown: str) -> str:
     lines = markdown.splitlines()
     chunks: list[str] = []
@@ -301,7 +316,8 @@ def markdown_to_html(markdown: str) -> str:
         if stripped.startswith('## '):
             flush_paragraph()
             close_lists()
-            chunks.append(f'<h2>{inline_format(stripped[3:])}</h2>')
+            heading = stripped[3:]
+            chunks.append(f'<h2 id="{slugify(heading)}">{inline_format(heading)}</h2>')
             continue
         if stripped.startswith('### '):
             flush_paragraph()
@@ -316,7 +332,7 @@ def markdown_to_html(markdown: str) -> str:
             if not in_ul:
                 chunks.append('<ul>')
                 in_ul = True
-            chunks.append(f'<li>{inline_format(re.sub(r"^-\\s+", "", stripped))}</li>')
+            chunks.append(f'<li>{inline_format(re.sub(r"^-\s+", "", stripped))}</li>')
             continue
         if re.match(r'^\d+\.\s+', stripped):
             flush_paragraph()
@@ -326,7 +342,7 @@ def markdown_to_html(markdown: str) -> str:
             if not in_ol:
                 chunks.append('<ol>')
                 in_ol = True
-            chunks.append(f'<li>{inline_format(re.sub(r"^\\d+\\.\\s+", "", stripped))}</li>')
+            chunks.append(f'<li>{inline_format(re.sub(r"^\d+\.\s+", "", stripped))}</li>')
             continue
         if stripped.startswith('> '):
             flush_paragraph()
@@ -446,14 +462,31 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
     return '\n'.join(json_ld(s) for s in schemas)
 
 
+LOGO_SVG = (
+    '<svg class="logo-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">'
+    '<rect width="30" height="30" rx="8" fill="#0f766e"/>'
+    '<path d="M9 8h8.5a3.5 3.5 0 0 1 0 7H9V8zm0 7h9l3 7h-4l-3-7h-5v7H9v-7z" fill="#fff"/>'
+    '</svg>'
+)
+
+
 def build_footer_nav() -> str:
-    return ' · '.join(
+    return ''.join(
         f'<a href="/{page["slug"]}">{html.escape(page["nav"])}</a>' for page in LEGAL_PAGES
     )
 
 
+def build_footer_guides() -> str:
+    links = []
+    for page in PAGES:
+        if page.get('pillar'):
+            links.append(f'<a href="/pages/{page["slug"]}">{html.escape(page["nav"])}</a>')
+    return ''.join(links)
+
+
 def shell(title: str, description: str, canonical: str, nav_html: str, body: str, extra_head: str = '', og_image: str = '') -> str:
     footer_nav = build_footer_nav()
+    footer_guides = build_footer_guides()
     verification = ''
     if GOOGLE_SITE_VERIFICATION:
         verification += f'  <meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">\n'
@@ -468,6 +501,7 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(description)}">
 {verification}  <link rel="canonical" href="{html.escape(canonical)}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{SITE_NAME}">
   <meta property="og:title" content="{html.escape(title)}">
@@ -485,18 +519,34 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
 <body>
   <div class="site-shell">
     <header class="site-header">
-      <a class="brand" href="/">{SITE_NAME}</a>
+      <a class="brand" href="/">{LOGO_SVG}<span>{SITE_NAME}</span></a>
       <nav class="top-nav">{nav_html}</nav>
     </header>
     <main>
 {body}
     </main>
-    <footer class="site-footer">
-      <p>{SITE_NAME} publishes free, copy-ready resume examples and templates for entry-level machine learning, software, and data roles. Some links are affiliate links: we may earn a commission at no extra cost to you.</p>
-      <nav class="footer-nav">{footer_nav}</nav>
-      <p>&copy; 2026 {SITE_NAME}</p>
-    </footer>
   </div>
+  <footer class="site-footer">
+    <div class="site-shell footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="/">{LOGO_SVG}<span>{SITE_NAME}</span></a>
+        <p>Free, copy-ready resume examples and templates for entry-level machine learning, software, and data roles.</p>
+        <p class="footer-fine">Some links are affiliate links: we may earn a commission at no extra cost to you.</p>
+      </div>
+      <nav class="footer-col" aria-label="Popular guides">
+        <h2>Popular guides</h2>
+        {footer_guides}
+      </nav>
+      <nav class="footer-col" aria-label="Site information">
+        <h2>Site</h2>
+        <a href="/status">Status</a>
+        {footer_nav}
+      </nav>
+    </div>
+    <div class="site-shell footer-bottom">
+      <p>&copy; 2026 {SITE_NAME}. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
 '''
@@ -516,8 +566,16 @@ def build_home(nav_html: str) -> None:
   <p class="eyebrow">Free resume examples & templates</p>
   <h1>Entry-Level Resume Guides That Get Interviews</h1>
   <p class="lead">Copy-ready resume examples, project bullet templates, and step-by-step guides for breaking into machine learning, software engineering, and data science with little or no formal experience.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#guides">Browse all guides</a>
+    <div class="hero-chips">
+      <span class="chip">{len(PAGES)} in-depth guides</span>
+      <span class="chip">3 free Word templates</span>
+      <span class="chip">No sign-up, ever</span>
+    </div>
+  </div>
 </section>
-<section>
+<section id="guides">
   <h2>All guides</h2>
   <div class="grid">{''.join(cards)}</div>
 </section>
@@ -589,7 +647,9 @@ def build_legal(page: dict, nav_html: str) -> None:
 
 
 def insert_before_faq(article: str, cta: str) -> str:
-    idx = article.find('<h2>FAQ</h2>')
+    idx = article.find('<h2 id="faq">FAQ</h2>')
+    if idx == -1:
+        idx = article.find('<h2>FAQ</h2>')
     if idx == -1:
         return article + cta
     return article[:idx] + cta + '\n' + article[idx:]
@@ -617,13 +677,25 @@ def build_page(page: dict, nav_html: str) -> None:
     article = insert_before_faq(article, cta)
     canonical = f"{BASE_URL}/pages/{page['slug']}"
     faqs = extract_faq(markdown)
+    minutes = max(4, round(len(markdown.split()) / 200))
+    toc = extract_toc(markdown)
+    toc_html = ''
+    if len(toc) >= 4:
+        toc_items = ''.join(f'<li><a href="#{anchor}">{html.escape(text)}</a></li>' for anchor, text in toc)
+        toc_html = f'''
+<nav class="toc" aria-label="Table of contents">
+  <h2>In this guide</h2>
+  <ol>{toc_items}</ol>
+</nav>'''
     body = f'''
 <section class="page-head">
   <p class="eyebrow">Free guide + copy-ready template</p>
   <h1>{html.escape(page['title'])}</h1>
   <p class="lead">{html.escape(page['summary'])}</p>
+  <p class="byline">By the {SITE_NAME} Editorial Team &middot; Updated {TODAY} &middot; {minutes} min read</p>
 </section>
 {download_box(page)}
+{toc_html}
 <article class="prose">
 {article}
 </article>
@@ -644,6 +716,33 @@ def build_page(page: dict, nav_html: str) -> None:
             extra_head=schema + '\n',
             og_image=og_image,
         ),
+        encoding='utf-8',
+    )
+
+
+def build_favicon() -> None:
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 30 30">'
+        '<rect width="30" height="30" rx="8" fill="#0f766e"/>'
+        '<path d="M9 8h8.5a3.5 3.5 0 0 1 0 7H9V8zm0 7h9l3 7h-4l-3-7h-5v7H9v-7z" fill="#fff"/>'
+        '</svg>'
+    )
+    (SITE_DIR / 'favicon.svg').write_text(svg, encoding='utf-8')
+
+
+def build_404(nav_html: str) -> None:
+    body = f'''
+<section class="hero compact not-found">
+  <p class="eyebrow">404</p>
+  <h1>This page does not exist</h1>
+  <p class="lead">The link may be old or mistyped. Head back to the homepage to browse all free resume guides and templates.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="/">Back to homepage</a>
+  </div>
+</section>
+'''
+    (SITE_DIR / '404.html').write_text(
+        shell(f'Page Not Found | {SITE_NAME}', 'The page you are looking for does not exist.', f'{BASE_URL}/404', nav_html, body),
         encoding='utf-8',
     )
 
@@ -678,84 +777,196 @@ Sitemap: {BASE_URL}/sitemap.xml
 def build_css() -> None:
     css = '''
 :root {
-  --bg: #f6f2ea;
-  --panel: #fffdf8;
-  --ink: #1f1a17;
-  --muted: #6f6259;
-  --line: #ddd2c3;
+  --bg: #f7f7f4;
+  --panel: #ffffff;
+  --ink: #16191d;
+  --muted: #5c666d;
+  --line: #e5e3de;
   --accent: #0f766e;
-  --accent-soft: #d8f3ee;
-  --shadow: 0 20px 40px rgba(45, 33, 20, 0.08);
+  --accent-strong: #0b5a54;
+  --accent-soft: #e8f4f2;
+  --footer-bg: #12211f;
+  --footer-ink: #c8d4d1;
+  --shadow: 0 1px 2px rgba(22, 25, 29, 0.05), 0 8px 24px rgba(22, 25, 29, 0.06);
+  --radius: 16px;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top, #fff9ef 0%, var(--bg) 58%);
+  background: var(--bg);
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-.site-shell { max-width: 1040px; margin: 0 auto; padding: 24px; }
+.site-shell { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
 .site-header {
-  display: flex; justify-content: space-between; gap: 16px; align-items: center;
-  padding: 14px 0 24px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 20;
+  display: flex; justify-content: space-between; gap: 20px; align-items: center;
+  padding: 14px 24px; margin: 0 -24px;
+  background: rgba(247, 247, 244, 0.85);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
-.brand { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
-.top-nav { display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 1.08rem; font-weight: 800; letter-spacing: -0.01em; color: var(--ink);
+  white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+.logo-mark { display: block; border-radius: 8px; }
+.top-nav { display: flex; flex-wrap: wrap; gap: 4px; font-size: .94rem; }
+.top-nav a {
+  color: var(--ink); padding: 7px 12px; border-radius: 10px; font-weight: 500;
+}
+.top-nav a:hover { background: var(--accent-soft); color: var(--accent-strong); text-decoration: none; }
+
+/* Hero & page heads */
 .hero, .page-head {
-  padding: 36px; margin: 28px 0; background: var(--panel); border: 1px solid var(--line);
+  padding: 56px 44px; margin: 32px 0; background: var(--panel); border: 1px solid var(--line);
   border-radius: 24px; box-shadow: var(--shadow);
 }
-.hero.compact { padding-bottom: 22px; }
-.eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; color: var(--muted); }
-.lead { font-size: 1.12rem; color: #3b322d; max-width: 740px; }
-.meta { color: var(--muted); font-size: .95rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.hero { background: linear-gradient(135deg, #ffffff 0%, var(--accent-soft) 130%); }
+.hero.compact { padding: 36px 44px; }
+.hero h1, .page-head h1 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15;
+  letter-spacing: -0.02em; margin: 10px 0 16px;
+}
+.eyebrow {
+  text-transform: uppercase; letter-spacing: .14em; font-size: .76rem;
+  font-weight: 700; color: var(--accent); margin: 0;
+}
+.lead { font-size: 1.15rem; color: #39424a; max-width: 720px; margin: 0; }
+.byline { margin: 18px 0 0; font-size: .9rem; color: var(--muted); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 28px; }
+.btn-primary {
+  display: inline-block; padding: 13px 26px; background: var(--accent); color: #fff;
+  border-radius: 12px; font-weight: 700; font-size: 1rem;
+  transition: background .15s ease, transform .15s ease;
+}
+.btn-primary:hover { background: var(--accent-strong); text-decoration: none; transform: translateY(-1px); }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--panel); font-size: .85rem; color: var(--muted); font-weight: 500;
+}
+
+/* Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
 .grid.single { grid-template-columns: 1fr; }
 .card {
-  background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
-  padding: 22px; box-shadow: var(--shadow);
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; box-shadow: var(--shadow);
+  transition: transform .15s ease, border-color .15s ease;
 }
-.card h3 { margin-top: 0; font-size: 1.05rem; }
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card h2, .card h3 { margin-top: 0; font-size: 1.12rem; line-height: 1.35; letter-spacing: -0.01em; }
+.card h2 a, .card h3 a { color: var(--ink); }
+.card h2 a:hover, .card h3 a:hover { color: var(--accent); text-decoration: none; }
+.card p { margin-bottom: 0; color: var(--muted); font-size: .96rem; }
+
+/* Table of contents */
+.toc {
+  margin: 0 0 28px; padding: 24px 30px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.toc h2 { margin: 0 0 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.toc ol { margin: 0; padding-left: 1.3rem; columns: 2; column-gap: 40px; }
+.toc li { margin: 4px 0; font-size: .96rem; break-inside: avoid; }
+.toc a { color: var(--ink); }
+.toc a:hover { color: var(--accent); }
+
+/* Article prose */
 .prose {
   background: var(--panel); border: 1px solid var(--line); border-radius: 24px;
-  padding: 34px; box-shadow: var(--shadow);
+  padding: 40px 44px; box-shadow: var(--shadow);
 }
 .prose h1:first-child { display: none; }
-.prose h2 { margin-top: 2.2rem; font-size: 1.55rem; }
+.prose h2 { margin-top: 2.4rem; font-size: 1.5rem; letter-spacing: -0.015em; scroll-margin-top: 90px; }
 .prose h2:first-of-type { margin-top: 0; }
-.prose h3 { margin-top: 1.4rem; font-size: 1.15rem; }
-.prose p, .prose li, .prose blockquote { font-size: 1.02rem; }
+.prose h3 { margin-top: 1.5rem; font-size: 1.14rem; }
+.prose p, .prose li, .prose blockquote { font-size: 1.03rem; color: #2a3138; }
 .prose ul, .prose ol { padding-left: 1.4rem; }
+.prose li { margin: 5px 0; }
 .prose blockquote {
-  margin: 1rem 0; padding: 1rem 1.2rem; background: var(--accent-soft);
-  border-left: 4px solid var(--accent); border-radius: 12px;
+  margin: 1.1rem 0; padding: 1rem 1.3rem; background: var(--accent-soft);
+  border-left: 4px solid var(--accent); border-radius: 0 12px 12px 0;
 }
 code {
-  background: #efe8dd; padding: .12rem .4rem; border-radius: 6px; font-size: .92em;
+  background: #f0eeea; padding: .12rem .42rem; border-radius: 6px; font-size: .9em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+
+/* CTA & download boxes */
 .cta-box {
   margin: 2.4rem 0; padding: 26px 28px; background: var(--accent-soft);
-  border: 1px solid var(--accent); border-radius: 18px;
+  border: 1px solid var(--accent); border-radius: var(--radius);
 }
-.cta-box h3 { margin-top: 0; color: #0b4f4a; }
+.cta-box h3 { margin-top: 0; color: var(--accent-strong); }
 .cta-button {
   display: inline-block; margin: .6rem 0; padding: 12px 22px;
   background: var(--accent); color: #fff; border-radius: 12px; font-weight: 700;
+  transition: background .15s ease;
 }
-.cta-button:hover { background: #0b5a54; text-decoration: none; }
+.cta-button:hover { background: var(--accent-strong); text-decoration: none; }
 .cta-alt { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
-.value-prop { margin: 28px 0; padding: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; }
-.related { margin: 28px 0 8px; }
-.related h2 { font-size: 1.4rem; }
-.site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 32px; }
-.footer-nav { margin: 10px 0; line-height: 2; }
+.download-box {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  margin: 0 0 28px; padding: 18px 24px; background: var(--panel);
+  border: 1px dashed var(--accent); border-radius: var(--radius);
+}
+.download-box-text { display: flex; flex-direction: column; gap: 2px; }
+.download-box-text strong { font-size: 1.02rem; }
+.download-box-text span { font-size: .88rem; color: var(--muted); }
+.download-box-btn {
+  display: inline-block; padding: 10px 20px; border: 1.5px solid var(--accent);
+  color: var(--accent-strong); border-radius: 12px; font-weight: 700; white-space: nowrap;
+  transition: background .15s ease;
+}
+.download-box-btn:hover { background: var(--accent-soft); text-decoration: none; }
+
+/* Misc sections */
+.value-prop { margin: 28px 0; padding: 32px; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+.value-prop h2 { margin-top: 0; }
+.value-prop li { margin: 6px 0; }
+.related { margin: 28px 0 32px; }
+.related h2 { font-size: 1.35rem; letter-spacing: -0.01em; }
+.not-found { text-align: center; }
+
+/* Footer */
+.site-footer { background: var(--footer-bg); color: var(--footer-ink); margin-top: 48px; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+  padding-top: 44px; padding-bottom: 32px;
+}
+.footer-brand .brand { color: #fff; }
+.footer-brand p { font-size: .92rem; margin: 14px 0 0; max-width: 340px; }
+.footer-fine { color: #8fa39e; font-size: .82rem !important; }
+.footer-col h2 {
+  font-size: .82rem; text-transform: uppercase; letter-spacing: .1em;
+  color: #8fa39e; margin: 6px 0 14px;
+}
+.footer-col a { display: block; color: var(--footer-ink); padding: 4px 0; font-size: .95rem; }
+.footer-col a:hover { color: #fff; text-decoration: none; }
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px; padding-bottom: 22px; font-size: .85rem; color: #8fa39e;
+}
+.footer-bottom p { margin: 0; }
+
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+  .toc ol { columns: 1; }
+}
 @media (max-width: 720px) {
-  .site-shell { padding: 18px; }
-  .site-header { align-items: flex-start; flex-direction: column; }
-  .hero, .page-head, .prose { padding: 22px; }
+  .site-header { position: static; flex-direction: column; align-items: flex-start; }
+  .hero, .page-head { padding: 30px 24px; }
+  .prose { padding: 26px 22px; }
 }
 '''
     (SITE_DIR / 'styles.css').write_text(css.strip() + '\n', encoding='utf-8')
@@ -772,6 +983,8 @@ def main() -> None:
         build_page(page, nav_html)
     for page in LEGAL_PAGES:
         build_legal(page, nav_html)
+    build_favicon()
+    build_404(nav_html)
     build_seo_files()
 
 

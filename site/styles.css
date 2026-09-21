@@ -65,6 +65,11 @@ a:hover { text-decoration: underline; }
 }
 .lead { font-size: 1.15rem; color: #39424a; max-width: 720px; margin: 0; }
 .byline { margin: 18px 0 0; font-size: .9rem; color: var(--muted); }
+.crumbs { margin: 26px 0 -14px; font-size: .88rem; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--accent); }
+.crumb-sep { margin: 0 8px; color: var(--line); }
+.crumb-current { color: var(--ink); font-weight: 500; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 28px; }
 .btn-primary {
   display: inline-block; padding: 13px 26px; background: var(--accent); color: #fff;

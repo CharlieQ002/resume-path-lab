@@ -294,6 +294,12 @@ LEGAL_PAGES = [
         'nav': 'Disclaimer',
         'description': 'Disclaimers for Resume Path Lab content, including our affiliate link disclosure.',
     },
+    {
+        'slug': 'editorial-policy',
+        'title': 'Editorial Policy',
+        'nav': 'Editorial Policy',
+        'description': 'How Resume Path Lab creates, reviews, and updates its resume guides, and our independence commitments.',
+    },
 ]
 
 
@@ -487,7 +493,16 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
             'datePublished': '2026-04-05',
             'dateModified': TODAY,
             'mainEntityOfPage': canonical,
-        }
+        },
+        {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+                {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': f'{BASE_URL}/'},
+                {'@type': 'ListItem', 'position': 2, 'name': 'Guides', 'item': f'{BASE_URL}/#guides'},
+                {'@type': 'ListItem', 'position': 3, 'name': page['title'], 'item': canonical},
+            ],
+        },
     ]
     if faqs:
         schemas.append({
@@ -545,6 +560,7 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
   <meta name="description" content="{html.escape(description)}">
 {verification}  <link rel="canonical" href="{html.escape(canonical)}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{SITE_NAME}">
   <meta property="og:title" content="{html.escape(title)}">
@@ -731,6 +747,7 @@ def build_page(page: dict, nav_html: str) -> None:
   <ol>{toc_items}</ol>
 </nav>'''
     body = f'''
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="crumb-sep">/</span><a href="/#guides">Guides</a><span class="crumb-sep">/</span><span class="crumb-current">{html.escape(page.get('nav', page['title']))}</span></nav>
 <section class="page-head">
   <p class="eyebrow">Free guide + copy-ready template</p>
   <h1>{html.escape(page['title'])}</h1>
@@ -886,6 +903,11 @@ a:hover { text-decoration: underline; }
 }
 .lead { font-size: 1.15rem; color: #39424a; max-width: 720px; margin: 0; }
 .byline { margin: 18px 0 0; font-size: .9rem; color: var(--muted); }
+.crumbs { margin: 26px 0 -14px; font-size: .88rem; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--accent); }
+.crumb-sep { margin: 0 8px; color: var(--line); }
+.crumb-current { color: var(--ink); font-weight: 500; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 28px; }
 .btn-primary {
   display: inline-block; padding: 13px 26px; background: var(--accent); color: #fff;

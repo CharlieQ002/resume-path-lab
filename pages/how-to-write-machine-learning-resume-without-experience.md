@@ -259,9 +259,3 @@ Usually 2-4 strong projects are enough.
 
 ### Do I need deep learning projects?
 Not always. A strong classical ML project with clear evaluation and engineering logic can still be enough for many entry-level roles.
-
-## Next pages to read
-- `/entry-level-machine-learning-engineer-resume`
-- `/machine-learning-projects-for-resume`
-- `/entry-level-data-science-resume`
-- `/software-engineer-resume-no-experience`

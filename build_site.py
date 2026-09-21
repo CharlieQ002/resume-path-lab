@@ -1,51 +1,105 @@
 from __future__ import annotations
 
 import html
+import json
 import re
+from datetime import date
 from pathlib import Path
 
-ROOT = Path('/root/.openclaw/workspace/projects/english-template-site')
+ROOT = Path(__file__).resolve().parent
 PAGES_DIR = ROOT / 'pages'
 SITE_DIR = ROOT / 'site'
 SITE_PAGES_DIR = SITE_DIR / 'pages'
 BASE_URL = 'https://resumepathlab.com'
 
+SITE_NAME = 'Resume Path Lab'
+TODAY = date.today().isoformat()
+
+# ---------------------------------------------------------------------------
+# MONETIZATION: replace these with your affiliate links once approved.
+# Sign up: Kickresume (Impact), ResumeGenius, Zety (CJ / Impact).
+# Until then the buttons point to the plain sites and earn you nothing.
+# ---------------------------------------------------------------------------
+AFFILIATE = {
+    'kickresume': 'https://www.kickresume.com/',
+    'resumegenius': 'https://resumegenius.com/',
+    'zety': 'https://zety.com/',
+}
+
+GOOGLE_SITE_VERIFICATION = 'zNXWb6AU4dkWiFODD_S9UiH9y3zi7Hr3vD-eHLggWnA'
+YEAHPROMOS_VERIFICATION = '5c5859c41495'
+
 PAGES = [
     {
         'slug': 'entry-level-machine-learning-engineer-resume',
-        'title': 'Entry Level Machine Learning Engineer Resume',
+        'title': 'Entry-Level Machine Learning Engineer Resume: Example & Template',
+        'nav': 'ML Engineer Resume',
         'keyword': 'entry level machine learning engineer resume',
-        'role': 'Pillar / Core Conversion',
-        'summary': 'Turn adjacent software, CS, or data backgrounds into a credible entry-level machine-learning-resume path.',
-        'source': PAGES_DIR / 'entry-level-machine-learning-engineer-resume.md',
+        'description': 'Entry-level machine learning engineer resume example with a copy-ready template. Turn software or data projects into ML resume bullets that get interviews.',
+        'summary': 'Turn software, CS, or data project experience into a credible entry-level machine learning engineer resume, step by step.',
+        'related': [
+            'how-to-write-machine-learning-resume-without-experience',
+            'machine-learning-projects-for-resume',
+            'software-engineer-resume-no-experience',
+            'entry-level-data-science-resume',
+        ],
+    },
+    {
+        'slug': 'how-to-write-machine-learning-resume-without-experience',
+        'title': 'How to Write a Machine Learning Resume Without Experience',
+        'nav': 'ML Resume, No Experience',
+        'keyword': 'how to write machine learning resume without experience',
+        'description': 'How to write a machine learning resume without experience: the 7-step method to turn software, CS, or data projects into credible ML resume proof.',
+        'summary': 'The 7-step method for writing a credible machine learning resume when you have no formal ML work experience.',
+        'related': [
+            'entry-level-machine-learning-engineer-resume',
+            'machine-learning-projects-for-resume',
+            'software-engineer-resume-no-experience',
+            'entry-level-data-science-resume',
+        ],
     },
     {
         'slug': 'software-engineer-resume-no-experience',
-        'title': 'Software Engineer Resume With No Experience',
+        'title': 'Software Engineer Resume With No Experience: Example & Guide',
+        'nav': 'Software Engineer Resume',
         'keyword': 'software engineer resume no experience',
-        'role': 'Traffic Entry',
-        'summary': 'Capture broad no-experience software-resume demand and route the right readers toward the ML path.',
-        'source': PAGES_DIR / 'software-engineer-resume-no-experience.md',
+        'description': 'Software engineer resume with no experience: real example, copy-ready template, and steps to turn projects and coursework into interview-worthy bullets.',
+        'summary': 'A no-experience software engineer resume example, plus how to route your projects toward ML and data roles.',
+        'related': [
+            'entry-level-machine-learning-engineer-resume',
+            'entry-level-data-science-resume',
+            'how-to-write-machine-learning-resume-without-experience',
+        ],
     },
     {
         'slug': 'entry-level-data-science-resume',
-        'title': 'Entry Level Data Science Resume',
+        'title': 'Entry-Level Data Science Resume: Example & Template',
+        'nav': 'Data Science Resume',
         'keyword': 'entry level data science resume',
-        'role': 'Bridge Entry',
-        'summary': 'Capture adjacent data-science demand and move users toward stronger machine-learning positioning when relevant.',
-        'source': PAGES_DIR / 'entry-level-data-science-resume.md',
+        'description': 'Entry-level data science resume example with a copy-ready template. Learn how to frame projects, skills, and coursework for your first data job.',
+        'summary': 'An entry-level data science resume example, with guidance on framing projects and skills for a first data role.',
+        'related': [
+            'entry-level-machine-learning-engineer-resume',
+            'software-engineer-resume-no-experience',
+            'machine-learning-projects-for-resume',
+        ],
     },
     {
         'slug': 'machine-learning-projects-for-resume',
-        'title': 'Machine Learning Projects for Resume Beginners',
+        'title': 'Machine Learning Projects for a Resume: Beginner Guide',
+        'nav': 'ML Projects for Resume',
         'keyword': 'machine learning projects for resume beginner',
-        'role': 'Longtail Signal',
-        'summary': 'Show beginners which ML projects are resume-worthy, how to write them, and how to map them to job descriptions.',
-        'source': PAGES_DIR / 'machine-learning-projects-for-resume.md',
+        'description': 'The best machine learning projects for a resume as a beginner, with copy-ready bullet templates and tips for mapping projects to job descriptions.',
+        'summary': 'Which ML projects are resume-worthy, how to write them up, and how to map them to real job descriptions.',
+        'related': [
+            'entry-level-machine-learning-engineer-resume',
+            'how-to-write-machine-learning-resume-without-experience',
+            'entry-level-data-science-resume',
+        ],
     },
 ]
 
-PLANNED = []
+PAGE_BY_SLUG = {p['slug']: p for p in PAGES}
 
 
 def inline_format(text: str) -> str:
@@ -133,13 +187,116 @@ def markdown_to_html(markdown: str) -> str:
     return '\n'.join(chunks)
 
 
-GOOGLE_SITE_VERIFICATION = "zNXWb6AU4dkWiFODD_S9UiH9y3zi7Hr3vD-eHLggWnA"
+def extract_faq(markdown: str) -> list[tuple[str, str]]:
+    """Pull (question, answer) pairs out of the '## FAQ' section."""
+    faqs: list[tuple[str, str]] = []
+    in_faq = False
+    current_q: str | None = None
+    answer_lines: list[str] = []
+
+    def flush() -> None:
+        nonlocal current_q, answer_lines
+        if current_q and answer_lines:
+            answer = ' '.join(a.strip() for a in answer_lines if a.strip())
+            if answer:
+                faqs.append((current_q, answer))
+        current_q = None
+        answer_lines = []
+
+    for raw in markdown.splitlines():
+        stripped = raw.strip()
+        if stripped.startswith('## '):
+            if stripped == '## FAQ':
+                in_faq = True
+                continue
+            if in_faq:
+                break
+        if not in_faq:
+            continue
+        if stripped.startswith('### '):
+            flush()
+            current_q = stripped[4:].strip()
+        elif current_q and stripped:
+            answer_lines.append(stripped)
+    flush()
+    return faqs
 
 
-def shell(title: str, body: str, description: str, nav_html: str) -> str:
-    verification_meta = ""
+def build_nav() -> str:
+    links = ['<a href="/">Home</a>']
+    for page in PAGES:
+        links.append(f'<a href="/pages/{page["slug"]}">{html.escape(page["nav"])}</a>')
+    return ''.join(links)
+
+
+def affiliate_cta() -> str:
+    return f'''
+<aside class="cta-box">
+  <h3>Want this done in 15 minutes?</h3>
+  <p>Copy the examples above into <a href="{html.escape(AFFILIATE["kickresume"])}" rel="sponsored noopener" target="_blank">Kickresume</a> and get a polished, ATS-friendly PDF resume without fighting Word formatting. Templates, pre-written bullets, cover letter included.</p>
+  <a class="cta-button" href="{html.escape(AFFILIATE["kickresume"])}" rel="sponsored noopener" target="_blank">Build my resume with Kickresume</a>
+  <p class="cta-alt">Free alternatives: <a href="{html.escape(AFFILIATE["resumegenius"])}" rel="sponsored noopener" target="_blank">ResumeGenius</a> · <a href="{html.escape(AFFILIATE["zety"])}" rel="sponsored noopener" target="_blank">Zety</a></p>
+</aside>'''
+
+
+def related_box(slug: str) -> str:
+    page = PAGE_BY_SLUG[slug]
+    cards = []
+    for rel_slug in page['related']:
+        rel = PAGE_BY_SLUG[rel_slug]
+        cards.append(
+            f'''<article class="card">
+<h3><a href="/pages/{rel['slug']}">{html.escape(rel['title'])}</a></h3>
+<p>{html.escape(rel['summary'])}</p>
+</article>'''
+        )
+    return f'''
+<section class="related">
+  <h2>Related guides</h2>
+  <div class="grid">{''.join(cards)}</div>
+</section>'''
+
+
+def json_ld(payload: dict) -> str:
+    return f'<script type="application/ld+json">{json.dumps(payload, ensure_ascii=False)}</script>'
+
+
+def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
+    schemas = [
+        {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            'headline': page['title'],
+            'description': page['description'],
+            'author': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE_URL},
+            'publisher': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE_URL},
+            'datePublished': '2026-04-05',
+            'dateModified': TODAY,
+            'mainEntityOfPage': canonical,
+        }
+    ]
+    if faqs:
+        schemas.append({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            'mainEntity': [
+                {
+                    '@type': 'Question',
+                    'name': q,
+                    'acceptedAnswer': {'@type': 'Answer', 'text': a},
+                }
+                for q, a in faqs
+            ],
+        })
+    return '\n'.join(json_ld(s) for s in schemas)
+
+
+def shell(title: str, description: str, canonical: str, nav_html: str, body: str, extra_head: str = '') -> str:
+    verification = ''
     if GOOGLE_SITE_VERIFICATION:
-        verification_meta = f'  <meta name="google-site-verification" content="{html.escape(GOOGLE_SITE_VERIFICATION)}">\n'
+        verification += f'  <meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">\n'
+    if YEAHPROMOS_VERIFICATION:
+        verification += f'  <meta name="verify-yeahpromos" content="{YEAHPROMOS_VERIFICATION}">\n'
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -147,19 +304,29 @@ def shell(title: str, body: str, description: str, nav_html: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(description)}">
-{verification_meta}  <link rel="stylesheet" href="/styles.css">
+{verification}  <link rel="canonical" href="{html.escape(canonical)}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{SITE_NAME}">
+  <meta property="og:title" content="{html.escape(title)}">
+  <meta property="og:description" content="{html.escape(description)}">
+  <meta property="og:url" content="{html.escape(canonical)}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{html.escape(title)}">
+  <meta name="twitter:description" content="{html.escape(description)}">
+{extra_head}  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="site-shell">
     <header class="site-header">
-      <a class="brand" href="/index.html">Resume Path Lab</a>
+      <a class="brand" href="/">{SITE_NAME}</a>
       <nav class="top-nav">{nav_html}</nav>
     </header>
     <main>
-      {body}
+{body}
     </main>
     <footer class="site-footer">
-      <p>Round 1 validation build for the English template site project.</p>
+      <p>{SITE_NAME} publishes free, copy-ready resume examples and templates for entry-level machine learning, software, and data roles. Some links are affiliate links: we may earn a commission at no extra cost to you.</p>
+      <p>&copy; 2026 {SITE_NAME}</p>
     </footer>
   </div>
 </body>
@@ -167,118 +334,120 @@ def shell(title: str, body: str, description: str, nav_html: str) -> str:
 '''
 
 
-def build_nav() -> str:
-    links = ['<a href="/index.html">Home</a>']
-    for page in PAGES:
-        links.append(f'<a href="/pages/{page["slug"]}.html">{html.escape(page["title"])}</a>')
-    links.append('<a href="/status.html">Status</a>')
-    return ''.join(links)
-
-
 def build_home(nav_html: str) -> None:
     cards = []
     for page in PAGES:
         cards.append(
             f'''<article class="card">
-<h2><a href="/pages/{page["slug"]}.html">{html.escape(page["title"])}</a></h2>
-<p class="meta">{html.escape(page["role"])} · {html.escape(page["keyword"])}</p>
-<p>{html.escape(page["summary"])}</p>
+<h2><a href="/pages/{page['slug']}">{html.escape(page['title'])}</a></h2>
+<p>{html.escape(page['summary'])}</p>
 </article>'''
         )
-    planned = []
-    for page in PLANNED:
-        planned.append(
-            f'''<article class="card muted">
-<h2>{html.escape(page["title"])}</h2>
-<p class="meta">{html.escape(page["role"])}</p>
-<p>Planned next. Not written yet.</p>
-</article>'''
-        )
-    planned_section = ''
-    if planned:
-        planned_section = f'''
-<section>
-  <h2>Next Planned Pages</h2>
-  <div class="grid">{''.join(planned)}</div>
-</section>
-'''
     body = f'''
 <section class="hero">
-  <p class="eyebrow">Round 1 Site Shell</p>
-  <h1>English Resume Template Site</h1>
-  <p class="lead">This build turns the current markdown drafts into a site-ready shell so the project can move from page samples to a real publishable structure.</p>
+  <p class="eyebrow">Free resume examples & templates</p>
+  <h1>Entry-Level Resume Guides That Get Interviews</h1>
+  <p class="lead">Copy-ready resume examples, project bullet templates, and step-by-step guides for breaking into machine learning, software engineering, and data science with little or no formal experience.</p>
 </section>
 <section>
-  <h2>Live Pages</h2>
+  <h2>All guides</h2>
   <div class="grid">{''.join(cards)}</div>
 </section>
-{planned_section}
+<section class="value-prop">
+  <h2>Why these guides work</h2>
+  <ul>
+    <li><strong>Real examples, not filler.</strong> Every guide includes a full resume example and bullets you can copy and adapt.</li>
+    <li><strong>Built for no-experience candidates.</strong> Projects and coursework framed as proof, not decoration.</li>
+    <li><strong>Mapped to real job descriptions.</strong> Learn to mirror employer language so ATS and recruiters both notice.</li>
+  </ul>
+</section>
 '''
-    (SITE_DIR / 'index.html').write_text(shell('Resume Path Lab', body, 'Validation build for the English resume template site.', nav_html), encoding='utf-8')
+    description = 'Free, copy-ready resume examples and templates for entry-level machine learning engineers, software engineers, and data scientists with no experience.'
+    (SITE_DIR / 'index.html').write_text(
+        shell(f'{SITE_NAME} | Free Resume Examples for Entry-Level Tech Careers', description, f'{BASE_URL}/', nav_html, body),
+        encoding='utf-8',
+    )
 
 
 def build_status(nav_html: str) -> None:
     body = '''
 <section class="hero compact">
-  <p class="eyebrow">Execution Status</p>
-  <h1>Current Build State</h1>
+  <p class="eyebrow">Build log</p>
+  <h1>Site Status</h1>
 </section>
 <section class="grid single">
   <article class="card">
-    <h2>Built</h2>
+    <h2>Live now</h2>
     <ul>
-      <li>Shared site shell and CSS</li>
-      <li>Homepage with current live pages</li>
-      <li>4 HTML content pages generated from markdown drafts</li>
-      <li>Explicit status page to keep unfinished scope visible</li>
+      <li>5 full resume guides (about 7,800 words of copy-ready content)</li>
+      <li>FAQ structured data, canonical URLs, Open Graph tags on every page</li>
+      <li>Clean internal linking between all guides</li>
+      <li>Sitemap, robots.txt, Search Console verification</li>
     </ul>
   </article>
   <article class="card">
-    <h2>Not Built Yet</h2>
+    <h2>In progress</h2>
     <ul>
-      <li>Deployment pipeline</li>
-      <li>Search Console / analytics integration</li>
-      <li>Framework-based component system</li>
+      <li>Affiliate program approvals (Kickresume, ResumeGenius, Zety)</li>
+      <li>Downloadable Word/Google Docs resume templates</li>
+      <li>Resume screenshots and OG images for social sharing</li>
+      <li>Long-tail expansion pages</li>
     </ul>
   </article>
 </section>
 '''
-    (SITE_DIR / 'status.html').write_text(shell('Build Status', body, 'Honest status page for the validation build.', nav_html), encoding='utf-8')
+    (SITE_DIR / 'status.html').write_text(
+        shell(f'Status | {SITE_NAME}', 'Live pages and roadmap for Resume Path Lab.', f'{BASE_URL}/status', nav_html, body),
+        encoding='utf-8',
+    )
 
 
-def build_page(page: dict[str, str], nav_html: str) -> None:
-    markdown = page['source'].read_text(encoding='utf-8')
+def insert_before_faq(article: str, cta: str) -> str:
+    idx = article.find('<h2>FAQ</h2>')
+    if idx == -1:
+        return article + cta
+    return article[:idx] + cta + '\n' + article[idx:]
+
+
+def build_page(page: dict, nav_html: str) -> None:
+    markdown = (PAGES_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')
     article = markdown_to_html(markdown)
+    cta = affiliate_cta()
+    article = insert_before_faq(article, cta)
+    canonical = f"{BASE_URL}/pages/{page['slug']}"
+    faqs = extract_faq(markdown)
     body = f'''
 <section class="page-head">
-  <p class="eyebrow">{html.escape(page['role'])}</p>
+  <p class="eyebrow">Free guide + copy-ready template</p>
   <h1>{html.escape(page['title'])}</h1>
   <p class="lead">{html.escape(page['summary'])}</p>
-  <p class="meta">Target keyword: <code>{html.escape(page['keyword'])}</code></p>
 </section>
 <article class="prose">
 {article}
 </article>
+{related_box(page['slug'])}
 '''
+    schema = page_schema(page, canonical, faqs)
     out = SITE_PAGES_DIR / f"{page['slug']}.html"
-    out.write_text(shell(page['title'], body, page['summary'], nav_html), encoding='utf-8')
+    out.write_text(shell(page['title'], page['description'], canonical, nav_html, body, extra_head=schema + '\n'), encoding='utf-8')
 
 
 def build_seo_files() -> None:
-    urls = [f'{BASE_URL}/']
+    urls = [(f'{BASE_URL}/', TODAY), (f'{BASE_URL}/status', TODAY)]
     for page in PAGES:
-        urls.append(f"{BASE_URL}/pages/{page['slug']}.html")
+        urls.append((f"{BASE_URL}/pages/{page['slug']}", TODAY))
 
-    sitemap_parts = [
+    parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
-    for url in urls:
-        sitemap_parts.append('  <url>')
-        sitemap_parts.append(f'    <loc>{html.escape(url)}</loc>')
-        sitemap_parts.append('  </url>')
-    sitemap_parts.append('</urlset>')
-    (SITE_DIR / 'sitemap.xml').write_text('\n'.join(sitemap_parts) + '\n', encoding='utf-8')
+    for url, lastmod in urls:
+        parts.append('  <url>')
+        parts.append(f'    <loc>{html.escape(url)}</loc>')
+        parts.append(f'    <lastmod>{lastmod}</lastmod>')
+        parts.append('  </url>')
+    parts.append('</urlset>')
+    (SITE_DIR / 'sitemap.xml').write_text('\n'.join(parts) + '\n', encoding='utf-8')
 
     robots = f'''User-agent: *
 Allow: /
@@ -316,7 +485,7 @@ a:hover { text-decoration: underline; }
   padding: 14px 0 24px; border-bottom: 1px solid var(--line);
 }
 .brand { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
-.top-nav { display: flex; flex-wrap: wrap; gap: 14px; }
+.top-nav { display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
 .hero, .page-head {
   padding: 36px; margin: 28px 0; background: var(--panel); border: 1px solid var(--line);
   border-radius: 24px; box-shadow: var(--shadow);
@@ -331,13 +500,14 @@ a:hover { text-decoration: underline; }
   background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
   padding: 22px; box-shadow: var(--shadow);
 }
-.card.muted { opacity: .88; }
+.card h3 { margin-top: 0; font-size: 1.05rem; }
 .prose {
   background: var(--panel); border: 1px solid var(--line); border-radius: 24px;
   padding: 34px; box-shadow: var(--shadow);
 }
 .prose h1:first-child { display: none; }
 .prose h2 { margin-top: 2.2rem; font-size: 1.55rem; }
+.prose h2:first-of-type { margin-top: 0; }
 .prose h3 { margin-top: 1.4rem; font-size: 1.15rem; }
 .prose p, .prose li, .prose blockquote { font-size: 1.02rem; }
 .prose ul, .prose ol { padding-left: 1.4rem; }
@@ -348,7 +518,21 @@ a:hover { text-decoration: underline; }
 code {
   background: #efe8dd; padding: .12rem .4rem; border-radius: 6px; font-size: .92em;
 }
-.site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
+.cta-box {
+  margin: 2.4rem 0; padding: 26px 28px; background: var(--accent-soft);
+  border: 1px solid var(--accent); border-radius: 18px;
+}
+.cta-box h3 { margin-top: 0; color: #0b4f4a; }
+.cta-button {
+  display: inline-block; margin: .6rem 0; padding: 12px 22px;
+  background: var(--accent); color: #fff; border-radius: 12px; font-weight: 700;
+}
+.cta-button:hover { background: #0b5a54; text-decoration: none; }
+.cta-alt { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
+.value-prop { margin: 28px 0; padding: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; }
+.related { margin: 28px 0 8px; }
+.related h2 { font-size: 1.4rem; }
+.site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 32px; }
 @media (max-width: 720px) {
   .site-shell { padding: 18px; }
   .site-header { align-items: flex-start; flex-direction: column; }

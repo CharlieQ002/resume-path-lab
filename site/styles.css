@@ -24,7 +24,7 @@ a:hover { text-decoration: underline; }
   padding: 14px 0 24px; border-bottom: 1px solid var(--line);
 }
 .brand { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
-.top-nav { display: flex; flex-wrap: wrap; gap: 14px; }
+.top-nav { display: flex; flex-wrap: wrap; gap: 14px; font-size: .95rem; }
 .hero, .page-head {
   padding: 36px; margin: 28px 0; background: var(--panel); border: 1px solid var(--line);
   border-radius: 24px; box-shadow: var(--shadow);
@@ -39,13 +39,14 @@ a:hover { text-decoration: underline; }
   background: var(--panel); border: 1px solid var(--line); border-radius: 22px;
   padding: 22px; box-shadow: var(--shadow);
 }
-.card.muted { opacity: .88; }
+.card h3 { margin-top: 0; font-size: 1.05rem; }
 .prose {
   background: var(--panel); border: 1px solid var(--line); border-radius: 24px;
   padding: 34px; box-shadow: var(--shadow);
 }
 .prose h1:first-child { display: none; }
 .prose h2 { margin-top: 2.2rem; font-size: 1.55rem; }
+.prose h2:first-of-type { margin-top: 0; }
 .prose h3 { margin-top: 1.4rem; font-size: 1.15rem; }
 .prose p, .prose li, .prose blockquote { font-size: 1.02rem; }
 .prose ul, .prose ol { padding-left: 1.4rem; }
@@ -56,7 +57,21 @@ a:hover { text-decoration: underline; }
 code {
   background: #efe8dd; padding: .12rem .4rem; border-radius: 6px; font-size: .92em;
 }
-.site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
+.cta-box {
+  margin: 2.4rem 0; padding: 26px 28px; background: var(--accent-soft);
+  border: 1px solid var(--accent); border-radius: 18px;
+}
+.cta-box h3 { margin-top: 0; color: #0b4f4a; }
+.cta-button {
+  display: inline-block; margin: .6rem 0; padding: 12px 22px;
+  background: var(--accent); color: #fff; border-radius: 12px; font-weight: 700;
+}
+.cta-button:hover { background: #0b5a54; text-decoration: none; }
+.cta-alt { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
+.value-prop { margin: 28px 0; padding: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; }
+.related { margin: 28px 0 8px; }
+.related h2 { font-size: 1.4rem; }
+.site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 32px; }
 @media (max-width: 720px) {
   .site-shell { padding: 18px; }
   .site-header { align-items: flex-start; flex-direction: column; }

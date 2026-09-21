@@ -251,9 +251,3 @@ Usually 2-4 strong ones. Fewer strong projects beat many weak ones.
 
 ### Should I optimize this page only for software engineering, or also for ML?
 This page is software-engineering first. It should leave a clean path toward ML, not pretend you are already an ML engineer.
-
-## Next pages to read
-- `/entry-level-machine-learning-engineer-resume`
-- `/how-to-write-machine-learning-resume-without-experience`
-- `/entry-level-data-science-resume`
-- `/machine-learning-projects-for-resume`

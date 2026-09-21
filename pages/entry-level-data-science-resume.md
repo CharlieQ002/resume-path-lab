@@ -219,9 +219,3 @@ Usually 2-4 strong projects are enough.
 
 ### Is this page also useful if I want to move into machine learning later?
 Yes. That is one reason this keyword is strategically useful: it provides a believable adjacent entry point.
-
-## Next pages to read
-- `/entry-level-machine-learning-engineer-resume`
-- `/how-to-write-machine-learning-resume-without-experience`
-- `/machine-learning-projects-for-resume`
-- `/software-engineer-resume-no-experience`

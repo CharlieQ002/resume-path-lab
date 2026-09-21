@@ -362,9 +362,3 @@ Yes, but rewrite the bullets and emphasis based on the role.
 
 ### What is better: one excellent project or several decent ones?
 Usually one excellent project plus one or two solid supporting projects works best.
-
-## Next pages to read
-- `/entry-level-machine-learning-engineer-resume`
-- `/how-to-write-machine-learning-resume-without-experience`
-- `/entry-level-data-science-resume`
-- `/software-engineer-resume-no-experience`

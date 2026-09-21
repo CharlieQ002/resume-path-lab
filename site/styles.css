@@ -72,6 +72,7 @@ code {
 .related { margin: 28px 0 8px; }
 .related h2 { font-size: 1.4rem; }
 .site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 32px; }
+.footer-nav { margin: 10px 0; line-height: 2; }
 @media (max-width: 720px) {
   .site-shell { padding: 18px; }
   .site-header { align-items: flex-start; flex-direction: column; }

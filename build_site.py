@@ -155,9 +155,89 @@ PAGES = [
             'kaggle-projects-for-resume',
         ],
     },
+    {
+        'slug': 'resume-with-no-work-experience',
+        'title': 'How to Write a Resume With No Work Experience: First Resume Guide',
+        'nav': 'First Resume Guide',
+        'keyword': 'how to write a resume with no work experience',
+        'description': 'How to write a resume with no work experience: a complete first-resume example, plus how to fill the page with coursework, projects, and volunteering.',
+        'summary': 'A complete first-resume example and method for candidates with zero work history, built on coursework, projects, and volunteering.',
+        'template': 'software-engineer-resume-no-experience-template.docx',
+        'related': [
+            'software-engineer-resume-no-experience',
+            'machine-learning-resume-summary-examples',
+            'ats-friendly-resume-guide',
+            'entry-level-data-analyst-resume',
+        ],
+    },
+    {
+        'slug': 'ats-friendly-resume-guide',
+        'title': 'ATS-Friendly Resume for Tech Jobs: Format Rules & Example',
+        'nav': 'ATS Resume Guide',
+        'keyword': 'ats friendly resume for tech jobs',
+        'description': 'What an ATS actually does, the formatting rules that keep a tech resume parseable, a keyword-matching method, and a full ATS-friendly example.',
+        'summary': 'How applicant tracking systems really filter resumes, the format rules that survive parsing, and a complete ATS-friendly example.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
+        'related': [
+            'resume-with-no-work-experience',
+            'machine-learning-resume-summary-examples',
+            'entry-level-machine-learning-engineer-resume',
+            'entry-level-data-analyst-resume',
+        ],
+    },
+    {
+        'slug': 'machine-learning-engineer-cover-letter',
+        'title': 'Machine Learning Engineer Cover Letter: Entry-Level Example & Templates',
+        'nav': 'ML Cover Letter',
+        'keyword': 'machine learning engineer cover letter entry level',
+        'description': 'An entry-level machine learning engineer cover letter example with a section-by-section breakdown, copy-ready paragraph templates, and common mistakes.',
+        'summary': 'A complete entry-level ML engineer cover letter example, broken down paragraph by paragraph, with copy-ready templates.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
+        'related': [
+            'entry-level-machine-learning-engineer-resume',
+            'how-to-write-machine-learning-resume-without-experience',
+            'machine-learning-resume-summary-examples',
+            'ats-friendly-resume-guide',
+        ],
+    },
 ]
 
 PAGE_BY_SLUG = {p['slug']: p for p in PAGES}
+
+LEGAL_DIR = ROOT / 'legal'
+
+LEGAL_PAGES = [
+    {
+        'slug': 'about',
+        'title': f'About {SITE_NAME}',
+        'nav': 'About',
+        'description': 'What Resume Path Lab publishes, why it exists, and how we write our entry-level resume guides.',
+    },
+    {
+        'slug': 'contact',
+        'title': f'Contact {SITE_NAME}',
+        'nav': 'Contact',
+        'description': 'How to reach Resume Path Lab: corrections, suggestions, feedback, and privacy requests.',
+    },
+    {
+        'slug': 'privacy-policy',
+        'title': 'Privacy Policy',
+        'nav': 'Privacy Policy',
+        'description': 'What information Resume Path Lab collects, how cookies and advertising work, and your choices.',
+    },
+    {
+        'slug': 'terms',
+        'title': 'Terms of Use',
+        'nav': 'Terms',
+        'description': 'The terms for using Resume Path Lab, including acceptable use and liability limits.',
+    },
+    {
+        'slug': 'disclaimer',
+        'title': 'Disclaimer',
+        'nav': 'Disclaimer',
+        'description': 'Disclaimers for Resume Path Lab content, including our affiliate link disclosure.',
+    },
+]
 
 
 def inline_format(text: str) -> str:
@@ -351,7 +431,14 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
     return '\n'.join(json_ld(s) for s in schemas)
 
 
+def build_footer_nav() -> str:
+    return ' · '.join(
+        f'<a href="/{page["slug"]}">{html.escape(page["nav"])}</a>' for page in LEGAL_PAGES
+    )
+
+
 def shell(title: str, description: str, canonical: str, nav_html: str, body: str, extra_head: str = '', og_image: str = '') -> str:
+    footer_nav = build_footer_nav()
     verification = ''
     if GOOGLE_SITE_VERIFICATION:
         verification += f'  <meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">\n'
@@ -391,6 +478,7 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
     </main>
     <footer class="site-footer">
       <p>{SITE_NAME} publishes free, copy-ready resume examples and templates for entry-level machine learning, software, and data roles. Some links are affiliate links: we may earn a commission at no extra cost to you.</p>
+      <nav class="footer-nav">{footer_nav}</nav>
       <p>&copy; 2026 {SITE_NAME}</p>
     </footer>
   </div>
@@ -444,7 +532,8 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>8 full resume guides (about 11,600 words of copy-ready content)</li>
+      <li>11 full resume guides (about 17,000 words of copy-ready content)</li>
+      <li>About, Contact, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>
       <li>Clean internal linking between all guides</li>
@@ -465,6 +554,23 @@ def build_status(nav_html: str) -> None:
         shell(f'Status | {SITE_NAME}', 'Live pages and roadmap for Resume Path Lab.', f'{BASE_URL}/status', nav_html, body),
         encoding='utf-8',
     )
+
+
+def build_legal(page: dict, nav_html: str) -> None:
+    markdown = (LEGAL_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')
+    article = markdown_to_html(markdown)
+    canonical = f"{BASE_URL}/{page['slug']}"
+    body = f'''
+<section class="page-head">
+  <p class="eyebrow">{SITE_NAME}</p>
+  <h1>{html.escape(page['title'])}</h1>
+</section>
+<article class="prose">
+{article}
+</article>
+'''
+    out = SITE_DIR / f"{page['slug']}.html"
+    out.write_text(shell(page['title'], page['description'], canonical, nav_html, body), encoding='utf-8')
 
 
 def insert_before_faq(article: str, cta: str) -> str:
@@ -510,6 +616,9 @@ def build_page(page: dict, nav_html: str) -> None:
 '''
     schema = page_schema(page, canonical, faqs)
     out = SITE_PAGES_DIR / f"{page['slug']}.html"
+    og_image = f"{BASE_URL}/assets/og/{page['slug']}.png"
+    if not (SITE_DIR / 'assets' / 'og' / f"{page['slug']}.png").exists():
+        og_image = f"{BASE_URL}/assets/og/home.png"
     out.write_text(
         shell(
             page['title'],
@@ -518,7 +627,7 @@ def build_page(page: dict, nav_html: str) -> None:
             nav_html,
             body,
             extra_head=schema + '\n',
-            og_image=f"{BASE_URL}/assets/og/{page['slug']}.png",
+            og_image=og_image,
         ),
         encoding='utf-8',
     )
@@ -528,6 +637,8 @@ def build_seo_files() -> None:
     urls = [(f'{BASE_URL}/', TODAY), (f'{BASE_URL}/status', TODAY)]
     for page in PAGES:
         urls.append((f"{BASE_URL}/pages/{page['slug']}", TODAY))
+    for page in LEGAL_PAGES:
+        urls.append((f"{BASE_URL}/{page['slug']}", TODAY))
 
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -625,6 +736,7 @@ code {
 .related { margin: 28px 0 8px; }
 .related h2 { font-size: 1.4rem; }
 .site-footer { padding: 28px 0 40px; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); margin-top: 32px; }
+.footer-nav { margin: 10px 0; line-height: 2; }
 @media (max-width: 720px) {
   .site-shell { padding: 18px; }
   .site-header { align-items: flex-start; flex-direction: column; }
@@ -643,6 +755,8 @@ def main() -> None:
     build_status(nav_html)
     for page in PAGES:
         build_page(page, nav_html)
+    for page in LEGAL_PAGES:
+        build_legal(page, nav_html)
     build_seo_files()
 
 

@@ -12,11 +12,12 @@
 ## 2. 技术结构与命令
 
 ```
-pages/*.md      → 指南源稿（Markdown，11 篇）
-legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer）
-build_site.py   → 构建脚本：Markdown → 静态 HTML
+pages/*.md      → 指南源稿（Markdown，12 篇）
+legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
+build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
 site/           → 构建产物（已提交进仓库，Cloudflare Pages 发布的就是它）
+site/templates.html → 构建生成的模板下载页（导航 CTA "Free Templates" 指向它）
 site/downloads/ → Word 模板 docx
 site/assets/og/ → OG 分享图（每页一张 1200x630 png，没有则自动回退 home.png）
 ```
@@ -46,6 +47,8 @@ python validate_build.py   # 校验
 
 禁止（会原样显示成乱码）：链接 `[x](y)`、表格 `|`、图片、`---` 分割线、HTML 标签
 
+构建脚本自动生成（源稿里不要手写）：byline 署名行（AUTHOR 常量）、Quick summary 摘要框（取第一节开场段落，≤100 词）、Key takeaways 框（各 `##` 节首句）、sticky TOC + 移动端折叠 "In this guide"、第 1 节后和文末各一个模板下载框、文末 author box。
+
 新页面 checklist：
 
 - [ ] 在 `pages/` 建 `{slug}.md`，1500–1900 词，全英文
@@ -55,6 +58,7 @@ python validate_build.py   # 校验
   ```python
   {
       'slug': 'your-slug',            # 和文件名一致
+      'category': 'Resume Basics',    # Resume Basics / Machine Learning / Software / Data，首页按它分组、文章页 eyebrow 显示
       'title': '...',                  # 浏览器标题，60 字符内
       'nav': '...',                    # 短名（仅 pillar: True 的页面进顶部导航）
       'keyword': '主关键词',

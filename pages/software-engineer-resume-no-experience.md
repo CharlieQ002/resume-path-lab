@@ -119,7 +119,7 @@ Weak examples:
 - “AI app” with zero engineering substance underneath
 
 ## AI/ML project section you can add without overclaiming
-If you want this software-resume page to act as a real traffic bridge into the ML path, add one adjacent project that signals AI/ML relevance without pretending you already worked as an ML engineer.
+If you plan to move toward ML roles later, add one adjacent project that signals AI/ML relevance without pretending you already worked as an ML engineer.
 
 Strong examples:
 

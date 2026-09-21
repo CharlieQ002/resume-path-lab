@@ -14,6 +14,24 @@ BASE_URL = 'https://resumepathlab.com'
 
 SITE_NAME = 'Resume Path Lab'
 TODAY = date.today().isoformat()
+_today = date.today()
+UPDATED_LABEL = f'{_today:%b} {_today.day}, {_today:%Y}'
+
+# ---------------------------------------------------------------------------
+# AUTHOR: placeholder pen name shown in every byline and the author box.
+# Replace name/title/bio here and it updates site-wide on the next build.
+# ---------------------------------------------------------------------------
+AUTHOR = {
+    'name': 'Jordan Blake',
+    'title': 'Career Writer & Former Tech Recruiting Coordinator',
+    'bio': (
+        'Jordan Blake is a career writer and former tech recruiting coordinator who '
+        'screened entry-level applications for software, data, and machine learning roles. '
+        'Jordan writes from that screening experience: what survives the ATS parse, what '
+        'survives the six-second recruiter scan, and what quietly gets resumes filtered out.'
+    ),
+    'url': f'{BASE_URL}/about#about-the-author',
+}
 
 # ---------------------------------------------------------------------------
 # MONETIZATION: replace these with your affiliate links once approved.
@@ -32,6 +50,7 @@ YEAHPROMOS_VERIFICATION = '5c5859c41495'
 PAGES = [
     {
         'slug': 'entry-level-machine-learning-engineer-resume',
+        'category': 'Machine Learning',
         'title': 'Entry-Level Machine Learning Engineer Resume: Example & Template',
         'nav': 'ML Engineer Resume',
         'pillar': True,
@@ -48,6 +67,7 @@ PAGES = [
     },
     {
         'slug': 'how-to-write-machine-learning-resume-without-experience',
+        'category': 'Machine Learning',
         'title': 'How to Write a Machine Learning Resume Without Experience',
         'nav': 'ML Resume, No Experience',
         'pillar': True,
@@ -64,6 +84,7 @@ PAGES = [
     },
     {
         'slug': 'software-engineer-resume-no-experience',
+        'category': 'Software',
         'title': 'Software Engineer Resume With No Experience: Example & Guide',
         'nav': 'Software Engineer Resume',
         'pillar': True,
@@ -80,6 +101,7 @@ PAGES = [
     },
     {
         'slug': 'entry-level-data-science-resume',
+        'category': 'Data',
         'title': 'Entry-Level Data Science Resume: Example & Template',
         'nav': 'Data Science Resume',
         'pillar': True,
@@ -96,6 +118,7 @@ PAGES = [
     },
     {
         'slug': 'machine-learning-projects-for-resume',
+        'category': 'Machine Learning',
         'title': 'Machine Learning Projects for a Resume: Beginner Guide',
         'nav': 'ML Projects for Resume',
         'pillar': True,
@@ -112,6 +135,7 @@ PAGES = [
     },
     {
         'slug': 'machine-learning-resume-summary-examples',
+        'category': 'Machine Learning',
         'title': 'Machine Learning Resume Summary Examples: 8 Entry-Level Versions',
         'nav': 'Summary Examples',
         'keyword': 'machine learning resume summary examples',
@@ -127,6 +151,7 @@ PAGES = [
     },
     {
         'slug': 'kaggle-projects-for-resume',
+        'category': 'Machine Learning',
         'title': 'Kaggle Projects for a Resume: What Actually Counts (2026 Guide)',
         'nav': 'Kaggle Projects',
         'keyword': 'kaggle projects for resume',
@@ -142,6 +167,7 @@ PAGES = [
     },
     {
         'slug': 'entry-level-data-analyst-resume',
+        'category': 'Data',
         'title': 'Entry-Level Data Analyst Resume: Example & Template',
         'nav': 'Data Analyst Resume',
         'keyword': 'entry level data analyst resume',
@@ -157,6 +183,7 @@ PAGES = [
     },
     {
         'slug': 'resume-with-no-work-experience',
+        'category': 'Resume Basics',
         'title': 'How to Write a Resume With No Work Experience: First Resume Guide',
         'nav': 'First Resume Guide',
         'keyword': 'how to write a resume with no work experience',
@@ -172,6 +199,7 @@ PAGES = [
     },
     {
         'slug': 'ats-friendly-resume-guide',
+        'category': 'Resume Basics',
         'title': 'ATS-Friendly Resume for Tech Jobs: Format Rules & Example',
         'nav': 'ATS Resume Guide',
         'keyword': 'ats friendly resume for tech jobs',
@@ -187,6 +215,7 @@ PAGES = [
     },
     {
         'slug': 'resume-skills-section-tech',
+        'category': 'Resume Basics',
         'title': 'Tech Resume Skills Section: What to List & How to Group It',
         'nav': 'Skills Section Guide',
         'keyword': 'tech resume skills section',
@@ -202,6 +231,7 @@ PAGES = [
     },
     {
         'slug': 'machine-learning-engineer-cover-letter',
+        'category': 'Machine Learning',
         'title': 'Machine Learning Engineer Cover Letter: Entry-Level Example & Templates',
         'nav': 'ML Cover Letter',
         'keyword': 'machine learning engineer cover letter entry level',
@@ -392,7 +422,7 @@ def extract_faq(markdown: str) -> list[tuple[str, str]]:
 
 
 def build_nav() -> str:
-    links = ['<a href="/">Home</a>']
+    links = []
     for page in PAGES:
         if not page.get('pillar'):
             continue
@@ -439,7 +469,12 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
             '@type': 'Article',
             'headline': page['title'],
             'description': page['description'],
-            'author': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE_URL},
+            'author': {
+                '@type': 'Person',
+                'name': AUTHOR['name'],
+                'jobTitle': AUTHOR['title'],
+                'url': AUTHOR['url'],
+            },
             'publisher': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE_URL},
             'datePublished': '2026-04-05',
             'dateModified': TODAY,
@@ -464,7 +499,7 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
 
 LOGO_SVG = (
     '<svg class="logo-mark" width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">'
-    '<rect width="30" height="30" rx="8" fill="#0f766e"/>'
+    '<rect width="30" height="30" rx="8" fill="#1d4ed8"/>'
     '<path d="M9 8h8.5a3.5 3.5 0 0 1 0 7H9V8zm0 7h9l3 7h-4l-3-7h-5v7H9v-7z" fill="#fff"/>'
     '</svg>'
 )
@@ -520,7 +555,7 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
   <div class="site-shell">
     <header class="site-header">
       <a class="brand" href="/">{LOGO_SVG}<span>{SITE_NAME}</span></a>
-      <nav class="top-nav">{nav_html}</nav>
+      <nav class="top-nav">{nav_html}<a class="nav-cta" href="/templates">Free Templates</a></nav>
     </header>
     <main>
 {body}
@@ -537,14 +572,20 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
         <h2>Popular guides</h2>
         {footer_guides}
       </nav>
-      <nav class="footer-col" aria-label="Site information">
-        <h2>Site</h2>
+      <nav class="footer-col" aria-label="Site and legal">
+        <h2>Site &amp; legal</h2>
         <a href="/status">Status</a>
         {footer_nav}
       </nav>
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <a href="mailto:Puxin9666@gmail.com">Puxin9666@gmail.com</a>
+        <a href="/contact">Contact page</a>
+        <p class="footer-fine">We read every message and usually reply within a few days.</p>
+      </div>
     </div>
     <div class="site-shell footer-bottom">
-      <p>&copy; 2026 {SITE_NAME}. All rights reserved.</p>
+      <p>&copy; {_today.year} {SITE_NAME}. All rights reserved.</p>
     </div>
   </footer>
 </body>
@@ -552,20 +593,35 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
 '''
 
 
-def build_home(nav_html: str) -> None:
-    cards = []
-    for page in PAGES:
-        cards.append(
-            f'''<article class="card">
+CATEGORY_ORDER = ['Resume Basics', 'Machine Learning', 'Software', 'Data']
+
+
+def guide_card(page: dict) -> str:
+    return f'''<article class="card">
+<p class="card-tag">{html.escape(page.get('category', 'Guide'))}</p>
 <h2><a href="/pages/{page['slug']}">{html.escape(page['title'])}</a></h2>
 <p>{html.escape(page['summary'])}</p>
+<p class="card-meta">{html.escape(AUTHOR['name'])} &middot; Updated {UPDATED_LABEL}</p>
 </article>'''
+
+
+def build_home(nav_html: str) -> None:
+    sections = []
+    for category in CATEGORY_ORDER:
+        cards = ''.join(guide_card(p) for p in PAGES if p.get('category') == category)
+        if not cards:
+            continue
+        sections.append(
+            f'<section class="guide-category">\n'
+            f'  <h2>{html.escape(category)}</h2>\n'
+            f'  <div class="grid">{cards}</div>\n'
+            f'</section>'
         )
     body = f'''
 <section class="hero">
   <p class="eyebrow">Free resume examples & templates</p>
   <h1>Entry-Level Resume Guides That Get Interviews</h1>
-  <p class="lead">Copy-ready resume examples, project bullet templates, and step-by-step guides for breaking into machine learning, software engineering, and data science with little or no formal experience.</p>
+  <p class="lead">Copy-ready resume examples and step-by-step guides that turn projects and coursework into interview-worthy proof for machine learning, software, and data roles.</p>
   <div class="hero-actions">
     <a class="btn-primary" href="#guides">Browse all guides</a>
     <div class="hero-chips">
@@ -575,10 +631,9 @@ def build_home(nav_html: str) -> None:
     </div>
   </div>
 </section>
-<section id="guides">
-  <h2>All guides</h2>
-  <div class="grid">{''.join(cards)}</div>
-</section>
+<div id="guides">
+{''.join(sections)}
+</div>
 <section class="value-prop">
   <h2>Why these guides work</h2>
   <ul>
@@ -629,6 +684,61 @@ def build_status(nav_html: str) -> None:
     )
 
 
+TEMPLATES = [
+    {
+        'file': 'entry-level-ml-engineer-resume-template.docx',
+        'name': 'Entry-Level Machine Learning Engineer Resume Template',
+        'desc': 'Single-column, ATS-safe Word template with a projects-first structure. Matches every example in our ML engineer resume guides.',
+    },
+    {
+        'file': 'software-engineer-resume-no-experience-template.docx',
+        'name': 'Software Engineer Resume Template (No Experience)',
+        'desc': 'Built for candidates with projects and coursework instead of job history. Works for software, data analyst, and first-resume situations.',
+    },
+    {
+        'file': 'entry-level-data-science-resume-template.docx',
+        'name': 'Entry-Level Data Science Resume Template',
+        'desc': 'Skills-grouped layout tuned for data roles, with room for SQL, visualization, and statistics projects.',
+    },
+]
+
+
+def build_templates(nav_html: str) -> None:
+    cards = []
+    for t in TEMPLATES:
+        cards.append(f'''<article class="card template-card">
+<h2>{html.escape(t['name'])}</h2>
+<p>{html.escape(t['desc'])}</p>
+<a class="download-box-btn" href="/downloads/{t['file']}" download>Download .docx</a>
+</article>''')
+    body = f'''
+<section class="page-head">
+  <p class="eyebrow">Free downloads</p>
+  <h1>Free Resume Templates for Entry-Level Tech Roles</h1>
+  <p class="lead">Three ATS-safe Word templates that match the examples in our guides. Download, replace the placeholder text with your own projects, and keep the formatting exactly as it is.</p>
+</section>
+<section class="grid">{''.join(cards)}</section>
+<section class="value-prop">
+  <h2>How to use these templates</h2>
+  <ul>
+    <li><strong>Keep the layout.</strong> Single column, standard headings, no tables or text boxes &mdash; that is what keeps them ATS-safe.</li>
+    <li><strong>Fill every placeholder with proof.</strong> Each guide on this site shows what to write, section by section.</li>
+    <li><strong>Export as PDF before applying.</strong> Unless the job posting asks for a Word file, PDF keeps your formatting intact.</li>
+  </ul>
+</section>
+'''
+    (SITE_DIR / 'templates.html').write_text(
+        shell(
+            f'Free Resume Templates (Word) | {SITE_NAME}',
+            'Download three free, ATS-safe Word resume templates for entry-level machine learning, software, and data roles. No sign-up required.',
+            f'{BASE_URL}/templates',
+            nav_html,
+            body,
+        ),
+        encoding='utf-8',
+    )
+
+
 def build_legal(page: dict, nav_html: str) -> None:
     markdown = (LEGAL_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')
     article = markdown_to_html(markdown)
@@ -670,36 +780,175 @@ def download_box(page: dict) -> str:
     )
 
 
+def extract_summary(markdown: str, max_words: int = 100) -> str:
+    """Paragraph text of a guide's first section, capped at max_words."""
+    in_first_section = False
+    buf: list[str] = []
+    words = 0
+    for raw in markdown.splitlines():
+        stripped = raw.strip()
+        if stripped.startswith('# '):
+            continue
+        if stripped.startswith('## '):
+            if in_first_section:
+                break
+            in_first_section = True
+            continue
+        if not stripped:
+            continue
+        if stripped.startswith('### ') or stripped.startswith('> ') or re.match(r'^(-|\d+\.)\s+', stripped):
+            continue
+        buf.append(stripped)
+        words += len(stripped.split())
+        if words >= max_words:
+            break
+    text_words = ' '.join(buf).split()
+    if len(text_words) > max_words:
+        return ' '.join(text_words[:max_words]).rstrip(',;:') + '…'
+    return ' '.join(text_words)
+
+
+def summary_box(markdown: str, page: dict) -> str:
+    text = extract_summary(markdown)
+    if len(text.split()) < 8:
+        text = page['summary']
+    return f'''
+<aside class="summary-box">
+  <strong>Quick summary</strong>
+  <p>{inline_format(text)}</p>
+</aside>'''
+
+
+def extract_takeaways(markdown: str, limit: int = 6) -> list[str]:
+    """First sentence of the opening paragraph of each H2 section (FAQ excluded)."""
+    takeaways: list[str] = []
+    lines = markdown.splitlines()
+    i = 0
+    while i < len(lines) and len(takeaways) < limit:
+        stripped = lines[i].strip()
+        i += 1
+        if not stripped.startswith('## '):
+            continue
+        if stripped == '## FAQ':
+            break
+        buf: list[str] = []
+        for s in (l.strip() for l in lines[i:]):
+            if not s:
+                if buf:
+                    break
+                continue
+            if s.startswith('#') or s.startswith('> ') or re.match(r'^(-|\d+\.)\s+', s):
+                break
+            buf.append(s)
+        if not buf:
+            continue
+        sentence = re.split(r'(?<=[.!?])\s+', ' '.join(buf))[0].strip()
+        if not sentence or sentence.endswith(':'):
+            continue
+        if '@' in sentence or '|' in sentence or len(sentence.split()) < 5:
+            continue
+        if len(sentence) > 160:
+            sentence = sentence[:157].rsplit(' ', 1)[0].rstrip(',;:') + '…'
+        takeaways.append(sentence)
+    return takeaways
+
+
+def takeaways_box(markdown: str) -> str:
+    items = extract_takeaways(markdown)
+    if len(items) < 3:
+        return ''
+    lis = ''.join(f'<li>{inline_format(t)}</li>' for t in items)
+    return f'''
+<aside class="takeaways-box">
+  <h2>Key takeaways</h2>
+  <ul>{lis}</ul>
+</aside>'''
+
+
+def author_box() -> str:
+    initials = ''.join(part[0] for part in AUTHOR['name'].split())
+    return f'''
+<aside class="author-box">
+  <div class="author-avatar" aria-hidden="true">{html.escape(initials)}</div>
+  <div class="author-text">
+    <strong>About the author</strong>
+    <p>{html.escape(AUTHOR['bio'])} <a href="/about#about-the-author">More about {html.escape(AUTHOR['name'])}</a></p>
+  </div>
+</aside>'''
+
+
+TOC_SCRIPT = '''<script>
+(function () {
+  var toc = document.querySelector('.toc-desktop');
+  if (!toc || !('IntersectionObserver' in window)) { return; }
+  var links = {};
+  toc.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var current = null;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && links[entry.target.id]) {
+        if (current) { current.classList.remove('active'); }
+        current = links[entry.target.id];
+        current.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-90px 0px -70% 0px' });
+  document.querySelectorAll('.prose h2[id]').forEach(function (h) { observer.observe(h); });
+})();
+</script>'''
+
+
 def build_page(page: dict, nav_html: str) -> None:
     markdown = (PAGES_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')
     article = markdown_to_html(markdown)
-    cta = affiliate_cta()
-    article = insert_before_faq(article, cta)
+    h2_positions = [m.start() for m in re.finditer(r'<h2 id="', article)]
+    if len(h2_positions) >= 2:
+        at = h2_positions[1]
+        article = article[:at] + download_box(page) + '\n' + article[at:]
+    article = insert_before_faq(article, takeaways_box(markdown) + '\n' + affiliate_cta())
     canonical = f"{BASE_URL}/pages/{page['slug']}"
     faqs = extract_faq(markdown)
     minutes = max(4, round(len(markdown.split()) / 200))
     toc = extract_toc(markdown)
-    toc_html = ''
+    toc_items = ''.join(f'<li><a href="#{anchor}">{html.escape(text)}</a></li>' for anchor, text in toc)
+    toc_desktop = ''
+    toc_mobile = ''
     if len(toc) >= 4:
-        toc_items = ''.join(f'<li><a href="#{anchor}">{html.escape(text)}</a></li>' for anchor, text in toc)
-        toc_html = f'''
-<nav class="toc" aria-label="Table of contents">
-  <h2>In this guide</h2>
+        toc_desktop = f'''
+<aside class="toc-sidebar">
+  <nav class="toc toc-desktop" aria-label="Table of contents">
+    <h2>In this guide</h2>
+    <ol>{toc_items}</ol>
+  </nav>
+</aside>'''
+        toc_mobile = f'''
+<details class="toc toc-mobile">
+  <summary>In this guide</summary>
   <ol>{toc_items}</ol>
-</nav>'''
+</details>'''
     body = f'''
 <section class="page-head">
-  <p class="eyebrow">Free guide + copy-ready template</p>
+  <p class="eyebrow">{html.escape(page.get('category', 'Guide'))} &middot; Free guide + copy-ready template</p>
   <h1>{html.escape(page['title'])}</h1>
   <p class="lead">{html.escape(page['summary'])}</p>
-  <p class="byline">By the {SITE_NAME} Editorial Team &middot; Updated {TODAY} &middot; {minutes} min read</p>
+  <p class="byline">By <a href="/about#about-the-author">{html.escape(AUTHOR['name'])}</a>, {html.escape(AUTHOR['title'])} &middot; Last updated {UPDATED_LABEL} &middot; {minutes} min read</p>
 </section>
-{download_box(page)}
-{toc_html}
-<article class="prose">
+<div class="article-layout">
+  {toc_desktop}
+  <div class="article-main">
+    {summary_box(markdown, page)}
+    {toc_mobile}
+    <article class="prose">
 {article}
-</article>
+    </article>
+    {author_box()}
+    {download_box(page)}
+  </div>
+</div>
 {related_box(page['slug'])}
+{TOC_SCRIPT if toc_desktop else ''}
 '''
     schema = page_schema(page, canonical, faqs)
     out = SITE_PAGES_DIR / f"{page['slug']}.html"
@@ -723,7 +972,7 @@ def build_page(page: dict, nav_html: str) -> None:
 def build_favicon() -> None:
     svg = (
         '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 30 30">'
-        '<rect width="30" height="30" rx="8" fill="#0f766e"/>'
+        '<rect width="30" height="30" rx="8" fill="#1d4ed8"/>'
         '<path d="M9 8h8.5a3.5 3.5 0 0 1 0 7H9V8zm0 7h9l3 7h-4l-3-7h-5v7H9v-7z" fill="#fff"/>'
         '</svg>'
     )
@@ -748,7 +997,7 @@ def build_404(nav_html: str) -> None:
 
 
 def build_seo_files() -> None:
-    urls = [(f'{BASE_URL}/', TODAY), (f'{BASE_URL}/status', TODAY)]
+    urls = [(f'{BASE_URL}/', TODAY), (f'{BASE_URL}/status', TODAY), (f'{BASE_URL}/templates', TODAY)]
     for page in PAGES:
         urls.append((f"{BASE_URL}/pages/{page['slug']}", TODAY))
     for page in LEGAL_PAGES:
@@ -777,17 +1026,19 @@ Sitemap: {BASE_URL}/sitemap.xml
 def build_css() -> None:
     css = '''
 :root {
-  --bg: #f7f7f4;
+  --bg: #ffffff;
   --panel: #ffffff;
-  --ink: #16191d;
-  --muted: #5c666d;
-  --line: #e5e3de;
-  --accent: #0f766e;
-  --accent-strong: #0b5a54;
-  --accent-soft: #e8f4f2;
-  --footer-bg: #12211f;
-  --footer-ink: #c8d4d1;
-  --shadow: 0 1px 2px rgba(22, 25, 29, 0.05), 0 8px 24px rgba(22, 25, 29, 0.06);
+  --ink: #1b2a3a;
+  --muted: #5b6b7c;
+  --line: #e2e8f0;
+  --accent: #1d4ed8;
+  --accent-strong: #173da6;
+  --accent-soft: #eef3fd;
+  --summary-bg: #f4f6f9;
+  --footer-bg: #10233f;
+  --footer-ink: #c3d2e8;
+  --footer-muted: #8ba1bd;
+  --shadow: 0 1px 2px rgba(27, 42, 58, 0.05), 0 8px 24px rgba(27, 42, 58, 0.06);
   --radius: 16px;
 }
 * { box-sizing: border-box; }
@@ -802,14 +1053,14 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-.site-shell { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.site-shell { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
 /* Header */
 .site-header {
   position: sticky; top: 0; z-index: 20;
   display: flex; justify-content: space-between; gap: 20px; align-items: center;
-  padding: 14px 24px; margin: 0 -24px;
-  background: rgba(247, 247, 244, 0.85);
+  padding: 12px 24px; margin: 0 -24px;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
 }
@@ -820,18 +1071,24 @@ a:hover { text-decoration: underline; }
 }
 .brand:hover { text-decoration: none; }
 .logo-mark { display: block; border-radius: 8px; }
-.top-nav { display: flex; flex-wrap: wrap; gap: 4px; font-size: .94rem; }
+.top-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: .94rem; }
 .top-nav a {
   color: var(--ink); padding: 7px 12px; border-radius: 10px; font-weight: 500;
 }
 .top-nav a:hover { background: var(--accent-soft); color: var(--accent-strong); text-decoration: none; }
+.top-nav a.nav-cta {
+  margin-left: 8px; padding: 10px 18px; background: var(--accent); color: #fff;
+  font-weight: 700; border-radius: 10px; min-height: 40px;
+  display: inline-flex; align-items: center;
+}
+.top-nav a.nav-cta:hover { background: var(--accent-strong); color: #fff; }
 
 /* Hero & page heads */
 .hero, .page-head {
   padding: 56px 44px; margin: 32px 0; background: var(--panel); border: 1px solid var(--line);
   border-radius: 24px; box-shadow: var(--shadow);
 }
-.hero { background: linear-gradient(135deg, #ffffff 0%, var(--accent-soft) 130%); }
+.hero { border-top: 4px solid var(--accent); }
 .hero.compact { padding: 36px 44px; }
 .hero h1, .page-head h1 {
   font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15;
@@ -841,12 +1098,14 @@ a:hover { text-decoration: underline; }
   text-transform: uppercase; letter-spacing: .14em; font-size: .76rem;
   font-weight: 700; color: var(--accent); margin: 0;
 }
-.lead { font-size: 1.15rem; color: #39424a; max-width: 720px; margin: 0; }
-.byline { margin: 18px 0 0; font-size: .9rem; color: var(--muted); }
+.lead { font-size: 1.15rem; color: #3a4a5c; max-width: 720px; margin: 0; }
+.byline { margin: 18px 0 0; font-size: .92rem; color: var(--muted); }
+.byline a { color: var(--ink); font-weight: 600; }
+.byline a:hover { color: var(--accent); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 28px; }
 .btn-primary {
-  display: inline-block; padding: 13px 26px; background: var(--accent); color: #fff;
-  border-radius: 12px; font-weight: 700; font-size: 1rem;
+  display: inline-flex; align-items: center; min-height: 48px; padding: 12px 26px;
+  background: var(--accent); color: #fff; border-radius: 12px; font-weight: 700; font-size: 1rem;
   transition: background .15s ease, transform .15s ease;
 }
 .btn-primary:hover { background: var(--accent-strong); text-decoration: none; transform: translateY(-1px); }
@@ -869,17 +1128,74 @@ a:hover { text-decoration: underline; }
 .card h2 a, .card h3 a { color: var(--ink); }
 .card h2 a:hover, .card h3 a:hover { color: var(--accent); text-decoration: none; }
 .card p { margin-bottom: 0; color: var(--muted); font-size: .96rem; }
-
-/* Table of contents */
-.toc {
-  margin: 0 0 28px; padding: 24px 30px; background: var(--panel);
-  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+.card-tag {
+  display: inline-block; margin: 0 0 12px; padding: 3px 12px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent-strong);
+  font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
 }
-.toc h2 { margin: 0 0 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-.toc ol { margin: 0; padding-left: 1.3rem; columns: 2; column-gap: 40px; }
-.toc li { margin: 4px 0; font-size: .96rem; break-inside: avoid; }
-.toc a { color: var(--ink); }
-.toc a:hover { color: var(--accent); }
+.card-meta { margin: 14px 0 0 !important; font-size: .84rem !important; color: var(--muted) !important; }
+.template-card .download-box-btn { margin-top: 16px; }
+.guide-category { margin: 40px 0; }
+.guide-category > h2 {
+  display: inline-block; margin: 0 0 16px; padding-bottom: 8px;
+  font-size: 1.45rem; letter-spacing: -0.015em; border-bottom: 3px solid var(--accent);
+}
+
+/* Article layout: sticky TOC sidebar + narrow prose column */
+.article-layout {
+  display: grid; grid-template-columns: 240px minmax(0, 1fr);
+  gap: 40px; align-items: start; margin: 0 0 8px;
+}
+.article-main { max-width: 740px; min-width: 0; }
+.toc-sidebar { position: sticky; top: 92px; }
+.toc-desktop {
+  padding: 20px 22px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.toc-desktop h2 {
+  margin: 0 0 10px; font-size: .8rem; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted);
+}
+.toc-desktop ol { margin: 0; padding-left: 1.2rem; }
+.toc-desktop li { margin: 7px 0; font-size: .9rem; line-height: 1.45; }
+.toc-desktop a { color: var(--muted); }
+.toc-desktop a:hover { color: var(--accent); text-decoration: none; }
+.toc-desktop a.active { color: var(--accent-strong); font-weight: 700; }
+.toc-mobile { display: none; }
+
+/* Summary & takeaways boxes */
+.summary-box {
+  margin: 0 0 28px; padding: 20px 24px; background: var(--summary-bg);
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.summary-box > strong {
+  display: block; margin-bottom: 6px; font-size: .8rem; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted);
+}
+.summary-box p { margin: 0; font-size: 1rem; color: #33404e; }
+.takeaways-box {
+  margin: 2.4rem 0; padding: 24px 28px; background: var(--summary-bg);
+  border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius);
+}
+.takeaways-box h2 { margin: 0 0 10px !important; font-size: 1.2rem; }
+.takeaways-box ul { margin: 0; padding-left: 1.3rem; }
+.takeaways-box li { margin: 6px 0; font-size: 1rem; }
+
+/* Author box */
+.author-box {
+  display: flex; gap: 18px; align-items: flex-start; margin: 28px 0;
+  padding: 22px 26px; background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.author-avatar {
+  flex: 0 0 auto; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--accent); color: #fff; display: flex; align-items: center;
+  justify-content: center; font-weight: 800; font-size: 1.05rem;
+}
+.author-text > strong {
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+}
+.author-text p { margin: 6px 0 0; font-size: .95rem; color: #33404e; }
 
 /* Article prose */
 .prose {
@@ -889,16 +1205,17 @@ a:hover { text-decoration: underline; }
 .prose h1:first-child { display: none; }
 .prose h2 { margin-top: 2.4rem; font-size: 1.5rem; letter-spacing: -0.015em; scroll-margin-top: 90px; }
 .prose h2:first-of-type { margin-top: 0; }
-.prose h3 { margin-top: 1.5rem; font-size: 1.14rem; }
-.prose p, .prose li, .prose blockquote { font-size: 1.03rem; color: #2a3138; }
+.prose h3 { margin-top: 1.5rem; font-size: 1.14rem; scroll-margin-top: 90px; }
+.prose p, .prose li, .prose blockquote { font-size: 1.125rem; color: #2a3644; }
+.prose p { margin: 1.1em 0; }
 .prose ul, .prose ol { padding-left: 1.4rem; }
-.prose li { margin: 5px 0; }
+.prose li { margin: 6px 0; }
 .prose blockquote {
-  margin: 1.1rem 0; padding: 1rem 1.3rem; background: var(--accent-soft);
+  margin: 1.2rem 0; padding: 1rem 1.3rem; background: var(--accent-soft);
   border-left: 4px solid var(--accent); border-radius: 0 12px 12px 0;
 }
 code {
-  background: #f0eeea; padding: .12rem .42rem; border-radius: 6px; font-size: .9em;
+  background: #eef1f6; padding: .12rem .42rem; border-radius: 6px; font-size: .9em;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
@@ -909,7 +1226,7 @@ code {
 }
 .cta-box h3 { margin-top: 0; color: var(--accent-strong); }
 .cta-button {
-  display: inline-block; margin: .6rem 0; padding: 12px 22px;
+  display: inline-flex; align-items: center; min-height: 48px; margin: .6rem 0; padding: 12px 22px;
   background: var(--accent); color: #fff; border-radius: 12px; font-weight: 700;
   transition: background .15s ease;
 }
@@ -917,18 +1234,20 @@ code {
 .cta-alt { font-size: .9rem; color: var(--muted); margin-bottom: 0; }
 .download-box {
   display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
-  margin: 0 0 28px; padding: 18px 24px; background: var(--panel);
-  border: 1px dashed var(--accent); border-radius: var(--radius);
+  margin: 2rem 0; padding: 18px 24px; background: var(--accent-soft);
+  border: 1px solid #c8d8f8; border-radius: var(--radius);
 }
+.article-main > .download-box:last-child { margin-bottom: 0; }
 .download-box-text { display: flex; flex-direction: column; gap: 2px; }
 .download-box-text strong { font-size: 1.02rem; }
 .download-box-text span { font-size: .88rem; color: var(--muted); }
 .download-box-btn {
-  display: inline-block; padding: 10px 20px; border: 1.5px solid var(--accent);
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+  padding: 10px 20px; border: 1.5px solid var(--accent);
   color: var(--accent-strong); border-radius: 12px; font-weight: 700; white-space: nowrap;
   transition: background .15s ease;
 }
-.download-box-btn:hover { background: var(--accent-soft); text-decoration: none; }
+.download-box-btn:hover { background: #fff; text-decoration: none; }
 
 /* Misc sections */
 .value-prop { margin: 28px 0; padding: 32px; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
@@ -941,32 +1260,58 @@ code {
 /* Footer */
 .site-footer { background: var(--footer-bg); color: var(--footer-ink); margin-top: 48px; }
 .footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+  display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 36px;
   padding-top: 44px; padding-bottom: 32px;
 }
 .footer-brand .brand { color: #fff; }
-.footer-brand p { font-size: .92rem; margin: 14px 0 0; max-width: 340px; }
-.footer-fine { color: #8fa39e; font-size: .82rem !important; }
+.footer-brand p { font-size: .92rem; margin: 14px 0 0; max-width: 320px; }
+.footer-fine { color: var(--footer-muted); font-size: .82rem !important; }
 .footer-col h2 {
   font-size: .82rem; text-transform: uppercase; letter-spacing: .1em;
-  color: #8fa39e; margin: 6px 0 14px;
+  color: var(--footer-muted); margin: 6px 0 14px;
 }
-.footer-col a { display: block; color: var(--footer-ink); padding: 4px 0; font-size: .95rem; }
+.footer-col a { display: block; color: var(--footer-ink); padding: 4px 0; font-size: .95rem; word-break: break-word; }
 .footer-col a:hover { color: #fff; text-decoration: none; }
+.footer-col p.footer-fine { margin: 10px 0 0; }
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 18px; padding-bottom: 22px; font-size: .85rem; color: #8fa39e;
+  padding-top: 18px; padding-bottom: 22px; font-size: .85rem; color: var(--footer-muted);
 }
 .footer-bottom p { margin: 0; }
 
-@media (max-width: 860px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
-  .toc ol { columns: 1; }
+/* Responsive */
+@media (max-width: 900px) {
+  .article-layout { grid-template-columns: 1fr; }
+  .article-main { width: 100%; margin: 0 auto; }
+  .toc-desktop, .toc-sidebar { display: none; }
+  .toc-mobile {
+    display: block; margin: 0 0 28px; padding: 16px 20px; background: var(--panel);
+    border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .toc-mobile summary { cursor: pointer; font-weight: 700; font-size: 1rem; }
+  .toc-mobile ol { margin: 12px 0 2px; padding-left: 1.3rem; }
+  .toc-mobile li { margin: 6px 0; font-size: .98rem; }
 }
-@media (max-width: 720px) {
-  .site-header { position: static; flex-direction: column; align-items: flex-start; }
-  .hero, .page-head { padding: 30px 24px; }
-  .prose { padding: 26px 22px; }
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .site-header { position: static; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .top-nav { width: 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .top-nav a { white-space: nowrap; }
+  .top-nav a.nav-cta { margin-left: 0; min-height: 48px; }
+  .hero, .page-head { padding: 28px 20px; margin: 20px 0; }
+  .hero h1, .page-head h1 { font-size: 1.7rem; }
+  .lead { font-size: 1.05rem; }
+  .prose { padding: 24px 18px; }
+  .prose p, .prose li, .prose blockquote { font-size: 1rem; }
+  .grid { grid-template-columns: 1fr; }
+  .download-box { flex-direction: column; align-items: stretch; }
+  .download-box-btn { width: 100%; }
+  .author-box { padding: 18px 20px; }
+  .summary-box, .takeaways-box { padding: 18px 20px; }
+  .footer-grid { grid-template-columns: 1fr; }
 }
 '''
     (SITE_DIR / 'styles.css').write_text(css.strip() + '\n', encoding='utf-8')
@@ -979,6 +1324,7 @@ def main() -> None:
     build_css()
     build_home(nav_html)
     build_status(nav_html)
+    build_templates(nav_html)
     for page in PAGES:
         build_page(page, nav_html)
     for page in LEGAL_PAGES:

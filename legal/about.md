@@ -25,6 +25,14 @@ Each guide is built around a real search question candidates actually ask, then 
 
 Some pages include affiliate links to resume-building tools such as Kickresume, ResumeGenius, and Zety. If you buy through those links, we may earn a commission at no extra cost to you. This never changes what we recommend: the free examples on this site are complete on their own, and the paid tools are optional convenience, not a requirement.
 
+## About the author
+
+**Jordan Blake** is the career writer behind Resume Path Lab's guides. As a former tech recruiting coordinator, Jordan screened entry-level applications for software, data, and machine learning roles and saw firsthand why capable candidates get filtered out: generic summaries, tool-stuffed skills sections, and project bullets that read like homework.
+
+Jordan's guides are built from that screening experience. Every example is written to survive both the ATS parse and the six-second recruiter scan, and every template is something Jordan would have been glad to see land in the inbox.
+
+Questions or corrections? Reach Jordan through the contact page at resumepathlab.com/contact.
+
 ## Contact
 
 Feedback, corrections, or questions? Visit our Contact page at resumepathlab.com/contact or email Puxin9666@gmail.com.

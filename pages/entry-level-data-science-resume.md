@@ -136,7 +136,7 @@ Weak project types:
 - projects that produce charts but no decisions
 
 ## How to make this page support a future ML path
-One reason this keyword is valuable is that it can act as a lower-competition entry page while still feeding machine learning intent.
+A data science resume can also be your entry point into machine learning roles later, so it helps to keep that path open from the start.
 
 To do that, your resume should make it clear that:
 

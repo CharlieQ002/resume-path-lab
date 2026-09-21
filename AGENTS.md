@@ -12,7 +12,7 @@
 ## 2. 技术结构与命令
 
 ```
-pages/*.md      → 指南源稿（Markdown，12 篇）
+pages/*.md      → 指南源稿（Markdown，14 篇）
 legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
 build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
@@ -45,9 +45,11 @@ python validate_build.py   # 校验
 
 构建脚本的 Markdown 解析器只支持：**`#`/`##`/`###` 标题、`-` 列表、`1.` 列表、`> ` 引用、`**粗体**`、`` `代码` ``**
 
-禁止（会原样显示成乱码）：链接 `[x](y)`、表格 `|`、图片、`---` 分割线、HTML 标签
+支持链接 `[text](url)`（2026-09-22 起，渲染成 <a> 标签）。禁止（会原样显示成乱码）：表格 `|`、图片、`---` 分割线、HTML 标签
 
-构建脚本自动生成（源稿里不要手写）：byline 署名行（AUTHOR 常量）、Quick summary 摘要框（取第一节开场段落，≤100 词）、Key takeaways 框（各 `##` 节首句）、sticky TOC + 移动端折叠 "In this guide"、第 1 节后和文末各一个模板下载框、文末 author box。
+构建脚本自动生成（源稿里不要手写）：byline 署名行（AUTHOR 常量）、Quick summary 摘要框（取第一节开场段落，≤100 词）、Key takeaways 框（各 `##` 节首句或首条 bullet）、sticky TOC + 移动端折叠 "In this guide"、第 1 节后和文末各一个模板下载框、文末 author box。
+
+文件开头的 YAML frontmatter（`---` 包裹的 title/description 等）会被构建脚本剥离、不渲染；页面元数据一律以 `PAGES` 条目为准，写了 frontmatter 也要同步维护 PAGES。
 
 新页面 checklist：
 
@@ -87,6 +89,8 @@ python validate_build.py   # 校验
 | resume-with-no-work-experience | how to write a resume with no work experience |
 | ats-friendly-resume-guide | ats friendly resume for tech jobs |
 | machine-learning-engineer-cover-letter | machine learning engineer cover letter entry level |
+| data-science-internship-resume | data science internship resume |
+| python-projects-for-resume | python projects for resume |
 
 合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer
 

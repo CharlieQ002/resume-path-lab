@@ -37,6 +37,7 @@ PAGES = [
         'keyword': 'entry level machine learning engineer resume',
         'description': 'Entry-level machine learning engineer resume example with a copy-ready template. Turn software or data projects into ML resume bullets that get interviews.',
         'summary': 'Turn software, CS, or data project experience into a credible entry-level machine learning engineer resume, step by step.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'how-to-write-machine-learning-resume-without-experience',
             'machine-learning-projects-for-resume',
@@ -51,6 +52,7 @@ PAGES = [
         'keyword': 'how to write machine learning resume without experience',
         'description': 'How to write a machine learning resume without experience: the 7-step method to turn software, CS, or data projects into credible ML resume proof.',
         'summary': 'The 7-step method for writing a credible machine learning resume when you have no formal ML work experience.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'entry-level-machine-learning-engineer-resume',
             'machine-learning-projects-for-resume',
@@ -65,6 +67,7 @@ PAGES = [
         'keyword': 'software engineer resume no experience',
         'description': 'Software engineer resume with no experience: real example, copy-ready template, and steps to turn projects and coursework into interview-worthy bullets.',
         'summary': 'A no-experience software engineer resume example, plus how to route your projects toward ML and data roles.',
+        'template': 'software-engineer-resume-no-experience-template.docx',
         'related': [
             'entry-level-machine-learning-engineer-resume',
             'entry-level-data-science-resume',
@@ -78,6 +81,7 @@ PAGES = [
         'keyword': 'entry level data science resume',
         'description': 'Entry-level data science resume example with a copy-ready template. Learn how to frame projects, skills, and coursework for your first data job.',
         'summary': 'An entry-level data science resume example, with guidance on framing projects and skills for a first data role.',
+        'template': 'entry-level-data-science-resume-template.docx',
         'related': [
             'entry-level-machine-learning-engineer-resume',
             'software-engineer-resume-no-experience',
@@ -91,6 +95,7 @@ PAGES = [
         'keyword': 'machine learning projects for resume beginner',
         'description': 'The best machine learning projects for a resume as a beginner, with copy-ready bullet templates and tips for mapping projects to job descriptions.',
         'summary': 'Which ML projects are resume-worthy, how to write them up, and how to map them to real job descriptions.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'entry-level-machine-learning-engineer-resume',
             'how-to-write-machine-learning-resume-without-experience',
@@ -291,12 +296,13 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
     return '\n'.join(json_ld(s) for s in schemas)
 
 
-def shell(title: str, description: str, canonical: str, nav_html: str, body: str, extra_head: str = '') -> str:
+def shell(title: str, description: str, canonical: str, nav_html: str, body: str, extra_head: str = '', og_image: str = '') -> str:
     verification = ''
     if GOOGLE_SITE_VERIFICATION:
         verification += f'  <meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">\n'
     if YEAHPROMOS_VERIFICATION:
         verification += f'  <meta name="verify-yeahpromos" content="{YEAHPROMOS_VERIFICATION}">\n'
+    og_image = og_image or (BASE_URL + '/assets/og/home.png')
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -310,7 +316,11 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
   <meta property="og:title" content="{html.escape(title)}">
   <meta property="og:description" content="{html.escape(description)}">
   <meta property="og:url" content="{html.escape(canonical)}">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="{html.escape(og_image)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{html.escape(og_image)}">
   <meta name="twitter:title" content="{html.escape(title)}">
   <meta name="twitter:description" content="{html.escape(description)}">
 {extra_head}  <link rel="stylesheet" href="/styles.css">
@@ -380,7 +390,8 @@ def build_status(nav_html: str) -> None:
     <h2>Live now</h2>
     <ul>
       <li>5 full resume guides (about 7,800 words of copy-ready content)</li>
-      <li>FAQ structured data, canonical URLs, Open Graph tags on every page</li>
+      <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
+      <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>
       <li>Clean internal linking between all guides</li>
       <li>Sitemap, robots.txt, Search Console verification</li>
     </ul>
@@ -389,8 +400,7 @@ def build_status(nav_html: str) -> None:
     <h2>In progress</h2>
     <ul>
       <li>Affiliate program approvals (Kickresume, ResumeGenius, Zety)</li>
-      <li>Downloadable Word/Google Docs resume templates</li>
-      <li>Resume screenshots and OG images for social sharing</li>
+      <li>Google Docs versions of the templates</li>
       <li>Long-tail expansion pages</li>
     </ul>
   </article>
@@ -409,6 +419,21 @@ def insert_before_faq(article: str, cta: str) -> str:
     return article[:idx] + cta + '\n' + article[idx:]
 
 
+def download_box(page: dict) -> str:
+    template = page.get('template', '')
+    if not template:
+        return ''
+    return (
+        '<section class="download-box" aria-label="Free template download">'
+        '<div class="download-box-text">'
+        '<strong>Free matching template</strong>'
+        '<span>Word document · ATS-safe single-column layout · matches every example on this page</span>'
+        '</div>'
+        f'<a class="download-box-btn" href="/downloads/{template}" download>Download .docx</a>'
+        '</section>'
+    )
+
+
 def build_page(page: dict, nav_html: str) -> None:
     markdown = (PAGES_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')
     article = markdown_to_html(markdown)
@@ -422,6 +447,7 @@ def build_page(page: dict, nav_html: str) -> None:
   <h1>{html.escape(page['title'])}</h1>
   <p class="lead">{html.escape(page['summary'])}</p>
 </section>
+{download_box(page)}
 <article class="prose">
 {article}
 </article>
@@ -429,7 +455,18 @@ def build_page(page: dict, nav_html: str) -> None:
 '''
     schema = page_schema(page, canonical, faqs)
     out = SITE_PAGES_DIR / f"{page['slug']}.html"
-    out.write_text(shell(page['title'], page['description'], canonical, nav_html, body, extra_head=schema + '\n'), encoding='utf-8')
+    out.write_text(
+        shell(
+            page['title'],
+            page['description'],
+            canonical,
+            nav_html,
+            body,
+            extra_head=schema + '\n',
+            og_image=f"{BASE_URL}/assets/og/{page['slug']}.png",
+        ),
+        encoding='utf-8',
+    )
 
 
 def build_seo_files() -> None:

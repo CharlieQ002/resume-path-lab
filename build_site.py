@@ -216,6 +216,20 @@ PAGES = [
         ],
     },
     {
+        'slug': 'data-science-cover-letter-entry-level',
+        'title': 'Data Science Cover Letter Entry Level: Example & Templates',
+        'keyword': 'data science cover letter entry level',
+        'description': 'Entry-level data science cover letter example with the 4-paragraph structure, copy-ready paragraph templates, and the mistakes that get letters ignored.',
+        'summary': 'A complete entry-level data science cover letter example, the 4-paragraph structure behind it, and copy-ready templates for every paragraph.',
+        'template': 'entry-level-data-science-resume-template.docx',
+        'related': [
+            'machine-learning-engineer-cover-letter',
+            'data-science-internship-resume',
+            'entry-level-data-science-resume',
+            'python-projects-for-resume',
+        ],
+    },
+    {
         'slug': 'data-science-internship-resume',
         'title': 'Data Science Internship Resume: What Actually Gets Interviews',
         'keyword': 'data science internship resume',
@@ -634,7 +648,7 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>14 full resume guides (about 22,100 words of copy-ready content)</li>
+      <li>15 full resume guides (about 23,700 words of copy-ready content)</li>
       <li>About, Contact, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>

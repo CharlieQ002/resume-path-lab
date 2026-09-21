@@ -85,6 +85,7 @@ python validate_build.py   # 校验
 | machine-learning-engineer-cover-letter | machine learning engineer cover letter entry level |
 | data-science-internship-resume | data science internship resume |
 | python-projects-for-resume | python projects for resume |
+| data-science-cover-letter-entry-level | data science cover letter entry level |
 
 合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer
 

@@ -186,6 +186,21 @@ PAGES = [
         ],
     },
     {
+        'slug': 'resume-skills-section-tech',
+        'title': 'Tech Resume Skills Section: What to List & How to Group It',
+        'nav': 'Skills Section Guide',
+        'keyword': 'tech resume skills section',
+        'description': 'How to write a tech resume skills section with no experience: what to list, how to group skills, ATS keyword rules, and copy-ready templates.',
+        'summary': 'How to build a believable tech resume skills section with no experience: grouping, exact ATS wording, and copy-ready templates.',
+        'template': 'software-engineer-resume-no-experience-template.docx',
+        'related': [
+            'ats-friendly-resume-guide',
+            'resume-with-no-work-experience',
+            'entry-level-machine-learning-engineer-resume',
+            'software-engineer-resume-no-experience',
+        ],
+    },
+    {
         'slug': 'machine-learning-engineer-cover-letter',
         'title': 'Machine Learning Engineer Cover Letter: Entry-Level Example & Templates',
         'nav': 'ML Cover Letter',
@@ -532,7 +547,7 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>11 full resume guides (about 17,000 words of copy-ready content)</li>
+      <li>12 full resume guides (about 19,400 words of copy-ready content)</li>
       <li>About, Contact, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>

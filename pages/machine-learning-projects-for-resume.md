@@ -149,6 +149,8 @@ These are not always bad technically, but they often look weak on beginner resum
 ### 1. Kaggle copy-paste projects
 If it looks like a tutorial clone, it carries little hiring value.
 
+Kaggle itself is not the problem. Done properly, a real competition ranking or an engaged notebook is strong verifiable proof. The full decision framework is in the guide to [Kaggle projects for a resume](https://resumepathlab.com/pages/kaggle-projects-for-resume).
+
 ### 2. "Built an AI app" with no ML depth
 If the page is mostly UI and API wrapping, the ML signal is weak.
 

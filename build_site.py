@@ -34,14 +34,15 @@ PAGES = [
         'slug': 'entry-level-machine-learning-engineer-resume',
         'title': 'Entry-Level Machine Learning Engineer Resume: Example & Template',
         'nav': 'ML Engineer Resume',
+        'pillar': True,
         'keyword': 'entry level machine learning engineer resume',
         'description': 'Entry-level machine learning engineer resume example with a copy-ready template. Turn software or data projects into ML resume bullets that get interviews.',
         'summary': 'Turn software, CS, or data project experience into a credible entry-level machine learning engineer resume, step by step.',
         'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'how-to-write-machine-learning-resume-without-experience',
+            'machine-learning-resume-summary-examples',
             'machine-learning-projects-for-resume',
-            'software-engineer-resume-no-experience',
             'entry-level-data-science-resume',
         ],
     },
@@ -49,14 +50,15 @@ PAGES = [
         'slug': 'how-to-write-machine-learning-resume-without-experience',
         'title': 'How to Write a Machine Learning Resume Without Experience',
         'nav': 'ML Resume, No Experience',
+        'pillar': True,
         'keyword': 'how to write machine learning resume without experience',
         'description': 'How to write a machine learning resume without experience: the 7-step method to turn software, CS, or data projects into credible ML resume proof.',
         'summary': 'The 7-step method for writing a credible machine learning resume when you have no formal ML work experience.',
         'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'entry-level-machine-learning-engineer-resume',
+            'machine-learning-resume-summary-examples',
             'machine-learning-projects-for-resume',
-            'software-engineer-resume-no-experience',
             'entry-level-data-science-resume',
         ],
     },
@@ -64,6 +66,7 @@ PAGES = [
         'slug': 'software-engineer-resume-no-experience',
         'title': 'Software Engineer Resume With No Experience: Example & Guide',
         'nav': 'Software Engineer Resume',
+        'pillar': True,
         'keyword': 'software engineer resume no experience',
         'description': 'Software engineer resume with no experience: real example, copy-ready template, and steps to turn projects and coursework into interview-worthy bullets.',
         'summary': 'A no-experience software engineer resume example, plus how to route your projects toward ML and data roles.',
@@ -72,34 +75,84 @@ PAGES = [
             'entry-level-machine-learning-engineer-resume',
             'entry-level-data-science-resume',
             'how-to-write-machine-learning-resume-without-experience',
+            'entry-level-data-analyst-resume',
         ],
     },
     {
         'slug': 'entry-level-data-science-resume',
         'title': 'Entry-Level Data Science Resume: Example & Template',
         'nav': 'Data Science Resume',
+        'pillar': True,
         'keyword': 'entry level data science resume',
         'description': 'Entry-level data science resume example with a copy-ready template. Learn how to frame projects, skills, and coursework for your first data job.',
         'summary': 'An entry-level data science resume example, with guidance on framing projects and skills for a first data role.',
         'template': 'entry-level-data-science-resume-template.docx',
         'related': [
+            'entry-level-data-analyst-resume',
             'entry-level-machine-learning-engineer-resume',
-            'software-engineer-resume-no-experience',
             'machine-learning-projects-for-resume',
+            'software-engineer-resume-no-experience',
         ],
     },
     {
         'slug': 'machine-learning-projects-for-resume',
         'title': 'Machine Learning Projects for a Resume: Beginner Guide',
         'nav': 'ML Projects for Resume',
+        'pillar': True,
         'keyword': 'machine learning projects for resume beginner',
         'description': 'The best machine learning projects for a resume as a beginner, with copy-ready bullet templates and tips for mapping projects to job descriptions.',
         'summary': 'Which ML projects are resume-worthy, how to write them up, and how to map them to real job descriptions.',
         'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
+            'kaggle-projects-for-resume',
             'entry-level-machine-learning-engineer-resume',
             'how-to-write-machine-learning-resume-without-experience',
             'entry-level-data-science-resume',
+        ],
+    },
+    {
+        'slug': 'machine-learning-resume-summary-examples',
+        'title': 'Machine Learning Resume Summary Examples: 8 Entry-Level Versions',
+        'nav': 'Summary Examples',
+        'keyword': 'machine learning resume summary examples',
+        'description': '8 copy-ready machine learning resume summary examples for entry-level candidates: CS grads, career changers, and Kaggle competitors.',
+        'summary': '8 copy-ready ML resume summary examples by background, plus the 3-part formula and weak-to-fixed rewrites.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
+        'related': [
+            'entry-level-machine-learning-engineer-resume',
+            'how-to-write-machine-learning-resume-without-experience',
+            'machine-learning-projects-for-resume',
+            'entry-level-data-science-resume',
+        ],
+    },
+    {
+        'slug': 'kaggle-projects-for-resume',
+        'title': 'Kaggle Projects for a Resume: What Actually Counts (2026 Guide)',
+        'nav': 'Kaggle Projects',
+        'keyword': 'kaggle projects for resume',
+        'description': 'Learn which Kaggle projects count on a resume, how to write competition and notebook bullets, and when a personal project beats a Kaggle ranking.',
+        'summary': 'Which Kaggle activities carry weight, copy-ready competition and notebook bullets, and when to skip Kaggle entirely.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
+        'related': [
+            'machine-learning-projects-for-resume',
+            'entry-level-machine-learning-engineer-resume',
+            'machine-learning-resume-summary-examples',
+            'entry-level-data-analyst-resume',
+        ],
+    },
+    {
+        'slug': 'entry-level-data-analyst-resume',
+        'title': 'Entry-Level Data Analyst Resume: Example & Template',
+        'nav': 'Data Analyst Resume',
+        'keyword': 'entry level data analyst resume',
+        'description': 'Entry-level data analyst resume example with SQL, Excel, and visualization project bullets. Copy-ready template for first data analyst jobs.',
+        'summary': 'An entry-level data analyst resume example, with SQL, Excel, and visualization bullets that work without formal experience.',
+        'template': 'entry-level-data-science-resume-template.docx',
+        'related': [
+            'entry-level-data-science-resume',
+            'machine-learning-projects-for-resume',
+            'software-engineer-resume-no-experience',
+            'kaggle-projects-for-resume',
         ],
     },
 ]
@@ -230,6 +283,8 @@ def extract_faq(markdown: str) -> list[tuple[str, str]]:
 def build_nav() -> str:
     links = ['<a href="/">Home</a>']
     for page in PAGES:
+        if not page.get('pillar'):
+            continue
         links.append(f'<a href="/pages/{page["slug"]}">{html.escape(page["nav"])}</a>')
     return ''.join(links)
 
@@ -389,7 +444,7 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>5 full resume guides (about 7,800 words of copy-ready content)</li>
+      <li>8 full resume guides (about 11,600 words of copy-ready content)</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>
       <li>Clean internal linking between all guides</li>
@@ -401,7 +456,7 @@ def build_status(nav_html: str) -> None:
     <ul>
       <li>Affiliate program approvals (Kickresume, ResumeGenius, Zety)</li>
       <li>Google Docs versions of the templates</li>
-      <li>Long-tail expansion pages</li>
+      <li>Backlink outreach (Reddit, Pinterest, relevant forums)</li>
     </ul>
   </article>
 </section>

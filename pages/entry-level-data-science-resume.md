@@ -148,6 +148,8 @@ To do that, your resume should make it clear that:
 A strong entry-level data science resume often creates a believable path toward machine learning later.
 That is one of the reasons this page matters in the site architecture.
 
+If your target sits closer to dashboards, SQL, and business reporting than to modeling, use the [entry-level data analyst resume](https://resumepathlab.com/pages/entry-level-data-analyst-resume) guide instead, then return here if you pivot toward science roles.
+
 ## How to map job descriptions to your resume
 Before applying, mark the JD for:
 

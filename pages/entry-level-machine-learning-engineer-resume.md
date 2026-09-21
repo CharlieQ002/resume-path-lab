@@ -177,6 +177,8 @@ Keep it short.
 Do not write a dramatic life story.
 Do not use vague claims like “passionate about AI”.
 
+If you want finished versions instead of a skeleton, there are 8 copy-ready examples tuned to different backgrounds in the [machine learning resume summary examples](https://resumepathlab.com/pages/machine-learning-resume-summary-examples) guide.
+
 ## Skills to put on an entry-level ML resume
 Only include skills you can defend in conversation.
 

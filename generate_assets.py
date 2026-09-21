@@ -364,6 +364,9 @@ def generate_og() -> None:
         ('software-engineer-resume-no-experience', 'Free guide + template', 'Software Engineer Resume With No Experience'),
         ('entry-level-data-science-resume', 'Free guide + template', 'Entry-Level Data Science Resume'),
         ('machine-learning-projects-for-resume', 'Free beginner guide', 'Machine Learning Projects for a Resume'),
+        ('machine-learning-resume-summary-examples', '8 copy-ready examples', 'Machine Learning Resume Summary Examples'),
+        ('kaggle-projects-for-resume', 'Free 2026 guide', 'Kaggle Projects for a Resume'),
+        ('entry-level-data-analyst-resume', 'Free guide + template', 'Entry-Level Data Analyst Resume'),
     ]
     for slug, eyebrow, title in pages:
         og_image(OG_DIR / f'{slug}.png', eyebrow, title)

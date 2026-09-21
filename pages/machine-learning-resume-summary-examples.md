@@ -105,6 +105,8 @@ You do not need 30 versions of your summary. You need one strong base plus 2 min
 3. If the posting emphasizes one thing (deployment, NLP, experimentation), name it once.
 4. Delete anything that does not appear in the posting and does not prove skill.
 
+Once your summary names the right tools, make sure your [skills section](/pages/resume-skills-section-tech.html) matches it word for word: recruiters read the summary, then check the skills list for confirmation.
+
 ## FAQ
 
 ### Should entry-level candidates use a summary or an objective?

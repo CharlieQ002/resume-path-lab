@@ -44,7 +44,7 @@ python validate_build.py   # 校验
 
 构建脚本的 Markdown 解析器只支持：**`#`/`##`/`###` 标题、`-` 列表、`1.` 列表、`> ` 引用、`**粗体**`、`` `代码` ``**
 
-禁止（会原样显示成乱码）：链接 `[x](y)`、表格 `|`、图片、`---` 分割线、HTML 标签
+支持链接 `[text](url)`（2026-09-22 起，渲染成 <a> 标签）。禁止（会原样显示成乱码）：表格 `|`、图片、`---` 分割线、HTML 标签
 
 新页面 checklist：
 
@@ -83,6 +83,8 @@ python validate_build.py   # 校验
 | resume-with-no-work-experience | how to write a resume with no work experience |
 | ats-friendly-resume-guide | ats friendly resume for tech jobs |
 | machine-learning-engineer-cover-letter | machine learning engineer cover letter entry level |
+| data-science-internship-resume | data science internship resume |
+| python-projects-for-resume | python projects for resume |
 
 合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer
 

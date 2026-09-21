@@ -367,6 +367,8 @@ def generate_og() -> None:
         ('machine-learning-resume-summary-examples', '8 copy-ready examples', 'Machine Learning Resume Summary Examples'),
         ('kaggle-projects-for-resume', 'Free 2026 guide', 'Kaggle Projects for a Resume'),
         ('entry-level-data-analyst-resume', 'Free guide + template', 'Entry-Level Data Analyst Resume'),
+        ('data-science-internship-resume', 'Internship screen secrets', 'Data Science Internship Resume'),
+        ('python-projects-for-resume', '10 projects ranked', 'Python Projects for a Resume'),
     ]
     for slug, eyebrow, title in pages:
         og_image(OG_DIR / f'{slug}.png', eyebrow, title)

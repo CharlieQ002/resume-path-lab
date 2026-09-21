@@ -74,7 +74,7 @@ PAGES = [
         'related': [
             'entry-level-machine-learning-engineer-resume',
             'entry-level-data-science-resume',
-            'how-to-write-machine-learning-resume-without-experience',
+            'python-projects-for-resume',
             'entry-level-data-analyst-resume',
         ],
     },
@@ -89,7 +89,7 @@ PAGES = [
         'template': 'entry-level-data-science-resume-template.docx',
         'related': [
             'entry-level-data-analyst-resume',
-            'entry-level-machine-learning-engineer-resume',
+            'data-science-internship-resume',
             'machine-learning-projects-for-resume',
             'software-engineer-resume-no-experience',
         ],
@@ -104,9 +104,9 @@ PAGES = [
         'summary': 'Which ML projects are resume-worthy, how to write them up, and how to map them to real job descriptions.',
         'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
+            'python-projects-for-resume',
             'kaggle-projects-for-resume',
             'entry-level-machine-learning-engineer-resume',
-            'how-to-write-machine-learning-resume-without-experience',
             'entry-level-data-science-resume',
         ],
     },
@@ -120,7 +120,7 @@ PAGES = [
         'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'entry-level-machine-learning-engineer-resume',
-            'how-to-write-machine-learning-resume-without-experience',
+            'resume-skills-section-tech',
             'machine-learning-projects-for-resume',
             'entry-level-data-science-resume',
         ],
@@ -135,8 +135,8 @@ PAGES = [
         'template': 'entry-level-ml-engineer-resume-template.docx',
         'related': [
             'machine-learning-projects-for-resume',
+            'python-projects-for-resume',
             'entry-level-machine-learning-engineer-resume',
-            'machine-learning-resume-summary-examples',
             'entry-level-data-analyst-resume',
         ],
     },
@@ -150,8 +150,8 @@ PAGES = [
         'template': 'entry-level-data-science-resume-template.docx',
         'related': [
             'entry-level-data-science-resume',
-            'machine-learning-projects-for-resume',
-            'software-engineer-resume-no-experience',
+            'data-science-internship-resume',
+            'python-projects-for-resume',
             'kaggle-projects-for-resume',
         ],
     },
@@ -215,6 +215,34 @@ PAGES = [
             'ats-friendly-resume-guide',
         ],
     },
+    {
+        'slug': 'data-science-internship-resume',
+        'title': 'Data Science Internship Resume: What Actually Gets Interviews',
+        'keyword': 'data science internship resume',
+        'description': 'Data science internship resume guide: the structure that gets interviews, how to frame coursework as experience, and a project example that stands out.',
+        'summary': 'The data science internship resume structure recruiters screen for, with coursework framing, project examples, and the mistakes that get applications rejected.',
+        'template': 'entry-level-data-science-resume-template.docx',
+        'related': [
+            'entry-level-data-science-resume',
+            'entry-level-data-analyst-resume',
+            'entry-level-machine-learning-engineer-resume',
+            'machine-learning-resume-summary-examples',
+        ],
+    },
+    {
+        'slug': 'python-projects-for-resume',
+        'title': 'Python Projects for a Resume: 10 That Beat Coursework',
+        'keyword': 'python projects for resume',
+        'description': 'The best Python projects for a resume have users, data, or a deploy. Ten ideas ranked by interview value, plus copy-ready bullet formulas for each.',
+        'summary': 'Ten Python projects ranked by interview value, the three qualities that make a project resume-worthy, and bullet formulas to write them up.',
+        'template': 'entry-level-ml-engineer-resume-template.docx',
+        'related': [
+            'machine-learning-projects-for-resume',
+            'kaggle-projects-for-resume',
+            'software-engineer-resume-no-experience',
+            'entry-level-data-analyst-resume',
+        ],
+    },
 ]
 
 PAGE_BY_SLUG = {p['slug']: p for p in PAGES}
@@ -257,6 +285,7 @@ LEGAL_PAGES = [
 
 def inline_format(text: str) -> str:
     text = html.escape(text)
+    text = re.sub(r'\[([^\]]+)\]\((https?://[^)\s]+|/[^)\s]*)\)', r'<a href="\2">\1</a>', text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
     return text
@@ -605,7 +634,7 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>12 full resume guides (about 19,400 words of copy-ready content)</li>
+      <li>14 full resume guides (about 22,100 words of copy-ready content)</li>
       <li>About, Contact, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>

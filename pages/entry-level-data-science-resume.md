@@ -208,6 +208,8 @@ Even class projects should be framed like work products, not homework submission
 - Focused on both interpretability and model usefulness, with clear evaluation and next-step recommendations
 - Positioned the work as an example of strong data science fundamentals that support future ML engineering growth
 
+If you are applying to internships rather than full-time roles, the same framing applies with a different structure: see the [data science internship resume](/pages/data-science-internship-resume.html) guide for what changes.
+
 ## FAQ
 
 ### Can I apply for data science roles without internships?

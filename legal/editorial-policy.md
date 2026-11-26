@@ -11,9 +11,10 @@ We publish resume guides for entry-level candidates in machine learning, softwar
 ## How each guide is built
 
 1. **Pick a real question.** We choose topics based on what entry-level candidates actually search for, not on what tools want to sell.
-2. **Write from hiring reality.** Examples follow how recruiters and applicant tracking systems actually screen resumes: keyword matching, scannable bullets, quantified outcomes.
-3. **Show, don't lecture.** Every guide includes at least one full resume or cover letter example and templates you can copy directly.
-4. **No promises.** We never claim a template guarantees interviews or jobs. Hiring outcomes depend on factors no website controls.
+2. **Research the task.** We review established career resources and current job-search guidance for structure and open questions, then write original explanations and examples rather than copying reference text.
+3. **Show, don't lecture.** Every guide includes at least one full resume or cover letter example and templates you can copy directly. Examples are illustrative, not candidate case studies.
+4. **Check the evidence.** Reviews look for unsupported metrics, invented experience, repeated phrasing, broken links, and claims that go beyond what an example demonstrates.
+5. **No promises.** We never claim a template guarantees interviews or jobs. Hiring outcomes depend on factors no website controls.
 
 ## Accuracy and updates
 

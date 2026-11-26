@@ -167,6 +167,17 @@ Customize these to your own work before sending.
 - I care more about understanding where a model fails than about reporting a single good score.
 - I am comfortable owning a small scoped problem, asking specific questions, and writing down what I tried and why.
 
+## Final specificity check
+
+Compare the letter with the resume side by side. The resume should contain the evidence; the letter should explain why that evidence matters for this particular team.
+
+- The opening names the role and a relevant reason for applying, not generic excitement.
+- The main example includes a problem, your action, and a measured or observable result.
+- The company detail is specific enough that the paragraph would not work unchanged for a competitor.
+- The closing asks for a conversation without repeating the entire resume or promising performance.
+
+Remove any sentence that only claims passion, innovation, or being a quick learner. Use that space for one concrete detail about a project decision, the team's product, or the problem you want to help solve.
+
 ## FAQ
 
 ### Do entry-level ML engineer applications even need a cover letter?

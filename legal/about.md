@@ -27,11 +27,11 @@ Some pages include affiliate links to resume-building tools such as Kickresume, 
 
 ## About the author
 
-**Jordan Blake** is the career writer behind Resume Path Lab's guides. As a former tech recruiting coordinator, Jordan screened entry-level applications for software, data, and machine learning roles and saw firsthand why capable candidates get filtered out: generic summaries, tool-stuffed skills sections, and project bullets that read like homework.
+**Jordan Blake** is the editorial pen name used for Resume Path Lab's guides. It provides a consistent byline for the site's career content; it is not presented as a recruiter, hiring manager, or career coach.
 
-Jordan's guides are built from that screening experience. Every example is written to survive both the ATS parse and the six-second recruiter scan, and every template is something Jordan would have been glad to see land in the inbox.
+Our guides combine AI-assisted drafting with structured editorial review, practical examples, and copy-ready templates. Examples are illustrative rather than candidate case studies, and we do not claim recruiting credentials or guaranteed hiring outcomes under this identity.
 
-Questions or corrections? Reach Jordan through the contact page at resumepathlab.com/contact.
+Questions or corrections? Reach the editorial team through the contact page at resumepathlab.com/contact.
 
 ## Contact
 

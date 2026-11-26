@@ -1,11 +1,11 @@
 ---
-title: "Data Science Internship Resume: What Actually Gets Interviews"
+title: "Data Science Internship Resume: Example & Guide"
 description: "Data science internship resume guide: the structure that gets interviews, how to frame coursework as experience, and a project example that stands out."
 keyword: "data science internship resume"
 summary: "The data science internship resume structure recruiters screen for, with coursework framing, project examples, and the mistakes that get applications rejected."
 ---
 
-# Data Science Internship Resume: What Actually Gets Interviews
+# Data Science Internship Resume: Example & Guide
 
 Data science internships are judged differently than full-time roles. Nobody expects an intern to have shipped models to production. Recruiters screen for something harder to fake: evidence that you will be productive in week one, curious enough to learn without hand-holding, and honest about what you actually did.
 
@@ -72,6 +72,34 @@ Notice what is missing: the word "passionate," the phrase "hard worker," and any
 - **No GitHub link.** For a data internship, a missing GitHub reads as "no code to show." Even one clean repository changes this.
 - **Group project with no personal role.** "Worked on a team project" is filler. "Built the feature-engineering pipeline for a 5-person team project" is a bullet.
 - **Tutorial clones presented as original work.** Recruiters have seen the Titanic survival prediction a thousand times. If you use a common dataset, your framing, features, or write-up must be visibly yours.
+
+## Worked example: turning a class project into internship evidence
+
+Imagine a group forecasting project from a statistics course. Listing the course and algorithm hides your contribution. Instead, separate what the class assigned from what you personally investigated.
+
+Start with the question and your responsibility. Perhaps you cleaned the time series, compared a naive forecast with a regression model, and presented the error analysis. Those steps are relevant to an internship even though the project was assigned.
+
+Weak:
+
+- Completed a group forecasting project using Python and machine learning.
+
+Stronger:
+
+- Cleaned weekly time-series data with pandas, compared a seasonal naive baseline with a regression model using time-based validation, and explained residual patterns in the group presentation.
+
+The stronger version shows individual ownership and evaluation. Do not claim the group presentation, cleaning, or validation if another student owned it; select the work you actually performed.
+
+For an internship application, also make your availability and graduation timing easy to find. Recruiters often need to coordinate a specific summer or semester cohort. Keep expected graduation, relevant coursework, and the internship target consistent across the resume and application form.
+
+## Tailor the evidence to the internship track
+
+Data science internships can emphasize research, product analysis, machine learning, or experimentation. Your resume should make one track obvious without changing the facts of your projects.
+
+For a research-oriented role, lead with the hypothesis, validation design, error analysis, and limitations. For a product analytics internship, lead with SQL, metric definitions, cohort comparisons, and how you communicated uncertainty. For an ML internship, lead with baselines, preprocessing, evaluation, and an explained model decision.
+
+Do not use the same ordering for every application. Keep a master version, then move the most relevant project detail into the first bullet. This makes your preparation easier to understand than adding another generic sentence about being passionate about data.
+
+Also match the level of technical detail to the reviewer. A research mentor may want the validation choices, while a product team may care more about how you defined the metric and explained uncertainty. The same project can support both versions when you emphasize different truthful parts of the work.
 
 ## FAQ
 

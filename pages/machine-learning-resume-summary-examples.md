@@ -107,6 +107,20 @@ You do not need 30 versions of your summary. You need one strong base plus 2 min
 
 Once your summary names the right tools, make sure your [skills section](/pages/resume-skills-section-tech.html) matches it word for word: recruiters read the summary, then check the skills list for confirmation.
 
+## Test your summary against the rest of the resume
+
+A summary should compress the evidence that appears below it, not introduce a more impressive version of you. Underline every specific claim in the summary, then find its proof in a project, internship, course, or work entry. Remove anything you cannot locate within ten seconds.
+
+For example, this summary has three claims:
+
+> Entry-level machine learning engineer with Python and SQL experience, hands-on model evaluation practice, and a deployed text-classification project.
+
+The resume should support them in three places: Python and SQL inside actual project workflows, validation metrics or error analysis in an ML project, and a repository or demo showing deployment. “Passionate about innovation” needs no space because it adds no evidence.
+
+Also check the target role. If the posting is for data analysis, a summary built around production ML deployment may be poorly aimed even when every sentence is true. Keep the same truthful projects but lead with the most relevant part of each one.
+
+Finally, read the summary aloud. If it sounds like a list of buzzwords rather than something you could say in an interview, shorten it. Two specific sentences are usually more persuasive than four broad ones.
+
 ## FAQ
 
 ### Should entry-level candidates use a summary or an objective?

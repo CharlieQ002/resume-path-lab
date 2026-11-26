@@ -210,6 +210,22 @@ Even class projects should be framed like work products, not homework submission
 
 If you are applying to internships rather than full-time roles, the same framing applies with a different structure: see the [data science internship resume](/pages/data-science-internship-resume.html) guide for what changes.
 
+## Worked example: from a notebook to evidence
+
+A finished notebook does not automatically make a strong resume project. Start by identifying the question the analysis answers. “Used pandas on a sales dataset” describes an activity; “identified which customer segments drove repeat purchases” gives the work a purpose.
+
+Next, check the analytical path. Write down the cleaning decision that mattered, the baseline or comparison you used, and the limitation another person should understand. For a predictive project, that may be a train-test split and an error metric. For an exploratory analysis, it may be a segment definition, a sanity check, and a caveat about missing data.
+
+Weak:
+
+- Analyzed customer data and created visualizations in Python.
+
+Stronger:
+
+- Cleaned and segmented transactional data with pandas, compared repeat-purchase patterns across customer groups, and presented three limitations in a Matplotlib summary for non-technical reviewers.
+
+The stronger version works because it shows process and communication, not because it claims a business result the student never delivered. Keep the original dataset, assumptions, and output available so the bullet can be verified.
+
 ## FAQ
 
 ### Can I apply for data science roles without internships?

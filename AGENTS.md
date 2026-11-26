@@ -12,7 +12,7 @@
 ## 2. 技术结构与命令
 
 ```
-pages/*.md      → 指南源稿（Markdown，15 篇）
+pages/*.md      → 指南源稿（Markdown，20 篇）
 legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
 build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
@@ -95,14 +95,19 @@ python validate_build.py   # 校验
 | data-science-internship-resume | data science internship resume |
 | python-projects-for-resume | python projects for resume |
 | data-science-cover-letter-entry-level | data science cover letter entry level |
+| internship-resume-computer-science | computer science internship resume |
+| entry-level-software-developer-portfolio | entry level software developer portfolio |
+| how-to-list-projects-on-resume | how to list projects on resume |
+| entry-level-data-engineer-resume | entry level data engineer resume |
+| sql-projects-for-resume | sql projects for resume |
 
 合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer / editorial-policy
 
 ### 建议的下一批主题（未被占用）
 
-- `entry-level-software-developer-portfolio` — 作品集怎么配简历
-- `internship-resume-computer-science` — CS 实习简历
-- `how-to-list-projects-on-resume` — 项目区通用写法
+- `entry-level-cloud-engineer-resume` — 初级云工程简历
+- `backend-developer-resume-no-experience` — 无经验后端开发简历
+- `data-analyst-portfolio-projects` — 数据分析作品集项目
 
 ## 7. 不能动的东西
 

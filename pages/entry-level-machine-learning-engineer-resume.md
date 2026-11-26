@@ -313,6 +313,17 @@ Use these as starting lines, then customize them to your own project.
 - Improved result quality through [feature engineering / tuning / validation design]
 - Created documentation that explains system assumptions, risks, and future improvements
 
+## Final evidence audit before applying
+
+Read only your summary and the first bullet under each project. Together, they should answer what you built, which tools you used, and how you evaluated it. If they do not, the skills section will not rescue the application.
+
+- Name the target role once instead of alternating between AI, data, and software titles.
+- Keep one project that shows model evaluation and one that shows delivery, such as an API, dashboard, or documented inference workflow.
+- Check that every metric has a validation context and every tool appears somewhere in the project details.
+- Remove any bullet you cannot explain in a two-minute interview answer.
+
+This audit is deliberately about evidence, not keyword volume. A shorter resume with defensible projects is easier to trust than a page filled with familiar ML terminology.
+
 ## FAQ
 
 ### Can I apply for ML engineer roles without internships?

@@ -15,20 +15,16 @@ BASE_URL = 'https://resumepathlab.com'
 SITE_NAME = 'Resume Path Lab'
 TODAY = date.today().isoformat()
 _today = date.today()
-UPDATED_LABEL = f'{_today:%b} {_today.day}, {_today:%Y}'
+CONTENT_REVIEW_DATE = '2026-11-27'
 
-# ---------------------------------------------------------------------------
-# AUTHOR: placeholder pen name shown in every byline and the author box.
-# Replace name/title/bio here and it updates site-wide on the next build.
-# ---------------------------------------------------------------------------
 AUTHOR = {
     'name': 'Jordan Blake',
-    'title': 'Career Writer & Former Tech Recruiting Coordinator',
+    'title': 'Editorial pen name, Resume Path Lab',
     'bio': (
-        'Jordan Blake is a career writer and former tech recruiting coordinator who '
-        'screened entry-level applications for software, data, and machine learning roles. '
-        'Jordan writes from that screening experience: what survives the ATS parse, what '
-        'survives the six-second recruiter scan, and what quietly gets resumes filtered out.'
+        'Jordan Blake is the editorial pen name used for Resume Path Lab guides. '
+        'Articles combine AI-assisted drafting with structured editorial review, practical '
+        'examples, and copy-ready templates. Examples are illustrative, and guidance focuses '
+        'on evidence candidates can verify in their own work.'
     ),
     'url': f'{BASE_URL}/about#about-the-author',
 }
@@ -51,7 +47,7 @@ PAGES = [
     {
         'slug': 'entry-level-machine-learning-engineer-resume',
         'category': 'Machine Learning',
-        'title': 'Entry-Level Machine Learning Engineer Resume: Example & Template',
+        'title': 'Entry-Level Machine Learning Engineer Resume Example',
         'nav': 'ML Engineer Resume',
         'pillar': True,
         'keyword': 'entry level machine learning engineer resume',
@@ -136,7 +132,7 @@ PAGES = [
     {
         'slug': 'machine-learning-resume-summary-examples',
         'category': 'Machine Learning',
-        'title': 'Machine Learning Resume Summary Examples: 8 Entry-Level Versions',
+        'title': 'Machine Learning Resume Summary: 8 Examples',
         'nav': 'Summary Examples',
         'keyword': 'machine learning resume summary examples',
         'description': '8 copy-ready machine learning resume summary examples for entry-level candidates: CS grads, career changers, and Kaggle competitors.',
@@ -152,7 +148,7 @@ PAGES = [
     {
         'slug': 'kaggle-projects-for-resume',
         'category': 'Machine Learning',
-        'title': 'Kaggle Projects for a Resume: What Actually Counts (2026 Guide)',
+        'title': 'Kaggle Projects for a Resume: What Counts',
         'nav': 'Kaggle Projects',
         'keyword': 'kaggle projects for resume',
         'description': 'Learn which Kaggle projects count on a resume, how to write competition and notebook bullets, and when a personal project beats a Kaggle ranking.',
@@ -184,7 +180,7 @@ PAGES = [
     {
         'slug': 'resume-with-no-work-experience',
         'category': 'Resume Basics',
-        'title': 'How to Write a Resume With No Work Experience: First Resume Guide',
+        'title': 'How to Write a Resume With No Work Experience: Guide',
         'nav': 'First Resume Guide',
         'keyword': 'how to write a resume with no work experience',
         'description': 'How to write a resume with no work experience: a complete first-resume example, plus how to fill the page with coursework, projects, and volunteering.',
@@ -232,7 +228,7 @@ PAGES = [
     {
         'slug': 'machine-learning-engineer-cover-letter',
         'category': 'Machine Learning',
-        'title': 'Machine Learning Engineer Cover Letter: Entry-Level Example & Templates',
+        'title': 'Machine Learning Engineer Cover Letter: Entry-Level Example',
         'nav': 'ML Cover Letter',
         'keyword': 'machine learning engineer cover letter entry level',
         'description': 'An entry-level machine learning engineer cover letter example with a section-by-section breakdown, copy-ready paragraph templates, and common mistakes.',
@@ -263,10 +259,10 @@ PAGES = [
     {
         'slug': 'data-science-internship-resume',
         'category': 'Data',
-        'title': 'Data Science Internship Resume: What Actually Gets Interviews',
+        'title': 'Data Science Internship Resume: Example & Guide',
         'keyword': 'data science internship resume',
-        'description': 'Data science internship resume guide: the structure that gets interviews, how to frame coursework as experience, and a project example that stands out.',
-        'summary': 'The data science internship resume structure recruiters screen for, with coursework framing, project examples, and the mistakes that get applications rejected.',
+        'description': 'Data science internship resume example and guide: frame coursework, projects, and analysis clearly, with copy-ready bullets and a final review checklist.',
+        'summary': 'A data science internship resume example with coursework framing, project rewrites, and practical checks for different internship tracks.',
         'template': 'entry-level-data-science-resume-template.docx',
         'related': [
             'entry-level-data-science-resume',
@@ -288,6 +284,86 @@ PAGES = [
             'kaggle-projects-for-resume',
             'software-engineer-resume-no-experience',
             'entry-level-data-analyst-resume',
+        ],
+    },
+    {
+        'slug': 'internship-resume-computer-science',
+        'published': CONTENT_REVIEW_DATE,
+        'category': 'Software',
+        'title': 'Computer Science Internship Resume: Example & Project Guide',
+        'keyword': 'computer science internship resume',
+        'description': 'Computer science internship resume example and guide: present coursework, coding projects, tutoring, and skills without formal work experience.',
+        'summary': 'A complete CS internship resume example with project rewrites, section ordering, and ways to show coursework and tutoring as evidence.',
+        'template': 'software-engineer-resume-no-experience-template.docx',
+        'related': [
+            'software-engineer-resume-no-experience',
+            'entry-level-software-developer-portfolio',
+            'data-science-internship-resume',
+            'how-to-list-projects-on-resume',
+        ],
+    },
+    {
+        'slug': 'entry-level-software-developer-portfolio',
+        'published': CONTENT_REVIEW_DATE,
+        'category': 'Software',
+        'title': 'Entry-Level Developer Portfolio: Projects & Examples',
+        'keyword': 'entry level software developer portfolio',
+        'description': 'Entry-level software developer portfolio guide: choose projects, write useful READMEs, show validation, and connect your best work to resume bullets.',
+        'summary': 'Build a small, credible developer portfolio with lead projects, useful READMEs, validation proof, and matching resume bullets.',
+        'template': 'software-engineer-resume-no-experience-template.docx',
+        'related': [
+            'internship-resume-computer-science',
+            'software-engineer-resume-no-experience',
+            'how-to-list-projects-on-resume',
+            'python-projects-for-resume',
+        ],
+    },
+    {
+        'slug': 'how-to-list-projects-on-resume',
+        'published': CONTENT_REVIEW_DATE,
+        'category': 'Resume Basics',
+        'title': 'How to List Projects on a Resume: Bullets & Examples',
+        'keyword': 'how to list projects on resume',
+        'description': 'How to list projects on a resume: choose relevant work, order entries, write evidence-based bullets, handle team projects, and avoid invented metrics.',
+        'summary': 'A practical projects section guide with complete examples, bullet templates, and honest ways to present team, tutorial, and personal work.',
+        'template': 'software-engineer-resume-no-experience-template.docx',
+        'related': [
+            'entry-level-software-developer-portfolio',
+            'machine-learning-projects-for-resume',
+            'python-projects-for-resume',
+            'resume-with-no-work-experience',
+        ],
+    },
+    {
+        'slug': 'entry-level-data-engineer-resume',
+        'published': CONTENT_REVIEW_DATE,
+        'category': 'Data',
+        'title': 'Entry-Level Data Engineer Resume: Example & Projects',
+        'keyword': 'entry level data engineer resume',
+        'description': 'Entry-level data engineer resume example and project guide: show SQL, Python, pipelines, validation, and data quality without production-scale claims.',
+        'summary': 'A complete data engineer resume example focused on pipelines, SQL modeling, validation, and reliable data workflows.',
+        'template': 'entry-level-data-science-resume-template.docx',
+        'related': [
+            'sql-projects-for-resume',
+            'entry-level-data-analyst-resume',
+            'entry-level-data-science-resume',
+            'ats-friendly-resume-guide',
+        ],
+    },
+    {
+        'slug': 'sql-projects-for-resume',
+        'published': CONTENT_REVIEW_DATE,
+        'category': 'Data',
+        'title': 'SQL Projects for a Resume: 8 Ideas & Copy-Ready Bullets',
+        'keyword': 'sql projects for resume',
+        'description': 'SQL projects for a resume: eight practical ideas with schemas, validation checks, and copy-ready bullets for analyst and data engineering roles.',
+        'summary': 'Eight SQL project ideas with clear schemas, data quality checks, and resume bullets for analysis and data engineering.',
+        'template': 'entry-level-data-science-resume-template.docx',
+        'related': [
+            'entry-level-data-engineer-resume',
+            'entry-level-data-analyst-resume',
+            'python-projects-for-resume',
+            'how-to-list-projects-on-resume',
         ],
     },
 ]
@@ -347,6 +423,11 @@ def inline_format(text: str) -> str:
 def slugify(text: str) -> str:
     slug = re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
     return slug or 'section'
+
+
+def display_date(value: str) -> str:
+    parsed = date.fromisoformat(value)
+    return f'{parsed:%b} {parsed.day}, {parsed:%Y}'
 
 
 def extract_toc(markdown: str) -> list[tuple[str, str]]:
@@ -542,8 +623,8 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
                 'url': AUTHOR['url'],
             },
             'publisher': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE_URL},
-            'datePublished': '2026-04-05',
-            'dateModified': TODAY,
+            'datePublished': page.get('published', '2026-04-05'),
+            'dateModified': page.get('updated', CONTENT_REVIEW_DATE),
             'mainEntityOfPage': canonical,
         },
         {
@@ -761,7 +842,7 @@ def build_home(nav_html: str) -> None:
 '''
     description = 'Free, copy-ready resume examples and templates for entry-level machine learning engineers, software engineers, and data scientists with no experience.'
     (SITE_DIR / 'index.html').write_text(
-        shell(f'{SITE_NAME} | Free Resume Examples for Entry-Level Tech Careers', description, f'{BASE_URL}/', nav_html, body),
+        shell(f'{SITE_NAME} | Free Entry-Level Tech Resume Examples', description, f'{BASE_URL}/', nav_html, body),
         encoding='utf-8',
     )
 
@@ -776,7 +857,7 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>15 full resume guides (about 23,700 words of copy-ready content)</li>
+      <li>20 full resume guides (about 34,200 words of copy-ready content)</li>
       <li>About, Contact, Editorial Policy, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>
@@ -912,6 +993,8 @@ def extract_summary(markdown: str, max_words: int = 100) -> str:
             continue
         if stripped.startswith('### ') or stripped.startswith('> ') or re.match(r'^(-|\d+\.)\s+', stripped):
             continue
+        if stripped.endswith(':'):
+            continue
         buf.append(stripped)
         words += len(stripped.split())
         if words >= max_words:
@@ -1045,6 +1128,7 @@ def build_page(page: dict, nav_html: str) -> None:
     canonical = f"{BASE_URL}/pages/{page['slug']}"
     faqs = extract_faq(markdown)
     minutes = max(4, round(len(markdown.split()) / 200))
+    updated_label = display_date(page.get('updated', CONTENT_REVIEW_DATE))
     toc = extract_toc(markdown)
     toc_items = ''.join(f'<li><a href="#{anchor}">{html.escape(text)}</a></li>' for anchor, text in toc)
     toc_desktop = ''
@@ -1068,7 +1152,7 @@ def build_page(page: dict, nav_html: str) -> None:
   <h1>{html.escape(page['title'])}</h1>
   <p class="page-context">{html.escape(page.get('category', 'Guide'))} &middot; Free guide + copy-ready template</p>
   <p class="lead">{html.escape(page['summary'])}</p>
-  <p class="byline">By <a href="/about#about-the-author">{html.escape(AUTHOR['name'])}</a>, {html.escape(AUTHOR['title'])} &middot; Last updated {UPDATED_LABEL} &middot; {minutes} min read</p>
+  <p class="byline">By <a href="/about#about-the-author">{html.escape(AUTHOR['name'])}</a>, {html.escape(AUTHOR['title'])} &middot; Last updated {updated_label} &middot; {minutes} min read</p>
 </section>
 <div class="article-layout">
   {toc_desktop}
@@ -1135,9 +1219,9 @@ def build_404(nav_html: str) -> None:
 def build_seo_files() -> None:
     urls = [(f'{BASE_URL}/', TODAY), (f'{BASE_URL}/status', TODAY), (f'{BASE_URL}/templates', TODAY)]
     for page in PAGES:
-        urls.append((f"{BASE_URL}/pages/{page['slug']}", TODAY))
+        urls.append((f"{BASE_URL}/pages/{page['slug']}", page.get('updated', CONTENT_REVIEW_DATE)))
     for page in LEGAL_PAGES:
-        urls.append((f"{BASE_URL}/{page['slug']}", TODAY))
+        urls.append((f"{BASE_URL}/{page['slug']}", page.get('updated', CONTENT_REVIEW_DATE)))
 
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',

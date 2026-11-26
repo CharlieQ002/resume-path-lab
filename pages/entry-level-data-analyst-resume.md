@@ -111,6 +111,39 @@ For each posting, do this pass before submitting:
 - Burying the link. If you have a portfolio or GitHub, put the URL in the contact line and on each project.
 - Confusing data science with data analysis. If the posting is analyst work (reporting, dashboards, SQL), do not lead with deep learning.
 
+## Worked example: making a SQL dashboard credible
+
+A dashboard screenshot proves that you can produce charts, but not that you can answer a business question. Give the project a clear decision context. For example, a student-built support dashboard could ask which request categories create the longest resolution times.
+
+Before writing the bullet, verify the data grain. Decide whether one row represents a ticket, a customer, or a daily aggregate. Then document how you handled duplicates, null timestamps, and categories with very small sample sizes. These checks are often more valuable than adding another chart.
+
+Weak:
+
+- Created a SQL dashboard with customer support KPIs and visualizations.
+
+Stronger:
+
+- Reconciled ticket-level records with SQL joins and duplicate checks, compared resolution time by request category, and built a dashboard that highlights small-sample warnings for reviewers.
+
+The revised bullet shows data reliability and interpretation. It does not pretend the analysis reduced resolution time in a real company.
+
+For the finished project, include three things in the README: the question, the data-cleaning assumptions, and one conclusion you would not draw from the dataset. That last limitation helps demonstrate judgment and gives an interviewer a useful follow-up topic.
+
+## Connect the analysis to a decision
+
+A hiring manager should be able to see what someone could do with your analysis. You do not need a real company outcome to show this thinking. Frame the decision as a recommendation supported by your sample, and separate it from measured impact.
+
+For example, instead of claiming that your support dashboard reduced response time, explain that it identified which categories a team could investigate first and warned against interpreting very small groups.
+
+Use this closing check for each lead project:
+
+- What question does the output answer?
+- Which comparison or validation supports the conclusion?
+- What action would you recommend from this sample?
+- What uncertainty should remain visible?
+
+This creates evidence of analytical judgment without inventing adoption, revenue, or operational results.
+
 ## FAQ
 
 ### Can I get a data analyst job with Excel and SQL only?

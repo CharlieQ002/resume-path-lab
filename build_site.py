@@ -246,6 +246,21 @@ PAGES = [
         ],
     },
     {
+        'slug': 'data-science-cover-letter-entry-level',
+        'category': 'Data',
+        'title': 'Data Science Cover Letter Entry Level: Example & Templates',
+        'keyword': 'data science cover letter entry level',
+        'description': 'Entry-level data science cover letter example with the 4-paragraph structure, copy-ready paragraph templates, and the mistakes that get letters ignored.',
+        'summary': 'A complete entry-level data science cover letter example, the 4-paragraph structure behind it, and copy-ready templates for every paragraph.',
+        'template': 'entry-level-data-science-resume-template.docx',
+        'related': [
+            'machine-learning-engineer-cover-letter',
+            'data-science-internship-resume',
+            'entry-level-data-science-resume',
+            'python-projects-for-resume',
+        ],
+    },
+    {
         'slug': 'data-science-internship-resume',
         'category': 'Data',
         'title': 'Data Science Internship Resume: What Actually Gets Interviews',
@@ -311,6 +326,12 @@ LEGAL_PAGES = [
         'title': 'Disclaimer',
         'nav': 'Disclaimer',
         'description': 'Disclaimers for Resume Path Lab content, including our affiliate link disclosure.',
+    },
+    {
+        'slug': 'editorial-policy',
+        'title': 'Editorial Policy',
+        'nav': 'Editorial Policy',
+        'description': 'How Resume Path Lab creates, reviews, and updates its resume guides, and our independence commitments.',
     },
 ]
 
@@ -523,7 +544,16 @@ def page_schema(page: dict, canonical: str, faqs: list[tuple[str, str]]) -> str:
             'datePublished': '2026-04-05',
             'dateModified': TODAY,
             'mainEntityOfPage': canonical,
-        }
+        },
+        {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+                {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': f'{BASE_URL}/'},
+                {'@type': 'ListItem', 'position': 2, 'name': 'Guides', 'item': f'{BASE_URL}/#guides'},
+                {'@type': 'ListItem', 'position': 3, 'name': page['title'], 'item': canonical},
+            ],
+        },
     ]
     if faqs:
         schemas.append({
@@ -581,6 +611,7 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
   <meta name="description" content="{html.escape(description)}">
 {verification}  <link rel="canonical" href="{html.escape(canonical)}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{SITE_NAME}">
   <meta property="og:title" content="{html.escape(title)}">
@@ -704,8 +735,8 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>14 full resume guides (about 22,100 words of copy-ready content)</li>
-      <li>About, Contact, Privacy Policy, Terms, and Disclaimer pages</li>
+      <li>15 full resume guides (about 23,700 words of copy-ready content)</li>
+      <li>About, Contact, Editorial Policy, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>
       <li>Clean internal linking between all guides</li>
@@ -993,6 +1024,7 @@ def build_page(page: dict, nav_html: str) -> None:
   <ol>{toc_items}</ol>
 </details>'''
     body = f'''
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="crumb-sep">/</span><a href="/#guides">Guides</a><span class="crumb-sep">/</span><span class="crumb-current">{html.escape(page.get('nav', page['title']))}</span></nav>
 <section class="page-head">
   <p class="eyebrow">{html.escape(page.get('category', 'Guide'))} &middot; Free guide + copy-ready template</p>
   <h1>{html.escape(page['title'])}</h1>
@@ -1166,6 +1198,11 @@ a:hover { text-decoration: underline; }
 .byline { margin: 18px 0 0; font-size: .92rem; color: var(--muted); }
 .byline a { color: var(--ink); font-weight: 600; }
 .byline a:hover { color: var(--accent); }
+.crumbs { margin: 26px 0 -14px; font-size: .88rem; color: var(--muted); }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--accent); }
+.crumb-sep { margin: 0 8px; color: var(--line); }
+.crumb-current { color: var(--ink); font-weight: 500; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 28px; }
 .btn-primary {
   display: inline-flex; align-items: center; min-height: 48px; padding: 12px 26px;

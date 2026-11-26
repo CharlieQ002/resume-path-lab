@@ -12,7 +12,7 @@
 ## 2. 技术结构与命令
 
 ```
-pages/*.md      → 指南源稿（Markdown，14 篇）
+pages/*.md      → 指南源稿（Markdown，15 篇）
 legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
 build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
@@ -89,16 +89,16 @@ python validate_build.py   # 校验
 | resume-with-no-work-experience | how to write a resume with no work experience |
 | ats-friendly-resume-guide | ats friendly resume for tech jobs |
 | machine-learning-engineer-cover-letter | machine learning engineer cover letter entry level |
+| resume-skills-section-tech | resume skills section tech |
 | data-science-internship-resume | data science internship resume |
 | python-projects-for-resume | python projects for resume |
+| data-science-cover-letter-entry-level | data science cover letter entry level |
 
-合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer
+合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer / editorial-policy
 
 ### 建议的下一批主题（未被占用）
 
 - `entry-level-software-developer-portfolio` — 作品集怎么配简历
-- `data-science-cover-letter-entry-level` — DS 求职信
-- `resume-skills-section-tech` — tech 简历技能区怎么写
 - `internship-resume-computer-science` — CS 实习简历
 - `how-to-list-projects-on-resume` — 项目区通用写法
 

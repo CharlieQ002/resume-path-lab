@@ -369,6 +369,7 @@ def generate_og() -> None:
         ('entry-level-data-analyst-resume', 'Free guide + template', 'Entry-Level Data Analyst Resume'),
         ('data-science-internship-resume', 'Internship screen secrets', 'Data Science Internship Resume'),
         ('python-projects-for-resume', '10 projects ranked', 'Python Projects for a Resume'),
+        ('data-science-cover-letter-entry-level', 'Example + templates', 'Data Science Cover Letter Entry Level'),
     ]
     for slug, eyebrow, title in pages:
         og_image(OG_DIR / f'{slug}.png', eyebrow, title)

@@ -16,6 +16,8 @@ pages/*.md      → 指南源稿（Markdown，15 篇）
 legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
 build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
+PRODUCT.md      → 产品、受众、约束与无障碍要求
+DESIGN.md       → 当前视觉方向、设计 token、组件与响应式规范
 site/           → 构建产物（已提交进仓库，Cloudflare Pages 发布的就是它）
 site/templates.html → 构建生成的模板下载页（导航 CTA "Free Templates" 指向它）
 site/downloads/ → Word 模板 docx

@@ -12,7 +12,7 @@
 ## 2. 技术结构与命令
 
 ```
-pages/*.md      → 指南源稿（Markdown，20 篇）
+pages/*.md      → 指南源稿（Markdown，21 篇）
 legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
 build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
@@ -106,6 +106,8 @@ python publish_next.py     # 手动将一篇 ready 文章移入 pages/，随后�
 | how-to-list-projects-on-resume | how to list projects on resume |
 | entry-level-data-engineer-resume | entry level data engineer resume |
 | sql-projects-for-resume | sql projects for resume |
+
+| software-engineer-cover-letter-entry-level | software engineer cover letter entry level |
 
 合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer / editorial-policy
 

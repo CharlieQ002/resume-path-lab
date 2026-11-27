@@ -7,8 +7,8 @@ description: "Software engineer cover letter example for entry-level candidates:
 summary: "An entry-level software engineer cover letter example with a four-paragraph structure, project rewrites, and copy-ready templates."
 template: software-engineer-resume-no-experience-template.docx
 related: ["software-engineer-resume-no-experience", "internship-resume-computer-science", "entry-level-software-developer-portfolio", "machine-learning-engineer-cover-letter"]
-published: auto
-updated: auto
+published: 2026-11-27
+updated: 2026-11-27
 ---
 # Software Engineer Cover Letter for Entry-Level Candidates
 

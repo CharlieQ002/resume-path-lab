@@ -504,7 +504,7 @@ def strip_frontmatter(markdown: str) -> str:
     return markdown
 
 
-def markdown_to_html(markdown: str) -> str:
+def markdown_to_html(markdown: str, include_h1: bool = True) -> str:
     lines = markdown.splitlines()
     chunks: list[str] = []
     in_ul = False
@@ -538,7 +538,8 @@ def markdown_to_html(markdown: str) -> str:
         if stripped.startswith('# '):
             flush_paragraph()
             close_lists()
-            chunks.append(f'<h1>{inline_format(stripped[2:])}</h1>')
+            if include_h1:
+                chunks.append(f'<h1>{inline_format(stripped[2:])}</h1>')
             continue
         if stripped.startswith('## '):
             flush_paragraph()
@@ -892,8 +893,23 @@ def build_home(nav_html: str) -> None:
 </section>
 '''
     description = 'Free, copy-ready resume examples and templates for entry-level machine learning engineers, software engineers, and data scientists with no experience.'
+    organization = json_ld({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        'name': SITE_NAME,
+        'url': f'{BASE_URL}/',
+        'logo': f'{BASE_URL}/apple-touch-icon.png',
+        'description': 'Free resume examples and step-by-step guides for entry-level machine learning, software, and data roles.',
+    })
     (SITE_DIR / 'index.html').write_text(
-        shell(f'{SITE_NAME} | Free Entry-Level Tech Resume Examples', description, f'{BASE_URL}/', nav_html, body),
+        shell(
+            f'{SITE_NAME} | Free Entry-Level Tech Resume Examples',
+            description,
+            f'{BASE_URL}/',
+            nav_html,
+            body,
+            extra_head=organization + '\n',
+        ),
         encoding='utf-8',
     )
 
@@ -992,7 +1008,7 @@ def build_templates(nav_html: str) -> None:
 
 def build_legal(page: dict, nav_html: str) -> None:
     markdown = (LEGAL_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')
-    article = markdown_to_html(markdown)
+    article = markdown_to_html(markdown, include_h1=False)
     canonical = f"{BASE_URL}/{page['slug']}"
     body = f'''
 <section class="page-head compact">
@@ -1174,7 +1190,7 @@ TOC_SCRIPT = '''<script>
 
 def build_page(page: dict, nav_html: str) -> None:
     markdown = strip_frontmatter((PAGES_DIR / f"{page['slug']}.md").read_text(encoding='utf-8'))
-    article = markdown_to_html(markdown)
+    article = markdown_to_html(markdown, include_h1=False)
     h2_positions = [m.start() for m in re.finditer(r'<h2 id="', article)]
     if len(h2_positions) >= 2:
         at = h2_positions[1]

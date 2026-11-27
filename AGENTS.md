@@ -16,6 +16,9 @@ pages/*.md      → 指南源稿（Markdown，20 篇）
 legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
 build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
+content_queue/  → 100 个预留选题与待发布全文；只有 manifest 标记 ready 才会发布
+publish_next.py → 每次校验并移动一篇 ready 文章到 pages/；--check 只校验不改文件
+.github/workflows/publish-scheduled-guide.yml → 每天 01:17 UTC（北京时间 09:17）自动发布一篇
 PRODUCT.md      → 产品、受众、约束与无障碍要求
 DESIGN.md       → 当前视觉方向、设计 token、组件与响应式规范
 site/           → 构建产物（已提交进仓库，Cloudflare Pages 发布的就是它）
@@ -27,6 +30,8 @@ site/assets/og/ → OG 分享图（每页一张 1200x630 png，没有则自动�
 ```bash
 python build_site.py       # 构建（改完任何 md 或 py 后必须跑）
 python validate_build.py   # 校验
+python publish_next.py --check  # 校验下一篇待发布文章，不改文件
+python publish_next.py     # 手动将一篇 ready 文章移入 pages/，随后生成 OG、构建、校验再提交
 ```
 
 ## 3. 部署机制（重要）
@@ -34,6 +39,7 @@ python validate_build.py   # 校验
 - **push 到 `main` 分支 ≈ 1 分钟后自动上线**（Cloudflare Pages 连着 GitHub）
 - **不想上线就推到功能分支**：`git push origin window-X-主题`，不要 merge
 - 上线前务必本地 `python build_site.py` 跑通并提交 `site/` 产物
+- 每日发布工作流只处理 `content_queue/manifest.json` 中的 `ready` 文章；`draft` 不是完整内容，禁止改成 ready 凑数。无 ready 文章时不提交
 
 ## 4. 并行协作规则（防撞车）
 

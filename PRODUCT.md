@@ -25,7 +25,7 @@ A free, practical resume library for early-career technical candidates. The site
 - English-language content; collaborators communicate in Chinese.
 - Organic search is a primary acquisition channel.
 - The site seeks Google AdSense approval and uses clearly disclosed affiliate links.
-- Twenty guides, three Word templates, legal pages, and an editorial policy are present.
+- The `pages/` directory contains the published guide library; three Word templates, legal pages, and an editorial policy are also present.
 - Cloudflare Pages publishes the generated `site/` directory.
 
 ## Capabilities and Constraints
@@ -47,7 +47,7 @@ A free, practical resume library for early-career technical candidates. The site
 ## Evidence on Hand
 
 - Repository brief and `AGENTS.md` define the audience, search strategy, publishing workflow, and protected SEO elements.
-- Twenty Markdown guides and three downloadable `.docx` templates exist locally.
+- Published Markdown guides and three downloadable `.docx` templates exist locally.
 - The live site and local generator were inspected on November 26, 2026; all twenty guides were reviewed and expanded on November 27, 2026.
 - The live homepage and pillar article were captured at desktop and mobile sizes before redesign.
 - Existing guide copy supplies the annotated machine-learning project example used in the new homepage visual.

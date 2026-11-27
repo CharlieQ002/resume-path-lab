@@ -11,6 +11,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+import build_site
+
 ROOT = Path(__file__).resolve().parent
 OG_DIR = ROOT / 'site' / 'assets' / 'og'
 
@@ -62,10 +64,11 @@ def draw_og(slug: str, badge: str, title: str) -> None:
     title_font = font(FONT_BLACK, 64)
     lines = textwrap.wrap(title, width=26)
     y = 250
-    for i, line in enumerate(lines[:2]):
+    for i, line in enumerate(lines[:3]):
         d.text((140, y), line, font=title_font, fill=INK)
         y += 84
-    d.rectangle([140, y + 6, 240, y + 14], fill=ACCENT)
+    if y + 20 < 470:
+        d.rectangle([140, y + 6, 240, y + 14], fill=ACCENT)
 
     d.text((140, 480), 'Resume Path Lab', font=font(FONT_REG, 30), fill=MUTED)
 
@@ -89,6 +92,11 @@ def main() -> None:
             print('skip existing', slug)
             continue
         draw_og(slug, badge, title)
+    for page in build_site.PAGES:
+        slug = page['slug']
+        if (OG_DIR / f'{slug}.png').exists():
+            continue
+        draw_og(slug, 'FREE GUIDE + TEMPLATE', page['title'])
     draw_touch_icon()
 
 

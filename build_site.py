@@ -368,6 +368,57 @@ PAGES = [
     },
 ]
 
+
+def parse_frontmatter(markdown: str) -> dict:
+    lines = markdown.splitlines()
+    if not lines or lines[0].strip() != '---':
+        return {}
+    metadata = {}
+    for line in lines[1:]:
+        if line.strip() == '---':
+            break
+        if ':' not in line:
+            continue
+        key, value = line.split(':', 1)
+        value = value.strip()
+        if value.startswith('['):
+            metadata[key.strip()] = json.loads(value)
+        else:
+            metadata[key.strip()] = value.strip('"\'')
+    return metadata
+
+
+def load_frontmatter_pages() -> list[dict]:
+    existing = {page['slug'] for page in PAGES}
+    pages = []
+    for source in sorted(PAGES_DIR.glob('*.md')):
+        metadata = parse_frontmatter(source.read_text(encoding='utf-8'))
+        if not metadata:
+            continue
+        slug = metadata.get('slug', source.stem)
+        if slug in existing:
+            continue
+        required = {'category', 'title', 'keyword', 'description', 'summary', 'template', 'related'}
+        missing = required - metadata.keys()
+        if missing:
+            raise ValueError(f'{source.name}: missing metadata {sorted(missing)}')
+        pages.append({
+            'slug': slug,
+            'category': metadata['category'],
+            'title': metadata['title'],
+            'keyword': metadata['keyword'],
+            'description': metadata['description'],
+            'summary': metadata['summary'],
+            'template': metadata['template'],
+            'related': metadata['related'],
+            'published': metadata.get('published', CONTENT_REVIEW_DATE),
+            'updated': metadata.get('updated', CONTENT_REVIEW_DATE),
+        })
+        existing.add(slug)
+    return pages
+
+
+PAGES.extend(load_frontmatter_pages())
 PAGE_BY_SLUG = {p['slug']: p for p in PAGES}
 
 LEGAL_DIR = ROOT / 'legal'
@@ -848,7 +899,11 @@ def build_home(nav_html: str) -> None:
 
 
 def build_status(nav_html: str) -> None:
-    body = '''
+    total_words = sum(
+        len(strip_frontmatter((PAGES_DIR / f"{page['slug']}.md").read_text(encoding='utf-8')).split())
+        for page in PAGES
+    )
+    body = f'''
 <section class="page-head compact">
   <h1>Site Status</h1>
   <p class="lead">What is live, what is in progress, and where the library is heading next.</p>
@@ -857,7 +912,7 @@ def build_status(nav_html: str) -> None:
   <article class="card">
     <h2>Live now</h2>
     <ul>
-      <li>20 full resume guides (about 34,200 words of copy-ready content)</li>
+      <li>{len(PAGES)} full resume guides (about {total_words:,} words of copy-ready content)</li>
       <li>About, Contact, Editorial Policy, Privacy Policy, Terms, and Disclaimer pages</li>
       <li>3 downloadable Word resume templates (ATS-safe single-column layouts)</li>
       <li>FAQ structured data, canonical URLs, Open Graph images on every page</li>

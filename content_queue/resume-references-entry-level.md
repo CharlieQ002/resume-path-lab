@@ -12,7 +12,7 @@ updated: auto
 ---
 # References on an Entry-Level Resume: When and How to List Them
 
-Most entry-level candidates do not need to put references directly on the resume. A separate, well-prepared list is usually more useful. It protects your contacts' information, saves space for projects, and lets you share the right references when an employer asks.
+Keep references off the resume unless the employer asks for them there. Prepare a separate list of two or three people who know your work well and have agreed to be contacted. That protects their privacy and your limited page space.
 
 ## Who this page is for
 
@@ -123,7 +123,7 @@ Do not add the list as an unexpected second page to a one-page resume. A separat
 
 ## Copy-ready reference list template
 
-**[Your Name] — Professional References**
+**[Your Name] - Professional References**
 
 **[Reference Name]**  
 [Title and Organization]  

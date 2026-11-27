@@ -12,7 +12,7 @@ updated: auto
 ---
 # One-Page Resume for Entry-Level Candidates: Format and Editing Guide
 
-A one-page entry-level resume works when every section contributes relevant evidence. It is not a challenge to fit your entire history onto one sheet. Cut repetition, select the strongest proof, and keep the document readable. Shrinking the font and margins is usually the wrong solution.
+A one-page resume is an editing exercise, not a font-size exercise. Keep the proof that fits the role and cut repeated projects, courses, and skills. If it only fits at 8pt, the draft needs another pass.
 
 ## Who this page is for
 

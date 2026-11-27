@@ -12,7 +12,7 @@ updated: auto
 ---
 # Resume Summary With No Experience: Examples and Formula
 
-A resume summary with no experience should not pretend you already have a professional track record. Its job is to name your target and compress the evidence you already have from projects, coursework, volunteering, freelance work, or other activities. Two specific sentences can do that better than a paragraph of adjectives.
+You do not need a job title to write a useful summary. Name the role you want, then give the reader one or two projects that prove you are already practicing the relevant skills. Specific work beats a paragraph about motivation.
 
 ## Who this page is for
 

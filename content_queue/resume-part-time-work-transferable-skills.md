@@ -12,7 +12,7 @@ updated: auto
 ---
 # Part-Time Work on a Resume: Transferable Skills and Examples
 
-Part-time work can prove reliability, communication, and problem solving even when it has nothing to do with technology. The key is to translate your actual duties into evidence without giving them inflated technical names. Keep the role truthful and make the transferable behavior visible.
+A part-time job does not need a technical title to offer useful evidence. Retail, tutoring, and campus work can show accuracy, reliability, and clear problem solving. Keep the job title honest and make those behaviors specific.
 
 ## Who this page is for
 
@@ -222,6 +222,10 @@ Do not repeat every job in the opening. Mention part-time experience only when i
 For example, a candidate moving from retail into data analysis can connect operational reporting with new SQL projects. A tutor applying for developer education tools can connect debugging explanations with interface projects. A retail associate applying for a general software role can usually leave the job out of the summary and keep it in experience.
 
 The opening should still lead with the most relevant evidence. Part-time work supports the story; it does not need to become the headline.
+
+## Keep the job honest
+
+If a bullet sounds impressive but does not match the job you actually did, rewrite it before sending the application.
 
 ## Final part-time work review
 

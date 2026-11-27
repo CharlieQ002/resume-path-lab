@@ -12,7 +12,7 @@ updated: auto
 ---
 # Should You Put a Photo on a US Tech Resume?
 
-For most US technology applications, skip the photo. It usually takes space away from evidence, can introduce unnecessary bias, and may create parsing or layout problems. Let your projects, writing, and professional profiles show who you are instead.
+Most US tech resumes do not need a photo. It says little about your ability and can introduce bias or layout problems. Use the space for projects and professional links instead.
 
 ## Who this page is for
 

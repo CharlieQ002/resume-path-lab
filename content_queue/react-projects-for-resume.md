@@ -12,7 +12,7 @@ updated: auto
 ---
 # React Projects for a Resume: Ideas and Copy-Ready Bullets
 
-A React project should demonstrate more than rendering components. Useful evidence includes state design, accessible interaction, API failure handling, testing, and an explanation of why the interface works the way it does. A polished screenshot alone cannot show those skills.
+A React component can look finished in a screenshot and still fail the person using it. Strong projects show what happens during loading, errors, empty results, and keyboard navigation. That is the evidence worth putting on a resume.
 
 ## Who this page is for
 

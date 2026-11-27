@@ -12,7 +12,7 @@ updated: auto
 ---
 # Machine Learning Intern Resume: Example and Project-First Guide
 
-A machine learning intern resume should show that you can design a small experiment, evaluate it carefully, and explain what remains uncertain. You do not need production ML experience. You do need more than a list of libraries and a tutorial accuracy score.
+A good ML internship project starts with a question and a baseline, not a neural network. Show how you split the data, evaluated the result, and found the limits. Those habits matter more than a long framework list.
 
 ## Who this page is for
 

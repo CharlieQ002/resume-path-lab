@@ -12,7 +12,7 @@ updated: auto
 ---
 # When to Include GPA on a Resume: Student and Graduate Guide
 
-GPA can help a student resume when it adds relevant evidence of academic performance. It can also take space away from stronger proof such as projects, internships, and technical work. Include it deliberately, present the scale accurately, and never use a predicted final value as if it were already earned.
+GPA is optional evidence, not a required ingredient. Include it when it strengthens the application or the employer asks for it, and show the scale exactly. Otherwise, let stronger projects and internships use the space.
 
 ## Who this page is for
 
@@ -170,6 +170,10 @@ Pass/fail courses, repeated courses, exchange programs, and institutional gradin
 If an exchange transcript uses another scale, keep the systems separate unless your university provides an official conversion. If a repeated course improved your record, use the current transcript value and do not advertise the improvement as a second GPA.
 
 For academic honors that use a different threshold, list the honor only when the institution has awarded it. Do not infer Latin honors, Dean's List, or a scholarship from your GPA alone.
+
+## Make the choice for this application
+
+The right choice is the one that makes your current evidence clearest to the person reading it.
 
 ## Final GPA review
 

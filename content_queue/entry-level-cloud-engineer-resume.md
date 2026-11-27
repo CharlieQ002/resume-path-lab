@@ -12,7 +12,7 @@ updated: auto
 ---
 # Entry-Level Cloud Engineer Resume: Example, Projects, and Skills
 
-An entry-level cloud engineer resume should show that you can deploy and operate a small system safely. Cloud certifications can support that story, but they do not replace working evidence. Focus on infrastructure, permissions, logging, recovery, and cost awareness rather than listing every cloud service.
+Deploying the app is only the first step. A cloud resume gets credible when you can explain permissions, logs, recovery, and cost. A small system with those details is better evidence than a list of services.
 
 ## Who this page is for
 

@@ -12,7 +12,7 @@ updated: auto
 ---
 # LinkedIn and GitHub on an Entry-Level Resume: Links and Examples
 
-LinkedIn and GitHub can help an employer verify your projects and professional direction. They are optional supporting evidence, not mandatory decorations. Add them only when the public profiles are accessible, current, and consistent with the resume.
+A profile link is an invitation to check your evidence. Only include LinkedIn or GitHub when the public page is current, accessible, and consistent with the resume. One useful link is better than a row of neglected profiles.
 
 ## Who this page is for
 

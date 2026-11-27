@@ -12,7 +12,7 @@ updated: auto
 ---
 # Data Analyst Intern Resume: Example and Project-First Guide
 
-A data analyst intern resume should show that you can prepare data, ask a useful question, and explain an answer honestly. Recruiters do not need a student to have owned a company dashboard. They need evidence of SQL or spreadsheet fundamentals, careful validation, and clear communication.
+A dashboard is not the first thing an internship reviewer needs to trust. They need to see how you prepared the data, asked the question, and checked the answer. Show those steps and your SQL or Excel work becomes much easier to evaluate.
 
 ## Who this page is for
 

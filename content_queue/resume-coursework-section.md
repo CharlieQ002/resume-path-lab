@@ -12,7 +12,7 @@ updated: auto
 ---
 # Relevant Coursework on a Resume: Examples and Placement
 
-Relevant coursework can show that your education supports the role, especially when professional experience is limited. It works best as a small, targeted selection under education—not as a complete transcript or a substitute for projects.
+Coursework belongs when it explains why your education fits the job. A short list under the degree is usually enough. Save detailed bullets for courses with a real project or applied result.
 
 ## Who this page is for
 

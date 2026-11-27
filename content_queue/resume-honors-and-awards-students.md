@@ -12,7 +12,7 @@ updated: auto
 ---
 # Honors and Awards on a Student Resume: Examples and Placement
 
-Honors and awards can support a student resume when they provide credible evidence of academic performance, technical work, leadership, or competition results. A long list of certificates is less useful than one relevant distinction with a clear issuer and context.
+An award is useful when the reader can tell what it recognizes and why it matters. Name the issuer, date, and verified result, then add selection context only when you know it. One relevant distinction beats a page of certificates.
 
 ## Who this page is for
 

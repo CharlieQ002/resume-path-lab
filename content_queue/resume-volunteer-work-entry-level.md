@@ -12,7 +12,7 @@ updated: auto
 ---
 # Volunteer Work on an Entry-Level Resume: Examples and Bullets
 
-Volunteer work can strengthen an entry-level resume when it demonstrates relevant skills, reliability, or service to a real audience. It should not appear as a list of organizations and dates alone. Explain what you personally did, what you delivered, and why that evidence matters for the role.
+Volunteering counts when the reader can see what you personally did. A workshop handout, a clean data report, or a reliable weekly responsibility says more than a list of organizations. Choose the service that supports the role you want.
 
 ## Who this page is for
 
@@ -178,6 +178,10 @@ For a portfolio, include only a sanitized handout, simulated dataset, or public 
 For a software application, lead with the technical artifact, testing, and handoff. For a data application, lead with record definitions, reconciliation, and reporting. For a support role, lead with diagnosis, explanation, and patience with first-time users. For a program or operations role, lead with scheduling, dependencies, and reliable follow-through.
 
 The service remains the same; only the most relevant detail moves first. Avoid adding a technical interpretation after the fact. If you only coordinated schedules, do not turn that into data engineering. Use it as evidence of coordination and let another project prove the technical skill.
+
+## Keep the contribution recognizable
+
+Keep the description specific enough that the organization could recognize your contribution immediately.
 
 ## Final volunteer work review
 

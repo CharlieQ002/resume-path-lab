@@ -12,7 +12,7 @@ updated: auto
 ---
 # Resume Objective vs Summary: Entry-Level Examples and Decision Guide
 
-The difference between a resume objective and a resume summary is not simply experience level. An objective explains where you are going; a summary compresses the evidence you already have. Entry-level candidates can use either, but the opening only helps when it adds direction or proof that the rest of the page needs.
+Use an objective when your direction needs explaining and a summary when your evidence needs compressing. Experience level alone does not settle the choice. For entry-level candidates, either can work, and sometimes neither is needed.
 
 ## Who this page is for
 

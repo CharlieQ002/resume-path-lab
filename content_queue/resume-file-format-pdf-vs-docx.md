@@ -12,7 +12,7 @@ updated: auto
 ---
 # Resume PDF vs DOCX: Which Format to Submit
 
-PDF and DOCX can both work for a technical resume. The better choice depends on the application instructions, your editing needs, and how the file behaves after export. Follow the employer first, then check readability, parsing, links, and file integrity before submitting.
+Start with the employer's instructions, not your preferred extension. PDF usually preserves layout; DOCX makes editing easier. In either format, test the exported file's text, links, and reading order before you upload.
 
 ## Who this page is for
 
@@ -174,6 +174,10 @@ These situations do not change the main rule: preserve a clean source and valida
 A visually stable file can still be difficult to use. Check readable font size, sufficient contrast, meaningful link text, and a reading order that makes sense with assistive technology or plain-text selection.
 
 If the editor provides an accessibility checker, run it before export. Small structural improvements in the source are more effective than trying to repair a flattened PDF afterward.
+
+## Check once before uploading
+
+One careful export check can prevent a reviewer from seeing a broken version of an otherwise strong resume.
 
 ## Final format decision
 

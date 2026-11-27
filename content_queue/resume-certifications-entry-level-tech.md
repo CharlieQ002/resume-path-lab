@@ -12,7 +12,7 @@ updated: auto
 ---
 # Certifications on an Entry-Level Tech Resume: What Counts
 
-Certifications can support an entry-level tech resume when they validate relevant knowledge and fit the role. They do not replace projects, experience, or the ability to explain your work. Choose credentials carefully, show their status accurately, and connect them with practical evidence.
+A certificate can support your application, but it cannot carry it alone. Choose credentials that fit the role and show the issuer and current status, then let a project prove what you learned.
 
 ## Who this page is for
 
@@ -71,7 +71,7 @@ A useful entry contains:
 Examples:
 
 - Microsoft Certified: Azure Fundamentals, Microsoft, earned 2026
-- AWS Certified Solutions Architect – Associate, Amazon Web Services, valid through 2028
+- AWS Certified Solutions Architect - Associate, Amazon Web Services, valid through 2028
 - Google Data Analytics Certificate, Coursera, completed 2026
 
 Use the official name rather than an abbreviation alone, especially when several credentials share similar titles.
@@ -80,7 +80,7 @@ Use the official name rather than an abbreviation alone, especially when several
 
 For an in-progress program, state the current status honestly:
 
-- AWS Certified Solutions Architect – Associate, exam scheduled for [month, year]
+- AWS Certified Solutions Architect - Associate, exam scheduled for [month, year]
 - Data Analytics Certificate, [provider], expected completion [month, year]
 
 Do not list the certification as earned before passing the required assessment. If only one course is complete, name that course rather than the full certificate.
@@ -164,6 +164,10 @@ Review the list again whenever your target role changes. A credential that helps
 Before adding a verification URL, open it in a private browser window. It should show the correct credential without exposing your home address, private email, account dashboard, or other personal information.
 
 Use the public credential page when one exists. Otherwise, provide the official name and year and let the employer request proof later. A broken or login-required link makes the section harder to verify.
+
+## Keep the list explainable
+
+The goal is a short list you can explain without notes, not a long list that looks impressive at a glance.
 
 ## Final certification review
 

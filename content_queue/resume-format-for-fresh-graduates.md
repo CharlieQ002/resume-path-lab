@@ -12,7 +12,7 @@ updated: auto
 ---
 # Resume Format for Fresh Graduates: Section-by-Section Guide
 
-A fresh graduate resume format should make your education and early evidence easy to understand. It should not imitate an experienced executive resume with a long professional history. Use a clear section order, a readable layout, and project entries that show what you can already do.
+Fresh graduates do not need to copy an executive resume. Put education and early evidence where a reviewer can find them, then use simple sections to show what you built, studied, and contributed.
 
 ## Who this page is for
 

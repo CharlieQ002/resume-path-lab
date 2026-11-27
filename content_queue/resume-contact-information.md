@@ -12,7 +12,7 @@ updated: auto
 ---
 # Resume Contact Information: What to Include and What to Skip
 
-Your contact information should make it easy for an employer to reach you and verify your professional work. It should not include personal details that create privacy risk or distract from your qualifications. A small, accurate header is enough.
+A good contact header answers two questions: how can the employer reach you, and where can they verify your work? Keep it short and accurate. Most personal details belong outside the resume.
 
 ## Who this page is for
 

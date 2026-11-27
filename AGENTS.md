@@ -18,7 +18,7 @@ build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常�
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
 content_queue/  → 100 个预留选题与待发布全文；只有 manifest 标记 ready 才会发布
 publish_next.py → 每次校验并移动一篇 ready 文章到 pages/；--check 只校验不改文件
-.github/workflows/publish-scheduled-guide.yml → 每天 01:17 UTC（北京时间 09:17）自动发布一篇
+.github/workflows/publish-scheduled-guide.yml → 每周一、三、五 01:17 UTC（北京时间 09:17）自动发布一篇
 PRODUCT.md      → 产品、受众、约束与无障碍要求
 DESIGN.md       → 当前视觉方向、设计 token、组件与响应式规范
 site/           → 构建产物（已提交进仓库，Cloudflare Pages 发布的就是它）
@@ -39,7 +39,8 @@ python publish_next.py     # 手动将一篇 ready 文章移入 pages/，随后�
 - **push 到 `main` 分支 ≈ 1 分钟后自动上线**（Cloudflare Pages 连着 GitHub）
 - **不想上线就推到功能分支**：`git push origin window-X-主题`，不要 merge
 - 上线前务必本地 `python build_site.py` 跑通并提交 `site/` 产物
-- 每日发布工作流只处理 `content_queue/manifest.json` 中的 `ready` 文章；`draft` 不是完整内容，禁止改成 ready 凑数。无 ready 文章时不提交
+- 每周一、三、五的发布工作流只处理 `content_queue/manifest.json` 中的 `ready` 文章；`draft` 不是完整内容，禁止改成 ready 凑数。无 ready 文章时不提交
+- 发布器会拒绝重复标题/关键词、跨文章 12 词以上重复句，以及 8 词片段 Jaccard 相似度 ≥ 0.20 的候选文章；命中后保留队列并人工复核，禁止为频率降低标准
 
 ## 4. 并行协作规则（防撞车）
 

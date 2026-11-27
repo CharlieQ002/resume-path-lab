@@ -39,4 +39,6 @@ Commit the moved article, updated manifest, generated site, and documentation. P
 
 ## Automatic publication
 
-`.github/workflows/publish-scheduled-guide.yml` runs daily at 01:17 UTC (09:17 Asia/Shanghai) and can also be started manually with **Run workflow**. It publishes at most one ready article, rebuilds and validates the site, then commits and pushes only when an article was actually published. If no article is ready, it exits without creating a commit.
+`.github/workflows/publish-scheduled-guide.yml` runs at 01:17 UTC (09:17 Asia/Shanghai) on Monday, Wednesday, and Friday, and can also be started manually with **Run workflow**. It publishes at most one ready article, rebuilds and validates the site, then commits and pushes only when an article was actually published. If no article is ready, it exits without creating a commit.
+
+Before publication, the publisher rejects duplicate titles or keywords, exact sentences of 12 or more words shared with another guide, and candidates whose 8-word-shingle Jaccard similarity with any published or queued guide is 0.20 or higher. These checks reduce repetition but do not guarantee AdSense approval; substantive review is still required.

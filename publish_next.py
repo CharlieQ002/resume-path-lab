@@ -11,6 +11,7 @@ import build_site
 ROOT = Path(__file__).resolve().parent
 QUEUE_DIR = ROOT / 'content_queue'
 MANIFEST_PATH = QUEUE_DIR / 'manifest.json'
+SIMILARITY_LIMIT = 0.20
 
 
 def load_manifest() -> list[dict]:
@@ -21,6 +22,44 @@ def load_manifest() -> list[dict]:
         assert len(values) == len(set(values)), f'Duplicate {key} in manifest'
     assert sorted(entry['order'] for entry in entries) == list(range(1, 101))
     return entries
+
+
+def text_features(text: str) -> tuple[set[tuple[str, ...]], set[str]]:
+    body = build_site.strip_frontmatter(text).lower()
+    words = re.findall(r'[a-z0-9]+', body)
+    shingles = {tuple(words[index:index + 8]) for index in range(max(0, len(words) - 7))}
+    plain = re.sub(r'[#>*_\[\]()-]', ' ', body)
+    sentences = set()
+    for sentence in re.split(r'(?<=[.!?])\s+', plain):
+        normalized = ' '.join(re.findall(r'[a-z0-9]+', sentence))
+        if len(normalized.split()) >= 12:
+            sentences.add(normalized)
+    return shingles, sentences
+
+
+def originality_report(slug: str, text: str) -> tuple[float, str]:
+    candidate_shingles, candidate_sentences = text_features(text)
+    sources = [
+        (page['slug'], ROOT / 'pages' / f"{page['slug']}.md")
+        for page in build_site.PAGES
+    ]
+    sources.extend(
+        (entry['slug'], QUEUE_DIR / f"{entry['slug']}.md")
+        for entry in load_manifest()
+        if entry['status'] == 'ready' and entry['slug'] != slug
+    )
+    highest = (0.0, '')
+    for other_slug, source in sources:
+        other_shingles, other_sentences = text_features(source.read_text(encoding='utf-8'))
+        repeated = candidate_sentences & other_sentences
+        if repeated:
+            example = sorted(repeated)[0]
+            raise ValueError(f'{slug}: repeated long sentence with {other_slug}: {example[:120]}')
+        union = candidate_shingles | other_shingles
+        similarity = len(candidate_shingles & other_shingles) / len(union) if union else 0.0
+        if similarity > highest[0]:
+            highest = (similarity, other_slug)
+    return highest
 
 
 def validate_article(entry: dict) -> str:
@@ -45,6 +84,11 @@ def validate_article(entry: dict) -> str:
         raise ValueError(f'{slug}: description exceeds 155 characters')
     if slug in build_site.PAGE_BY_SLUG:
         raise ValueError(f'{slug}: already exists in published pages')
+    for page in build_site.PAGES:
+        if metadata['keyword'].casefold() == page['keyword'].casefold():
+            raise ValueError(f"{slug}: keyword already used by {page['slug']}")
+        if metadata['title'].casefold() == page['title'].casefold():
+            raise ValueError(f"{slug}: title already used by {page['slug']}")
     word_count = len(build_site.strip_frontmatter(text).split())
     if not 1500 <= word_count <= 1900:
         raise ValueError(f'{slug}: expected 1500-1900 words, found {word_count}')
@@ -56,6 +100,9 @@ def validate_article(entry: dict) -> str:
         raise ValueError(f'{slug}: unknown related pages {missing_related}')
     if not (ROOT / 'site' / 'downloads' / metadata['template']).exists():
         raise ValueError(f'{slug}: template does not exist')
+    similarity, similar_slug = originality_report(slug, text)
+    if similarity >= SIMILARITY_LIMIT:
+        raise ValueError(f'{slug}: similarity {similarity:.3f} with {similar_slug} exceeds {SIMILARITY_LIMIT:.2f}')
     return text
 
 

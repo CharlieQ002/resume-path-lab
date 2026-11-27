@@ -123,10 +123,10 @@
   {
     "order": 16,
     "slug": "resume-references-entry-level",
-    "title": "References on an Entry-Level Resume: When and How to List Them",
+    "title": "Entry-Level Resume References: When and How to List Them",
     "category": "Resume Basics",
     "keyword": "references on entry level resume",
-    "status": "draft"
+    "status": "ready"
   },
   {
     "order": 17,
@@ -134,15 +134,15 @@
     "title": "Resume Contact Information: What to Include and What to Skip",
     "category": "Resume Basics",
     "keyword": "resume contact information",
-    "status": "draft"
+    "status": "ready"
   },
   {
     "order": 18,
     "slug": "resume-linkedin-github-entry-level",
-    "title": "LinkedIn and GitHub on an Entry-Level Resume: Links & Examples",
+    "title": "LinkedIn and GitHub on a Resume: Entry-Level Guide",
     "category": "Resume Basics",
     "keyword": "linkedin github on entry level resume",
-    "status": "draft"
+    "status": "ready"
   },
   {
     "order": 19,
@@ -150,7 +150,7 @@
     "title": "Resume PDF vs DOCX: Which Format to Submit",
     "category": "Resume Basics",
     "keyword": "resume pdf vs docx",
-    "status": "draft"
+    "status": "ready"
   },
   {
     "order": 20,
@@ -158,7 +158,7 @@
     "title": "Should You Put a Photo on a US Tech Resume?",
     "category": "Resume Basics",
     "keyword": "photo on us tech resume",
-    "status": "draft"
+    "status": "ready"
   },
   {
     "order": 21,

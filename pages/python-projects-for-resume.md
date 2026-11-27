@@ -103,6 +103,30 @@ Three bullets per project. Put the strongest first.
 
 Above work experience when your experience is not technical, below it when you have relevant internships. Cap it at two or three projects; depth signals more than breadth at this stage. Each project gets a name, a one-line context, and three bullets. The GitHub link goes in the header, not repeated per project.
 
+## Finish one project before starting the next one
+
+A long list of small scripts is less useful than one project with a complete proof loop. Choose the project closest to your target role and check whether it includes a user or problem, a working implementation, a validation step, and a readable handoff.
+
+For a data project, the validation may be a set of reconciliation checks and an explained chart. For a web app, it may be tests, a deployed demo, and a short performance measurement. For an automation tool, it may be sample inputs, expected outputs, logging, and failure handling.
+
+Weak:
+
+- Wrote a Python script to automate CSV reports.
+
+Stronger:
+
+- Built a Python reporting tool that validates CSV inputs, logs rejected rows, and generates repeatable summary outputs from a documented command-line workflow.
+
+The stronger bullet describes reliability and usability rather than simply naming Python. Add only the behavior you implemented.
+
+Finish the repository with setup instructions, a small example, and known limitations. Then write the resume bullet from the completed evidence. This sequence prevents the resume from promising a project that exists only as an idea.
+
+## Match the proof to the type of Python work
+
+Different projects need different evidence. A data pipeline needs input checks and repeatable output. A web application needs routes, validation, and tests for failure cases. A machine learning script needs a baseline and evaluation context. A desktop or automation tool needs clear sample inputs, error handling, and usage instructions.
+
+Choose two proof points that fit your project and make them visible in both the bullet and README. This is more useful than repeating the same generic test-coverage or performance claim across every kind of Python work.
+
 ## FAQ
 
 ### Are tutorial projects ever worth listing?

@@ -1,0 +1,803 @@
+[
+  {
+    "order": 1,
+    "slug": "software-engineer-cover-letter-entry-level",
+    "title": "Software Engineer Cover Letter: Entry-Level Example & Guide",
+    "category": "Software",
+    "keyword": "software engineer cover letter entry level",
+    "status": "published",
+    "published": "2026-11-27"
+  },
+  {
+    "order": 2,
+    "slug": "data-analyst-intern-resume",
+    "title": "Data Analyst Intern Resume: Example & Project Guide",
+    "category": "Data",
+    "keyword": "data analyst intern resume",
+    "status": "ready"
+  },
+  {
+    "order": 3,
+    "slug": "react-projects-for-resume",
+    "title": "React Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "react projects for resume",
+    "status": "ready"
+  },
+  {
+    "order": 4,
+    "slug": "machine-learning-intern-resume",
+    "title": "Machine Learning Intern Resume: Example & Project Guide",
+    "category": "Machine Learning",
+    "keyword": "machine learning intern resume",
+    "status": "ready"
+  },
+  {
+    "order": 5,
+    "slug": "entry-level-cloud-engineer-resume",
+    "title": "Entry-Level Cloud Engineer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level cloud engineer resume",
+    "status": "ready"
+  },
+  {
+    "order": 6,
+    "slug": "resume-summary-no-experience",
+    "title": "Resume Summary With No Experience: Examples & Formula",
+    "category": "Resume Basics",
+    "keyword": "resume summary no experience",
+    "status": "ready"
+  },
+  {
+    "order": 7,
+    "slug": "resume-objective-vs-summary",
+    "title": "Resume Objective vs Summary: Entry-Level Examples",
+    "category": "Resume Basics",
+    "keyword": "resume objective vs summary",
+    "status": "ready"
+  },
+  {
+    "order": 8,
+    "slug": "one-page-resume-entry-level",
+    "title": "One-Page Entry-Level Resume: Format & Examples",
+    "category": "Resume Basics",
+    "keyword": "one page resume entry level",
+    "status": "ready"
+  },
+  {
+    "order": 9,
+    "slug": "resume-format-for-fresh-graduates",
+    "title": "Resume Format for Fresh Graduates: Section-by-Section Guide",
+    "category": "Resume Basics",
+    "keyword": "resume format for fresh graduates",
+    "status": "ready"
+  },
+  {
+    "order": 10,
+    "slug": "resume-coursework-section",
+    "title": "Relevant Coursework on a Resume: Examples & Placement",
+    "category": "Resume Basics",
+    "keyword": "relevant coursework on resume",
+    "status": "ready"
+  },
+  {
+    "order": 11,
+    "slug": "resume-gpa-when-to-include",
+    "title": "When to Include GPA on a Resume: Student & Graduate Guide",
+    "category": "Resume Basics",
+    "keyword": "when to include gpa on resume",
+    "status": "ready"
+  },
+  {
+    "order": 12,
+    "slug": "resume-volunteer-work-entry-level",
+    "title": "Volunteer Work on an Entry-Level Resume: Examples & Bullets",
+    "category": "Resume Basics",
+    "keyword": "volunteer work on resume entry level",
+    "status": "ready"
+  },
+  {
+    "order": 13,
+    "slug": "resume-part-time-work-transferable-skills",
+    "title": "Part-Time Work on a Resume: Transferable Skills & Examples",
+    "category": "Resume Basics",
+    "keyword": "part time work resume transferable skills",
+    "status": "ready"
+  },
+  {
+    "order": 14,
+    "slug": "resume-honors-and-awards-students",
+    "title": "Honors and Awards on a Student Resume: Examples & Placement",
+    "category": "Resume Basics",
+    "keyword": "honors and awards on student resume",
+    "status": "ready"
+  },
+  {
+    "order": 15,
+    "slug": "resume-certifications-entry-level-tech",
+    "title": "Certifications on an Entry-Level Tech Resume: What Counts",
+    "category": "Resume Basics",
+    "keyword": "certifications on entry level tech resume",
+    "status": "ready"
+  },
+  {
+    "order": 16,
+    "slug": "resume-references-entry-level",
+    "title": "Entry-Level Resume References: When and How to List Them",
+    "category": "Resume Basics",
+    "keyword": "references on entry level resume",
+    "status": "ready"
+  },
+  {
+    "order": 17,
+    "slug": "resume-contact-information",
+    "title": "Resume Contact Information: What to Include and What to Skip",
+    "category": "Resume Basics",
+    "keyword": "resume contact information",
+    "status": "ready"
+  },
+  {
+    "order": 18,
+    "slug": "resume-linkedin-github-entry-level",
+    "title": "LinkedIn and GitHub on a Resume: Entry-Level Guide",
+    "category": "Resume Basics",
+    "keyword": "linkedin github on entry level resume",
+    "status": "ready"
+  },
+  {
+    "order": 19,
+    "slug": "resume-file-format-pdf-vs-docx",
+    "title": "Resume PDF vs DOCX: Which Format to Submit",
+    "category": "Resume Basics",
+    "keyword": "resume pdf vs docx",
+    "status": "ready"
+  },
+  {
+    "order": 20,
+    "slug": "resume-photo-us-tech",
+    "title": "Should You Put a Photo on a US Tech Resume?",
+    "category": "Resume Basics",
+    "keyword": "photo on us tech resume",
+    "status": "ready"
+  },
+  {
+    "order": 21,
+    "slug": "resume-action-verbs-no-experience",
+    "title": "Resume Action Verbs for Candidates With No Experience",
+    "category": "Resume Basics",
+    "keyword": "resume action verbs no experience",
+    "status": "draft"
+  },
+  {
+    "order": 22,
+    "slug": "resume-quantify-accomplishments-no-experience",
+    "title": "How to Quantify Accomplishments Without Work Experience",
+    "category": "Resume Basics",
+    "keyword": "quantify accomplishments without work experience",
+    "status": "draft"
+  },
+  {
+    "order": 23,
+    "slug": "resume-tailoring-job-description",
+    "title": "How to Tailor a Resume to a Job Description: Example Workflow",
+    "category": "Resume Basics",
+    "keyword": "tailor resume to job description",
+    "status": "draft"
+  },
+  {
+    "order": 24,
+    "slug": "resume-keywords-entry-level-tech",
+    "title": "Entry-Level Tech Resume Keywords: Use Them Without Stuffing",
+    "category": "Resume Basics",
+    "keyword": "entry level tech resume keywords",
+    "status": "draft"
+  },
+  {
+    "order": 25,
+    "slug": "entry-level-cover-letter-no-experience",
+    "title": "Entry-Level Cover Letter With No Experience: Example & Template",
+    "category": "Resume Basics",
+    "keyword": "entry level cover letter no experience",
+    "status": "draft"
+  },
+  {
+    "order": 26,
+    "slug": "thank-you-email-after-technical-interview",
+    "title": "Thank-You Email After a Technical Interview: Examples & Timing",
+    "category": "Resume Basics",
+    "keyword": "thank you email after technical interview",
+    "status": "draft"
+  },
+  {
+    "order": 27,
+    "slug": "follow-up-email-after-job-application",
+    "title": "Follow-Up Email After a Job Application: Template & Timing",
+    "category": "Resume Basics",
+    "keyword": "follow up email after job application",
+    "status": "draft"
+  },
+  {
+    "order": 28,
+    "slug": "job-application-tracker-entry-level",
+    "title": "Job Application Tracker for Entry-Level Candidates: Fields & Workflow",
+    "category": "Resume Basics",
+    "keyword": "job application tracker entry level",
+    "status": "draft"
+  },
+  {
+    "order": 29,
+    "slug": "resume-for-career-changers-tech",
+    "title": "Career Change Resume for Tech: Transferable Evidence & Example",
+    "category": "Resume Basics",
+    "keyword": "career change resume tech",
+    "status": "draft"
+  },
+  {
+    "order": 30,
+    "slug": "technical-resume-for-bootcamp-graduates",
+    "title": "Technical Resume for Bootcamp Graduates: Projects & Example",
+    "category": "Resume Basics",
+    "keyword": "technical resume for bootcamp graduates",
+    "status": "draft"
+  },
+  {
+    "order": 31,
+    "slug": "entry-level-frontend-developer-resume",
+    "title": "Entry-Level Frontend Developer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level frontend developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 32,
+    "slug": "entry-level-backend-developer-resume",
+    "title": "Entry-Level Backend Developer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level backend developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 33,
+    "slug": "entry-level-full-stack-developer-resume",
+    "title": "Entry-Level Full-Stack Developer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level full stack developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 34,
+    "slug": "junior-web-developer-resume",
+    "title": "Junior Web Developer Resume: Example & Writing Guide",
+    "category": "Software",
+    "keyword": "junior web developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 35,
+    "slug": "javascript-projects-for-resume",
+    "title": "JavaScript Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "javascript projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 36,
+    "slug": "java-projects-for-resume",
+    "title": "Java Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "java projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 37,
+    "slug": "api-projects-for-resume",
+    "title": "API Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "api projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 38,
+    "slug": "git-github-for-resume",
+    "title": "Git and GitHub on a Resume: Skills, Projects & Evidence",
+    "category": "Software",
+    "keyword": "git github on resume",
+    "status": "draft"
+  },
+  {
+    "order": 39,
+    "slug": "open-source-contributions-for-resume",
+    "title": "Open-Source Contributions on a Resume: Examples & Bullets",
+    "category": "Software",
+    "keyword": "open source contributions on resume",
+    "status": "draft"
+  },
+  {
+    "order": 40,
+    "slug": "hackathon-projects-for-resume",
+    "title": "Hackathon Projects on a Resume: Examples & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "hackathon projects on resume",
+    "status": "draft"
+  },
+  {
+    "order": 41,
+    "slug": "software-testing-projects-for-resume",
+    "title": "Software Testing Projects for a Resume: Ideas & Bullets",
+    "category": "Software",
+    "keyword": "software testing projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 42,
+    "slug": "qa-engineer-resume-no-experience",
+    "title": "QA Engineer Resume With No Experience: Example & Projects",
+    "category": "Software",
+    "keyword": "qa engineer resume no experience",
+    "status": "draft"
+  },
+  {
+    "order": 43,
+    "slug": "devops-engineer-resume-entry-level",
+    "title": "Entry-Level DevOps Engineer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level devops engineer resume",
+    "status": "draft"
+  },
+  {
+    "order": 44,
+    "slug": "cybersecurity-resume-no-experience",
+    "title": "Cybersecurity Resume With No Experience: Example & Projects",
+    "category": "Software",
+    "keyword": "cybersecurity resume no experience",
+    "status": "draft"
+  },
+  {
+    "order": 45,
+    "slug": "mobile-app-developer-resume-entry-level",
+    "title": "Entry-Level Mobile App Developer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level mobile app developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 46,
+    "slug": "android-projects-for-resume",
+    "title": "Android Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "android projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 47,
+    "slug": "ios-projects-for-resume",
+    "title": "iOS Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Software",
+    "keyword": "ios projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 48,
+    "slug": "game-developer-resume-entry-level",
+    "title": "Entry-Level Game Developer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level game developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 49,
+    "slug": "computer-science-resume-no-experience",
+    "title": "Computer Science Resume With No Experience: Example & Guide",
+    "category": "Software",
+    "keyword": "computer science resume no experience",
+    "status": "draft"
+  },
+  {
+    "order": 50,
+    "slug": "self-taught-programmer-resume",
+    "title": "Self-Taught Programmer Resume: Example & Proof of Skill",
+    "category": "Software",
+    "keyword": "self taught programmer resume",
+    "status": "draft"
+  },
+  {
+    "order": 51,
+    "slug": "freelance-developer-resume-entry-level",
+    "title": "Entry-Level Freelance Developer Resume: Example & Projects",
+    "category": "Software",
+    "keyword": "entry level freelance developer resume",
+    "status": "draft"
+  },
+  {
+    "order": 52,
+    "slug": "software-internship-cover-letter",
+    "title": "Software Internship Cover Letter: Example & Template",
+    "category": "Software",
+    "keyword": "software internship cover letter",
+    "status": "draft"
+  },
+  {
+    "order": 53,
+    "slug": "technical-portfolio-for-career-changers",
+    "title": "Technical Portfolio for Career Changers: Projects & Structure",
+    "category": "Software",
+    "keyword": "technical portfolio for career changers",
+    "status": "draft"
+  },
+  {
+    "order": 54,
+    "slug": "software-documentation-projects-for-resume",
+    "title": "Software Documentation Projects for a Resume: Examples & Bullets",
+    "category": "Software",
+    "keyword": "software documentation projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 55,
+    "slug": "accessibility-projects-for-developers-resume",
+    "title": "Accessibility Projects for Developer Resumes: Ideas & Bullets",
+    "category": "Software",
+    "keyword": "accessibility projects for developers resume",
+    "status": "draft"
+  },
+  {
+    "order": 56,
+    "slug": "entry-level-business-analyst-resume",
+    "title": "Entry-Level Business Analyst Resume: Example & Projects",
+    "category": "Data",
+    "keyword": "entry level business analyst resume",
+    "status": "draft"
+  },
+  {
+    "order": 57,
+    "slug": "entry-level-business-intelligence-analyst-resume",
+    "title": "Entry-Level Business Intelligence Analyst Resume: Example",
+    "category": "Data",
+    "keyword": "entry level business intelligence analyst resume",
+    "status": "draft"
+  },
+  {
+    "order": 58,
+    "slug": "data-engineering-intern-resume",
+    "title": "Data Engineering Intern Resume: Example & Project Guide",
+    "category": "Data",
+    "keyword": "data engineering intern resume",
+    "status": "draft"
+  },
+  {
+    "order": 59,
+    "slug": "data-analytics-projects-for-resume",
+    "title": "Data Analytics Projects for a Resume: Ideas & Bullets",
+    "category": "Data",
+    "keyword": "data analytics projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 60,
+    "slug": "excel-projects-for-resume",
+    "title": "Excel Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "excel projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 61,
+    "slug": "tableau-projects-for-resume",
+    "title": "Tableau Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "tableau projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 62,
+    "slug": "power-bi-projects-for-resume",
+    "title": "Power BI Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "power bi projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 63,
+    "slug": "statistics-projects-for-resume",
+    "title": "Statistics Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "statistics projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 64,
+    "slug": "data-cleaning-projects-for-resume",
+    "title": "Data Cleaning Projects for a Resume: Ideas & Bullets",
+    "category": "Data",
+    "keyword": "data cleaning projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 65,
+    "slug": "data-visualization-projects-for-resume",
+    "title": "Data Visualization Projects for a Resume: Ideas & Bullets",
+    "category": "Data",
+    "keyword": "data visualization projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 66,
+    "slug": "etl-projects-for-resume",
+    "title": "ETL Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "etl projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 67,
+    "slug": "database-projects-for-resume",
+    "title": "Database Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "database projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 68,
+    "slug": "data-warehouse-projects-for-resume",
+    "title": "Data Warehouse Projects for a Resume: Ideas & Bullets",
+    "category": "Data",
+    "keyword": "data warehouse projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 69,
+    "slug": "airflow-projects-for-resume",
+    "title": "Airflow Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "airflow projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 70,
+    "slug": "spark-projects-for-resume",
+    "title": "Spark Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "spark projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 71,
+    "slug": "snowflake-projects-for-resume",
+    "title": "Snowflake Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "snowflake projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 72,
+    "slug": "aws-data-projects-for-resume",
+    "title": "AWS Data Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Data",
+    "keyword": "aws data projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 73,
+    "slug": "data-analyst-cover-letter-entry-level",
+    "title": "Data Analyst Cover Letter Entry Level: Example & Template",
+    "category": "Data",
+    "keyword": "data analyst cover letter entry level",
+    "status": "draft"
+  },
+  {
+    "order": 74,
+    "slug": "data-engineer-cover-letter-entry-level",
+    "title": "Data Engineer Cover Letter Entry Level: Example & Template",
+    "category": "Data",
+    "keyword": "data engineer cover letter entry level",
+    "status": "draft"
+  },
+  {
+    "order": 75,
+    "slug": "healthcare-data-analyst-resume-entry-level",
+    "title": "Entry-Level Healthcare Data Analyst Resume: Example & Projects",
+    "category": "Data",
+    "keyword": "entry level healthcare data analyst resume",
+    "status": "draft"
+  },
+  {
+    "order": 76,
+    "slug": "marketing-data-analyst-resume-entry-level",
+    "title": "Entry-Level Marketing Data Analyst Resume: Example & Projects",
+    "category": "Data",
+    "keyword": "entry level marketing data analyst resume",
+    "status": "draft"
+  },
+  {
+    "order": 77,
+    "slug": "financial-data-analyst-resume-entry-level",
+    "title": "Entry-Level Financial Data Analyst Resume: Example & Projects",
+    "category": "Data",
+    "keyword": "entry level financial data analyst resume",
+    "status": "draft"
+  },
+  {
+    "order": 78,
+    "slug": "sports-data-analytics-projects-resume",
+    "title": "Sports Data Analytics Projects for a Resume: Ideas & Bullets",
+    "category": "Data",
+    "keyword": "sports data analytics projects resume",
+    "status": "draft"
+  },
+  {
+    "order": 79,
+    "slug": "geospatial-data-projects-resume",
+    "title": "Geospatial Data Projects for a Resume: Ideas & Bullets",
+    "category": "Data",
+    "keyword": "geospatial data projects resume",
+    "status": "draft"
+  },
+  {
+    "order": 80,
+    "slug": "sql-resume-skills-for-data-jobs",
+    "title": "SQL Skills for Data Job Resumes: Examples & Evidence",
+    "category": "Data",
+    "keyword": "sql skills for data job resume",
+    "status": "draft"
+  },
+  {
+    "order": 81,
+    "slug": "nlp-projects-for-resume",
+    "title": "NLP Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Machine Learning",
+    "keyword": "nlp projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 82,
+    "slug": "computer-vision-projects-for-resume",
+    "title": "Computer Vision Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "computer vision projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 83,
+    "slug": "deep-learning-projects-for-resume",
+    "title": "Deep Learning Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "deep learning projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 84,
+    "slug": "pytorch-projects-for-resume",
+    "title": "PyTorch Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Machine Learning",
+    "keyword": "pytorch projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 85,
+    "slug": "tensorflow-projects-for-resume",
+    "title": "TensorFlow Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Machine Learning",
+    "keyword": "tensorflow projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 86,
+    "slug": "scikit-learn-projects-for-resume",
+    "title": "Scikit-Learn Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "scikit learn projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 87,
+    "slug": "ml-model-deployment-projects-resume",
+    "title": "ML Model Deployment Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "ml model deployment projects resume",
+    "status": "draft"
+  },
+  {
+    "order": 88,
+    "slug": "ml-api-projects-for-resume",
+    "title": "Machine Learning API Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "machine learning api projects resume",
+    "status": "draft"
+  },
+  {
+    "order": 89,
+    "slug": "mlops-projects-for-resume-beginners",
+    "title": "MLOps Projects for Beginner Resumes: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "mlops projects for beginners resume",
+    "status": "draft"
+  },
+  {
+    "order": 90,
+    "slug": "feature-engineering-projects-for-resume",
+    "title": "Feature Engineering Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "feature engineering projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 91,
+    "slug": "recommendation-system-projects-for-resume",
+    "title": "Recommendation System Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "recommendation system projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 92,
+    "slug": "time-series-projects-for-resume",
+    "title": "Time Series Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Machine Learning",
+    "keyword": "time series projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 93,
+    "slug": "anomaly-detection-projects-for-resume",
+    "title": "Anomaly Detection Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "anomaly detection projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 94,
+    "slug": "llm-projects-for-resume",
+    "title": "LLM Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Machine Learning",
+    "keyword": "llm projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 95,
+    "slug": "generative-ai-projects-for-resume",
+    "title": "Generative AI Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "generative ai projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 96,
+    "slug": "rag-projects-for-resume",
+    "title": "RAG Projects for a Resume: Ideas & Copy-Ready Bullets",
+    "category": "Machine Learning",
+    "keyword": "rag projects for resume",
+    "status": "draft"
+  },
+  {
+    "order": 97,
+    "slug": "machine-learning-research-assistant-resume",
+    "title": "Machine Learning Research Assistant Resume: Example & Projects",
+    "category": "Machine Learning",
+    "keyword": "machine learning research assistant resume",
+    "status": "draft"
+  },
+  {
+    "order": 98,
+    "slug": "machine-learning-portfolio-github",
+    "title": "Machine Learning Portfolio on GitHub: Structure & Examples",
+    "category": "Machine Learning",
+    "keyword": "machine learning portfolio github",
+    "status": "draft"
+  },
+  {
+    "order": 99,
+    "slug": "machine-learning-intern-cover-letter",
+    "title": "Machine Learning Intern Cover Letter: Example & Template",
+    "category": "Machine Learning",
+    "keyword": "machine learning intern cover letter",
+    "status": "draft"
+  },
+  {
+    "order": 100,
+    "slug": "prompt-engineering-projects-for-resume",
+    "title": "Prompt Engineering Projects for a Resume: Ideas & Bullets",
+    "category": "Machine Learning",
+    "keyword": "prompt engineering projects for resume",
+    "status": "draft"
+  }
+]

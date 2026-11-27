@@ -195,6 +195,18 @@ Replace the brackets with your own details. Every template follows the same shap
 ### Summary template
 > Recent [degree or status] seeking an entry-level [target role]. Hands-on experience with [two or three skills] through [projects / coursework / volunteering], including [one concrete proof point].
 
+## Final first-resume checklist
+
+Before sending the file, confirm that every section answers a hiring question rather than filling space.
+
+- The summary names the role and the evidence you already have.
+- Projects show actions and outcomes, not just course numbers or assignment titles.
+- Volunteer and part-time work uses the same truthful action-and-result structure as technical work.
+- Skills are limited to tools you can use in a live exercise or discuss confidently.
+- The page has no invented job title, employer, metric, or proficiency level.
+
+Then ask someone unfamiliar with the project to read the page for twenty seconds and tell you what you built. If they cannot answer, make the lead project and first bullet clearer before adjusting the design.
+
 ## FAQ
 
 ### Can a resume with no work experience still get interviews?

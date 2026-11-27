@@ -103,6 +103,21 @@ If your target is an internship specifically, the [data science internship resum
 4. Draft the 4 paragraphs using the templates above, 3-5 sentences each.
 5. Read it aloud once. Every sentence that sounds like a resume bullet gets a reason attached or gets cut.
 
+## Final review: proof, relevance, and voice
+
+Read each paragraph and label its job. The first earns attention, the middle paragraphs connect evidence to the role, and the last makes a simple next step. If two paragraphs do the same job, merge them.
+
+Check the nouns before the adjectives. A strong letter names the dataset, workflow, model, analysis, or product decision that matters. It does not depend on words such as passionate, dynamic, or innovative.
+
+Use this final test:
+
+- Could a recruiter find the project you mention on the resume?
+- Does the company sentence show that you chose this application deliberately?
+- Did you distinguish what you did from what the team or tutorial provided?
+- Would you be comfortable discussing every claim in an interview?
+
+Finish with the same name, target role, and contact details used on the resume. Consistency is a small detail that makes the application easier to process.
+
 ## FAQ
 
 ### Do entry-level data science cover letters matter if the posting says optional?

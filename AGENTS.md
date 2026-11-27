@@ -12,11 +12,17 @@
 ## 2. 技术结构与命令
 
 ```
-pages/*.md      → 指南源稿（Markdown，11 篇）
-legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer）
-build_site.py   → 构建脚本：Markdown → 静态 HTML
+pages/*.md      → 指南源稿（Markdown，21 篇）
+legal/*.md      → 合规页源稿（about/contact/privacy-policy/terms/disclaimer；about 含 About the author 节）
+build_site.py   → 构建脚本：Markdown → 静态 HTML；顶部 AUTHOR 常量是全站署名笔名，站长可改
 validate_build.py → 构建后校验（schema/FAQ/CTA/canonical）
+content_queue/  → 100 个预留选题与待发布全文；只有 manifest 标记 ready 才会发布
+publish_next.py → 每次校验并移动一篇 ready 文章到 pages/；--check 只校验不改文件
+.github/workflows/publish-scheduled-guide.yml → 每周一、三、五 01:17 UTC（北京时间 09:17）自动发布一篇
+PRODUCT.md      → 产品、受众、约束与无障碍要求
+DESIGN.md       → 当前视觉方向、设计 token、组件与响应式规范
 site/           → 构建产物（已提交进仓库，Cloudflare Pages 发布的就是它）
+site/templates.html → 构建生成的模板下载页（导航 CTA "Free Templates" 指向它）
 site/downloads/ → Word 模板 docx
 site/assets/og/ → OG 分享图（每页一张 1200x630 png，没有则自动回退 home.png）
 ```
@@ -24,6 +30,8 @@ site/assets/og/ → OG 分享图（每页一张 1200x630 png，没有则自动�
 ```bash
 python build_site.py       # 构建（改完任何 md 或 py 后必须跑）
 python validate_build.py   # 校验
+python publish_next.py --check  # 校验下一篇待发布文章，不改文件
+python publish_next.py     # 手动将一篇 ready 文章移入 pages/，随后生成 OG、构建、校验再提交
 ```
 
 ## 3. 部署机制（重要）
@@ -31,6 +39,8 @@ python validate_build.py   # 校验
 - **push 到 `main` 分支 ≈ 1 分钟后自动上线**（Cloudflare Pages 连着 GitHub）
 - **不想上线就推到功能分支**：`git push origin window-X-主题`，不要 merge
 - 上线前务必本地 `python build_site.py` 跑通并提交 `site/` 产物
+- 每周一、三、五的发布工作流只处理 `content_queue/manifest.json` 中的 `ready` 文章；`draft` 不是完整内容，禁止改成 ready 凑数。无 ready 文章时不提交
+- 发布器会拒绝重复标题/关键词、跨文章 12 词以上重复句，以及 8 词片段 Jaccard 相似度 ≥ 0.20 的候选文章；命中后保留队列并人工复核，禁止为频率降低标准
 
 ## 4. 并行协作规则（防撞车）
 
@@ -46,6 +56,10 @@ python validate_build.py   # 校验
 
 支持链接 `[text](url)`（2026-09-22 起，渲染成 <a> 标签）。禁止（会原样显示成乱码）：表格 `|`、图片、`---` 分割线、HTML 标签
 
+构建脚本自动生成（源稿里不要手写）：byline 署名行（AUTHOR 常量）、Quick summary 摘要框（取第一节开场段落，≤100 词）、Key takeaways 框（各 `##` 节首句或首条 bullet）、sticky TOC + 移动端折叠 "In this guide"、第 1 节后和文末各一个模板下载框、文末 author box。
+
+文件开头的 YAML frontmatter（`---` 包裹的 title/description 等）会被构建脚本剥离、不渲染；页面元数据一律以 `PAGES` 条目为准，写了 frontmatter 也要同步维护 PAGES。
+
 新页面 checklist：
 
 - [ ] 在 `pages/` 建 `{slug}.md`，1500–1900 词，全英文
@@ -55,6 +69,7 @@ python validate_build.py   # 校验
   ```python
   {
       'slug': 'your-slug',            # 和文件名一致
+      'category': 'Resume Basics',    # Resume Basics / Machine Learning / Software / Data，首页按它分组、文章页 eyebrow 显示
       'title': '...',                  # 浏览器标题，60 字符内
       'nav': '...',                    # 短名（仅 pillar: True 的页面进顶部导航）
       'keyword': '主关键词',
@@ -83,19 +98,25 @@ python validate_build.py   # 校验
 | resume-with-no-work-experience | how to write a resume with no work experience |
 | ats-friendly-resume-guide | ats friendly resume for tech jobs |
 | machine-learning-engineer-cover-letter | machine learning engineer cover letter entry level |
+| resume-skills-section-tech | resume skills section tech |
 | data-science-internship-resume | data science internship resume |
 | python-projects-for-resume | python projects for resume |
 | data-science-cover-letter-entry-level | data science cover letter entry level |
+| internship-resume-computer-science | computer science internship resume |
+| entry-level-software-developer-portfolio | entry level software developer portfolio |
+| how-to-list-projects-on-resume | how to list projects on resume |
+| entry-level-data-engineer-resume | entry level data engineer resume |
+| sql-projects-for-resume | sql projects for resume |
 
-合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer
+| software-engineer-cover-letter-entry-level | software engineer cover letter entry level |
+
+合规页（在 `legal/`，不在 PAGES）：about / contact / privacy-policy / terms / disclaimer / editorial-policy
 
 ### 建议的下一批主题（未被占用）
 
-- `entry-level-software-developer-portfolio` — 作品集怎么配简历
-- `data-science-cover-letter-entry-level` — DS 求职信
-- `resume-skills-section-tech` — tech 简历技能区怎么写
-- `internship-resume-computer-science` — CS 实习简历
-- `how-to-list-projects-on-resume` — 项目区通用写法
+- `entry-level-cloud-engineer-resume` — 初级云工程简历
+- `backend-developer-resume-no-experience` — 无经验后端开发简历
+- `data-analyst-portfolio-projects` — 数据分析作品集项目
 
 ## 7. 不能动的东西
 

@@ -25,6 +25,14 @@ Each guide is built around a real search question candidates actually ask, then 
 
 Some pages include affiliate links to resume-building tools such as Kickresume, ResumeGenius, and Zety. If you buy through those links, we may earn a commission at no extra cost to you. This never changes what we recommend: the free examples on this site are complete on their own, and the paid tools are optional convenience, not a requirement.
 
+## About the author
+
+**Jordan Blake** is the editorial pen name used for Resume Path Lab's guides. It provides a consistent byline for the site's career content; it is not presented as a recruiter, hiring manager, or career coach.
+
+Our guides combine AI-assisted drafting with structured editorial review, practical examples, and copy-ready templates. Examples are illustrative rather than candidate case studies, and we do not claim recruiting credentials or guaranteed hiring outcomes under this identity.
+
+Questions or corrections? Reach the editorial team through the contact page at resumepathlab.com/contact.
+
 ## Contact
 
 Feedback, corrections, or questions? Visit our Contact page at resumepathlab.com/contact or email Puxin9666@gmail.com.

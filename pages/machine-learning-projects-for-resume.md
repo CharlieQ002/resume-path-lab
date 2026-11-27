@@ -351,6 +351,18 @@ Titles should help recruiters understand the use case quickly.
 ### 5. Not connecting projects to your target role
 Projects should support the story your resume is trying to tell.
 
+## Final project selection checklist
+
+Choose the projects that make the clearest case for the role, not the largest number of notebooks.
+
+- One lead project should cover data preparation, a baseline, evaluation, and an explained result.
+- A second project can add a different strength, such as deployment, NLP, or an original dataset.
+- Every claimed metric needs a dataset split and evaluation method behind it.
+- Every repository needs a concise README, reproducible setup, and an honest limitations section.
+- Remove duplicates that demonstrate the same workflow with different tutorial datasets.
+
+If two projects serve the same purpose, keep the one you can discuss most confidently and use the remaining space for education or supporting experience.
+
 ## FAQ
 
 ### Do I need deep learning projects as a beginner?

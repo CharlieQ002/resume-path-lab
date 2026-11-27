@@ -169,6 +169,17 @@ Adapt these to your real inventory. Delete anything you cannot defend.
 
 > A good skills section is a promise the rest of the resume keeps. Keep the promise small and keep it true.
 
+## Build a quick skills evidence matrix
+
+For each skill you want to list, write one fragment of proof beside it. Python might point to a data-cleaning script, SQL to a join and validation check, and Git to a documented pull request or commit history.
+
+- If the proof is only a tutorial video, leave the skill off for now.
+- If the proof is a classroom exercise, present it as coursework rather than professional experience.
+- If two skills share one project, make the different ways you used them clear.
+- If a posting names a synonym you understand, use the employer's wording without inflating your level.
+
+This exercise also reveals weak spots. A skill with no evidence may need a small practice task, not a more prominent position on the resume. A skill with strong evidence can often be moved from a generic list into the project bullet itself.
+
 ## FAQ
 
 ### How many skills should I list on a tech resume?

@@ -119,7 +119,7 @@ Weak examples:
 - “AI app” with zero engineering substance underneath
 
 ## AI/ML project section you can add without overclaiming
-If you want this software-resume page to act as a real traffic bridge into the ML path, add one adjacent project that signals AI/ML relevance without pretending you already worked as an ML engineer.
+If you plan to move toward ML roles later, add one adjacent project that signals AI/ML relevance without pretending you already worked as an ML engineer.
 
 Strong examples:
 
@@ -237,6 +237,19 @@ People do expect you to sound real.
 - Built a software tool that incorporates [ranking / classification / data analysis] to solve [problem]
 - Combined engineering implementation with measurable output quality or decision support
 - Designed the project so technical work could be explained clearly to both users and reviewers
+
+## A ten-minute repository and resume check
+
+Before submitting, open each repository link in a private browser window. Make sure the project is public, the README loads, and the setup instructions do not depend on files that exist only on your computer.
+
+Then compare the repository with the resume:
+
+- Does the project name match, and does the first bullet describe what is actually in the repository?
+- Is there a visible test, evaluation, screenshot, demo, or usage example that supports the claims?
+- Did you remove default tutorial text, exposed secrets, and large generated folders?
+- Can you explain one design decision and one limitation without reading from the README?
+
+Finally, replace one duty-style bullet with a decision you made. For example, explain why you chose a data structure, added caching, split a component, or wrote a regression test. That detail gives an interviewer something useful to ask about.
 
 ## FAQ
 

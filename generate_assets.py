@@ -19,12 +19,12 @@ SITE_DIR = ROOT / 'site'
 DOWNLOADS_DIR = SITE_DIR / 'downloads'
 OG_DIR = SITE_DIR / 'assets' / 'og'
 
-INK = (31, 26, 23)
-MUTED = (111, 98, 89)
-BG = (246, 242, 234)
-PANEL = (255, 253, 248)
-ACCENT = (15, 118, 110)
-ACCENT_SOFT = (216, 243, 238)
+INK = (22, 36, 31)
+MUTED = (89, 103, 95)
+BG = (243, 245, 242)
+PANEL = (255, 255, 255)
+ACCENT = (14, 91, 73)
+ACCENT_SOFT = (228, 238, 232)
 
 LATO_BLACK = '/usr/share/fonts/truetype/lato/Lato-Black.ttf'
 LATO_BOLD = '/usr/share/fonts/truetype/lato/Lato-Bold.ttf'
@@ -358,7 +358,7 @@ def og_image(path: Path, eyebrow: str, title: str, brand: str = 'Resume Path Lab
 def generate_og() -> None:
     OG_DIR.mkdir(parents=True, exist_ok=True)
     pages = [
-        ('home', 'Free resume examples', 'Entry-Level Resume Guides That Get Interviews'),
+        ('home', 'Free resume library', 'Your Projects Are the Experience'),
         ('entry-level-machine-learning-engineer-resume', 'Free guide + template', 'Entry-Level Machine Learning Engineer Resume'),
         ('how-to-write-machine-learning-resume-without-experience', 'Free 7-step guide', 'How to Write a Machine Learning Resume Without Experience'),
         ('software-engineer-resume-no-experience', 'Free guide + template', 'Software Engineer Resume With No Experience'),
@@ -367,9 +367,15 @@ def generate_og() -> None:
         ('machine-learning-resume-summary-examples', '8 copy-ready examples', 'Machine Learning Resume Summary Examples'),
         ('kaggle-projects-for-resume', 'Free 2026 guide', 'Kaggle Projects for a Resume'),
         ('entry-level-data-analyst-resume', 'Free guide + template', 'Entry-Level Data Analyst Resume'),
-        ('data-science-internship-resume', 'Internship screen secrets', 'Data Science Internship Resume'),
+        ('resume-skills-section-tech', 'Free 2026 guide', 'Tech Resume Skills Section'),
+        ('data-science-internship-resume', 'Example + guide', 'Data Science Internship Resume'),
         ('python-projects-for-resume', '10 projects ranked', 'Python Projects for a Resume'),
         ('data-science-cover-letter-entry-level', 'Example + templates', 'Data Science Cover Letter Entry Level'),
+        ('internship-resume-computer-science', 'Example + project guide', 'Computer Science Internship Resume'),
+        ('entry-level-software-developer-portfolio', 'Projects + examples', 'Entry-Level Software Developer Portfolio'),
+        ('how-to-list-projects-on-resume', 'Bullets + examples', 'How to List Projects on a Resume'),
+        ('entry-level-data-engineer-resume', 'Example + projects', 'Entry-Level Data Engineer Resume'),
+        ('sql-projects-for-resume', '8 ideas + bullets', 'SQL Projects for a Resume'),
     ]
     for slug, eyebrow, title in pages:
         og_image(OG_DIR / f'{slug}.png', eyebrow, title)

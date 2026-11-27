@@ -246,6 +246,20 @@ Every skill should have support somewhere else on the page.
 ### 5. Writing projects like classroom chores
 Projects should read like proof of capability, not assignment submissions.
 
+## Worked example: choosing between two projects
+
+Imagine you have a Titanic notebook and a small text-classification API. The notebook is more polished visually, but the API better matches a posting that mentions model integration and REST services. Choose the API as the lead project, then use the notebook as supporting evidence if space remains.
+
+A weak description would be:
+
+- Built a text classifier with Python and deployed it online.
+
+A stronger, still truthful version might be:
+
+- Built a text-classification workflow with scikit-learn, compared validation errors across two preprocessing approaches, and exposed the selected pipeline through a documented FastAPI endpoint.
+
+The improvement is not the number of keywords. It is the visible engineering sequence: preprocessing, comparison, selection, and delivery. Only include the endpoint, comparison, or error analysis if you actually performed it. When a project lacks this depth, add a small evaluation or delivery step before adding another tool to the skills list.
+
 ## FAQ
 
 ### Can I get a machine learning interview without internships?

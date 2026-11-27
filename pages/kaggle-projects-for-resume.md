@@ -86,6 +86,43 @@ Use this rule of thumb for the next 90 days:
 - Padding with copied notebooks. Interviewers ask follow-up questions about anything on the resume; only claim work you can explain line by line.
 - Ignoring the rest of the resume. Kaggle is a booster, not a foundation. You still need projects, skills, and a targeted summary.
 
+## Worked rewrite: from leaderboard rank to engineering proof
+
+Consider a hypothetical competition notebook with a strong public leaderboard score but no explanation beyond model training. The rank alone tells a reviewer very little about your decisions. It may also hide leaderboard overfitting or a validation split that does not match the problem.
+
+Start the rewrite by documenting four things:
+
+- The prediction task and why the evaluation metric fits it.
+- Your baseline, validation strategy, and the most meaningful comparison.
+- One error pattern or feature decision that changed the next iteration.
+- The steps another person needs to reproduce the result.
+
+Weak:
+
+- Achieved a top leaderboard position using XGBoost and feature engineering.
+
+Stronger:
+
+- Built an XGBoost competition pipeline with grouped validation, compared it with a regularized baseline, and reduced a documented error pattern through targeted feature cleanup.
+
+The second version does not depend on a dramatic ranking. It shows validation design and iteration. Use it only if those details are present in your notebook.
+
+For the final package, pin the competition and dataset versions, remove empty cells and exploratory clutter, and add a short conclusion that separates measured results from speculation. If a personal project answers a more relevant employer problem than the competition, lead with the personal project and keep Kaggle as secondary proof.
+
+## Decide where the leaderboard rank belongs
+
+A verified rank can be useful context, but it should come after the technical work. Lead with the task, validation, and model decisions; then add the result with the competition size and date if you can verify them.
+
+Do not compare a public score from one competition with a private score from another or present a temporary position as final. If the ranking changed, use the final verified result or omit it.
+
+For a role that emphasizes applied modeling, your error analysis may be more relevant than the leaderboard. For a research-oriented application, the validation design may matter most. Keep the repository link and competition page together so a reviewer can check the context rather than relying on a large number in the headline.
+
+## Record the compute and reproduction context
+
+Competition results can be difficult to reproduce when library versions, random seeds, and data downloads are undocumented. Add the important package versions, seed settings, runtime environment, and exact notebook entry point to the README. If the full dataset cannot be redistributed, link to its official source and include a small schema example rather than uploading it yourself.
+
+This context is useful engineering evidence. It shows that your result is a reproducible workflow rather than a screenshot of one successful run, and it makes your next iteration easier to compare with the baseline.
+
 ## FAQ
 
 ### Do recruiters care about Kaggle?

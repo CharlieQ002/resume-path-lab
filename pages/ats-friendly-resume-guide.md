@@ -220,6 +220,20 @@ Before you submit any application, run through this list:
 
 If all six are yes, the software side is handled.
 
+## Run a plain-text parsing test
+
+Export the resume using the same format you plan to submit, then copy the entire document into a plain-text editor. This is a simple diagnostic, not a perfect simulation of every applicant tracking system.
+
+Check whether the reading order still makes sense:
+
+- Your name and contact details appear once, not inside a header that disappears.
+- Section headings remain attached to the correct content.
+- Dates, job titles, and project names are not scrambled across columns.
+- Bullets remain separate and symbols do not turn into unreadable characters.
+- No sentence is trapped inside a text box or embedded image.
+
+If the plain-text version is confusing, simplify the layout before adding more keywords. Afterward, search the text for the exact requirement phrases you truthfully included. A resume that parses cleanly but lacks relevant evidence still needs content work.
+
 ## FAQ
 
 ### Do ATS systems automatically reject resumes with low scores?

@@ -18,7 +18,7 @@ That changes what your resume should emphasize. This guide gives you the structu
 - **Tool readiness.** Can you open a Jupyter notebook, write SQL, and use Git without a week of onboarding? List the tools where they can be seen fast.
 - **Evidence of curiosity.** A Kaggle profile with two genuine competitions, a GitHub with commit history, a blog post about an analysis. Anything that shows you do this when nobody is paying you.
 
-You do not need all four. Most successful internship resumes have three, and the project is the one you cannot skip.
+You do not need all four. Choose the sections that give you credible evidence, and make sure at least one project shows your decisions and contribution.
 
 ## The Structure That Works
 
@@ -67,7 +67,7 @@ Notice what is missing: the word "passionate," the phrase "hard worker," and any
 
 ## Mistakes That Get Internship Applications Rejected
 
-- **Two-page resumes.** Internship screeners spend about 20 seconds. Page two is never read.
+- **Unnecessary second pages.** For most internships, a focused one-page resume is easier to scan. Use a second page only when the added content is relevant and substantial.
 - **Listing every course ever taken.** Four relevant courses. The rest is noise.
 - **No GitHub link.** For a data internship, a missing GitHub reads as "no code to show." Even one clean repository changes this.
 - **Group project with no personal role.** "Worked on a team project" is filler. "Built the feature-engineering pipeline for a 5-person team project" is a bullet.

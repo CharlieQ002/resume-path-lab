@@ -892,8 +892,24 @@ def build_home(nav_html: str) -> None:
 </section>
 '''
     description = 'Free, copy-ready resume examples and templates for entry-level machine learning engineers, software engineers, and data scientists with no experience.'
+    organization = json_ld({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        'name': SITE_NAME,
+        'url': f'{BASE_URL}/',
+        'logo': f'{BASE_URL}/apple-touch-icon.png',
+        'description': 'Free resume examples and step-by-step guides for entry-level machine learning, software, and data roles.',
+    })
     (SITE_DIR / 'index.html').write_text(
-        shell(f'{SITE_NAME} | Free Entry-Level Tech Resume Examples', description, f'{BASE_URL}/', nav_html, body),
+        shell(
+            f'{SITE_NAME} | Free Entry-Level Tech Resume Examples',
+            description,
+            f'{BASE_URL}/',
+            nav_html,
+            body,
+            extra_head=organization + '
+',
+        ),
         encoding='utf-8',
     )
 

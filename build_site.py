@@ -28,6 +28,7 @@ AFFILIATE = {
 
 GOOGLE_SITE_VERIFICATION = 'zNXWb6AU4dkWiFODD_S9UiH9y3zi7Hr3vD-eHLggWnA'
 YEAHPROMOS_VERIFICATION = '5c5859c41495'
+ADSENSE_CLIENT = 'ca-pub-2690884287375354'
 
 PAGES = [
     {
@@ -535,6 +536,8 @@ def shell(title: str, description: str, canonical: str, nav_html: str, body: str
         verification += f'  <meta name="google-site-verification" content="{GOOGLE_SITE_VERIFICATION}">\n'
     if YEAHPROMOS_VERIFICATION:
         verification += f'  <meta name="verify-yeahpromos" content="{YEAHPROMOS_VERIFICATION}">\n'
+    if ADSENSE_CLIENT:
+        verification += f'  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>\n'
     og_image = og_image or (BASE_URL + '/assets/og/home.png')
     return f'''<!doctype html>
 <html lang="en">
